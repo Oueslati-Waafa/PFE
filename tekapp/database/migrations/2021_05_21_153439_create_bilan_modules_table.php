@@ -20,9 +20,10 @@ class CreateBilanModulesTable extends Migration
             $table->unsignedInteger('professor_id');
             $table->timestamps();
 
-            
+            //constraints
             $table->foreign('professor_id')->references('id')->on('professors')->onDelete('cascade');
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+
         });
     }
 

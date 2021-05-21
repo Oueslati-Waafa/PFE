@@ -16,12 +16,13 @@ class CreateContractsTable extends Migration
         Schema::create('contracts', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('professor_id');
-            $table->date('datedebut');
-            $table->date('datefin');
+            $table->date('date_debut');
+            $table->date('date_fin');
             $table->string('type');
             $table->timestamps();
 
             $table->foreign('professor_id')->references('id')->on('professors')->onDelete('cascade');
+
         });
     }
 

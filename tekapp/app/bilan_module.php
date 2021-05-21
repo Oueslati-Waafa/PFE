@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Contracts extends Model
+class bilan_module extends Model
 {
     //
 }

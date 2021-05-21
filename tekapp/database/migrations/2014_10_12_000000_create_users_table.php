@@ -23,7 +23,11 @@ class CreateUsersTable extends Migration
             $table->string('type');
             $table->date('birthday');
             $table->enum("gender", ["Male", "Female", "Androgyne"]);
+            $table->unsignedInteger("image_id")->nullable();
             $table->rememberToken();
+          
+           
+
         });
     }
 
