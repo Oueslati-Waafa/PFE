@@ -20,6 +20,7 @@ class CreateContractsTable extends Migration
             $table->date('datefin');
             $table->string('type');
             $table->timestamps();
+
             $table->foreign('professor_id')->references('id')->on('professors')->onDelete('cascade');
         });
     }

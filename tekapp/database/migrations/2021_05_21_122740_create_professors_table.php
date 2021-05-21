@@ -14,8 +14,11 @@ class CreateProfessorsTable extends Migration
     public function up()
     {
         Schema::create('professors', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->timestamps();
+            $table->unsignedInteger("user_id");
+            //constraints
+            $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");
         });
     }
 
