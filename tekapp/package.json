@@ -17,7 +17,7 @@
         "lodash": "^4.17.19",
         "resolve-url-loader": "^3.1.0",
         "sass": "^1.34.0",
-        "sass-loader": "^8.0.2"        
+        "sass-loader": "^8.0.2"
     },
     "dependencies": {
         "@xkeshi/vue-countdown": "^1.0.1",

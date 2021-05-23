@@ -1956,77 +1956,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Navbar',
-  data: function data() {
-    return {
-      items: [{
-        title: 'Dashboard',
-        icon: 'mdi-view-dashboard'
-      }, {
-        title: 'Photos',
-        icon: 'mdi-image'
-      }, {
-        title: 'About',
-        icon: 'mdi-help-box'
-      }],
-      right: null
-    };
-  }
+  name: 'Navbar'
 });
 
 /***/ }),
@@ -19808,68 +19739,81 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-card",
-    { staticClass: "mx-auto", attrs: { height: "400", width: "256" } },
+    "nav",
+    { staticClass: "navbar navbar-expand-md navbar-dark bg-dark fixed-top" },
     [
+      _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
+        _vm._v("Navbar")
+      ]),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
       _c(
-        "v-navigation-drawer",
-        { attrs: { permanent: "" } },
+        "div",
+        {
+          staticClass: "collapse navbar-collapse",
+          attrs: { id: "navbarsExampleDefault" }
+        },
         [
-          _c(
-            "v-list-item",
-            [
-              _c(
-                "v-list-item-content",
-                [
-                  _c("v-list-item-title", { staticClass: "title" }, [
-                    _vm._v("\n          Tekapp\n        ")
-                  ]),
-                  _vm._v(" "),
-                  _c("v-list-item-subtitle", [
-                    _vm._v("\n          Paiments module\n        ")
-                  ])
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("v-divider"),
-          _vm._v(" "),
-          _c(
-            "v-list",
-            { attrs: { dense: "", nav: "" } },
-            _vm._l(_vm.items, function(item) {
-              return _c(
-                "v-list-item",
-                { key: item.title, attrs: { link: "" } },
-                [
-                  _c(
-                    "v-list-item-icon",
-                    [_c("v-icon", [_vm._v(_vm._s(item.icon))])],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-list-item-content",
-                    [_c("v-list-item-title", [_vm._v(_vm._s(item.title))])],
-                    1
-                  )
-                ],
-                1
-              )
-            }),
-            1
-          )
-        ],
-        1
+          _c("ul", { staticClass: "navbar-nav mr-auto" }, [
+            _c(
+              "li",
+              { staticClass: "nav-item active" },
+              [
+                _c(
+                  "router-link",
+                  { staticClass: "nav-link", attrs: { to: "/" } },
+                  [
+                    _vm._v("Home "),
+                    _c("span", { staticClass: "sr-only" }, [
+                      _vm._v("(current)")
+                    ])
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              { staticClass: "nav-item" },
+              [
+                _c(
+                  "router-link",
+                  { staticClass: "nav-link", attrs: { to: "/paiement" } },
+                  [_vm._v("Paiement")]
+                )
+              ],
+              1
+            )
+          ])
+        ]
       )
-    ],
-    1
+    ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "navbar-toggler",
+        attrs: {
+          type: "button",
+          "data-toggle": "collapse",
+          "data-target": "#navbarsExampleDefault",
+          "aria-controls": "navbarsExampleDefault",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation"
+        }
+      },
+      [_c("span", { staticClass: "navbar-toggler-icon" })]
+    )
+  }
+]
 render._withStripped = true
 
 
