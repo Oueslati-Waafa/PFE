@@ -24,6 +24,8 @@ class CreateCoursePlansTable extends Migration
             //constraints
             $table->foreign("branch_level_plan_id")->references("id")->on("branch_level_plans")->onDelete("cascade");
             $table->foreign("course_id")->references("id")->on("courses")->onDelete("cascade");
+
+
         });
     }
 
