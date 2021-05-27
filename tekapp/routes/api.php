@@ -17,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['prefix' => 'paiement'], function () {
+  
+   Route::delete("delete_paiement/{id}", "PaiementController@deletePaiement");
+   Route::get("getPaiment", "PaiementController@getAll");
+   Route::get('get_paiement/{id}', 'PaiementController@getPaiement');
+   Route::post('update_paiement/{id}', "PaiementController@updatePaiement");
+   Route::post('save_paiement', "PaiementController@savePaiement");
+  });
+  

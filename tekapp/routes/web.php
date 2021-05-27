@@ -13,14 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'paiement'], function () {
-    Route::post("/add", "PaiementController@add");
-    Route::delete("/delete", "PaiementController@delete");
-    Route::get("/", "PaiementController@getAll");
-    Route::put('/edit', 'PaiementController@edit');
-    Route::post("/{id}", "PaiementController@get");
-  });
+
+
