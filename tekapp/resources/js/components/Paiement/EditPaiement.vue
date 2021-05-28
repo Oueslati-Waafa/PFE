@@ -125,10 +125,9 @@ export default {
                 this.axios.post(url,formData).then((response) => {
                     if(response.status)
                     {
-                      
                       this.$utils.showSuccess('success', response.message);
-                      this.$rooter.push({
-                          name:'/'
+                      this.$router.push({
+                          name:'/paiement'
                       });
                       
                     }
@@ -142,13 +141,13 @@ export default {
         },
        
     },
-    created(){
+    created()
+    {
         this.loadData();
     },
-
     mounted: function()
     {
-        console.log('get paiement component loaded');
+        console.log('Edit paiement component loaded');
     }
 }
 </script>

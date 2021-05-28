@@ -27,3 +27,12 @@ Route::group(['prefix' => 'paiement'], function () {
    Route::post('save_paiement', "PaiementController@savePaiement");
   });
   
+  Route::group(['prefix' => 'heures_supplimentaires'], function () {
+  
+   // Route::delete("delete_paiement/{id}", "PaiementController@deletePaiement");
+    Route::get("getPaiment", "PaiementController@getAll");
+   // Route::get('get_paiement/{id}', 'PaiementController@getPaiement');
+   // Route::post('update_paiement/{id}', "PaiementController@updatePaiement");
+  //
+    Route::post('save_paiement', "PaiementController@savePaiement");
+   });

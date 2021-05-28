@@ -2261,8 +2261,8 @@ __webpack_require__.r(__webpack_exports__);
           if (response.status) {
             _this2.$utils.showSuccess('success', response.message);
 
-            _this2.$rooter.push({
-              name: '/'
+            _this2.$router.push({
+              name: '/paiement'
             });
           } else {
             _this2.$utils.showError('Error', response.message);
@@ -2277,7 +2277,7 @@ __webpack_require__.r(__webpack_exports__);
     this.loadData();
   },
   mounted: function mounted() {
-    console.log('get paiement component loaded');
+    console.log('Edit paiement component loaded');
   }
 });
 
