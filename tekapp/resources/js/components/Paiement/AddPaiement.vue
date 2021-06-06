@@ -41,7 +41,7 @@
                     <label for="">Date de paiement</label>
                     <input type="text" id="datepaiement" v-model="paiement.datepaiement" class="form-control" placeholder="Entrer la date de paiement">
                 </div>
-                <button class="btn btn-primary mt-4"> Procerder </button>
+                <button class="btn btn-primary mt-4"> Valider </button>
               </form>
           </div>
       </div>

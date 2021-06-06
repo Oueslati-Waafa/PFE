@@ -1956,8 +1956,389 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Navbar'
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HeureSupp/AddHeures.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HeureSupp/AddHeures.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      url: document.head.querySelector('meta[name="url"]').content,
+      heure_supp: {},
+      h_jury: '',
+      h_encadrement: '',
+      h_conseil: '',
+      semester: '',
+      professor_id: '',
+      h_surveillance: '',
+      errors: []
+    };
+  },
+  methods: {
+    saveHeures: function saveHeures() {
+      var _this = this;
+
+      this.errors = [];
+
+      if (!this.heure_supp.h_jury) {
+        this.errors.push('Somme brut est requis');
+      }
+
+      if (!this.heure_supp.h_encadrement) {
+        this.errors.push('h_encadrement est requis');
+      }
+
+      if (!this.heure_supp.h_conseil) {
+        this.errors.push('h_conseil est requis');
+      }
+
+      if (!this.heure_supp.semester) {
+        this.errors.push('net à payer est requis');
+      }
+
+      if (!this.heure_supp.professor_id) {
+        this.errors.push('Contract ID est requis');
+      }
+
+      if (!this.heure_supp.h_surveillance) {
+        this.errors.push('h_surveillance   est requis');
+      }
+
+      if (!this.errors.length) {
+        var formData = new FormData();
+        formData.append('h_jury', this.heure_supp.h_jury);
+        formData.append('h_encadrement', this.heure_supp.h_encadrement);
+        formData.append('h_conseil', this.heure_supp.h_conseil);
+        formData.append('semester', this.heure_supp.semester);
+        formData.append('professor_id', this.heure_supp.professor_id);
+        formData.append('h_surveillance', this.heure_supp.h_surveillance);
+        var url = this.url + '/api/heures_supp/save_heure_supp';
+        this.axios.post(url, formData).then(function (response) {
+          if (response.status) {
+            _this.$utils.showSuccess('success', response.message);
+
+            document.getElementById("h_jury").value = '';
+            document.getElementById("h_encadrement").value = '';
+            document.getElementById("h_conseil").value = '';
+            document.getElementById("semester").value = '';
+            document.getElementById("professor_id").value = '';
+            document.getElementById("h_surveillance").value = '';
+
+            _this.$router.push({
+              name: '/heures_supp'
+            });
+          } else {
+            _this.$utils.showError('Error', response.message);
+          }
+        })["catch"](function (error) {
+          _this.errors.push(error.response.data.error);
+        });
+      }
+    }
+  },
+  mounted: function mounted() {
+    console.log('add heure_supp component loaded');
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HeureSupp/EditHeuresSupp.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HeureSupp/EditHeuresSupp.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      url: document.head.querySelector('meta[name="url"]').content,
+      heure_supp: {},
+      h_jury: '',
+      h_encadrement: '',
+      h_conseil: '',
+      semester: '',
+      professor_id: '',
+      h_surveillance: '',
+      errors: []
+    };
+  },
+  methods: {
+    loadData: function loadData() {
+      var _this = this;
+
+      var url = this.url + "/api/heures_supp/get_heure_supp/".concat(this.$route.params.id);
+      this.axios.get(url).then(function (response) {
+        _this.heure_supp = response.data;
+        console.log(_this.heure_supp);
+      });
+    },
+    updateHeures: function updateHeures() {
+      var _this2 = this;
+
+      this.errors = [];
+
+      if (!this.heure_supp.h_jury) {
+        this.errors.push('nombre dheure jury est requis');
+      }
+
+      if (!this.heure_supp.h_encadrement) {
+        this.errors.push('h_encadrement est requis');
+      }
+
+      if (!this.heure_supp.h_conseil) {
+        this.errors.push('h_conseil est requis');
+      }
+
+      if (!this.heure_supp.semester) {
+        this.errors.push('net à payer est requis');
+      }
+
+      if (!this.heure_supp.professor_id) {
+        this.errors.push('Contract ID est requis');
+      }
+
+      if (!this.heure_supp.h_surveillance) {
+        this.errors.push('h_surveillance   est requis');
+      }
+
+      if (!this.errors.length) {
+        var formData = new FormData();
+        formData.append('h_jury', this.heure_supp.h_jury);
+        formData.append('h_encadrement', this.heure_supp.h_encadrement);
+        formData.append('h_conseil', this.heure_supp.h_conseil);
+        formData.append('semester', this.heure_supp.semester);
+        formData.append('professor_id', this.heure_supp.professor_id);
+        formData.append('h_surveillance', this.heure_supp.h_surveillance);
+        var url = this.url + "/api/heures_supp/save_heure_supp/".concat(this.$route.params.id);
+        this.axios.post(url, formData).then(function (response) {
+          if (response.status) {
+            _this2.$utils.showSuccess('success', response.message);
+
+            _this2.$router.push({
+              name: '/heures_supp'
+            });
+          } else {
+            _this2.$utils.showError('Error', response.message);
+          }
+        })["catch"](function (error) {
+          _this2.errors.push(error.response.data.error);
+        });
+      }
+    }
+  },
+  created: function created() {
+    this.loadData();
+  },
+  mounted: function mounted() {
+    console.log('Edit Heures supplimentaires component loaded');
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HeureSupp/HeuresSuppList.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HeureSupp/HeuresSuppList.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'h_supplemetaires',
+  created: function created() {
+    this.loadData();
+  },
+  methods: {
+    loadData: function loadData() {
+      var _this = this;
+
+      var url = this.url + '/api/heures_supp/get';
+      this.axios.get(url).then(function (response) {
+        _this.h_supplemetaires = response.data;
+        console.log(_this.h_supplemetaires);
+      });
+    },
+    deleteHeures: function deleteHeures(id) {
+      var _this2 = this;
+
+      var url = this.url + "/api/heures_supp/delete_heure_sup/".concat(id);
+      this.axios["delete"](url).then(function (response) {
+        if (response.status) {
+          _this2.$utils.showSuccess('success', response.message);
+
+          _this2.loadData();
+        } else {
+          _this2.$utils.showError('Error', response.message);
+        }
+      });
+    }
+  },
+  mounted: function mounted() {
+    console.log('Heure list component mounted ');
+  },
+  data: function data() {
+    return {
+      url: document.head.querySelector('meta[name="url"]').content,
+      h_supplemetaires: []
+    };
+  }
 });
 
 /***/ }),
@@ -28099,6 +28480,19 @@ var render = function() {
                 )
               ],
               1
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              { staticClass: "nav-item" },
+              [
+                _c(
+                  "router-link",
+                  { staticClass: "nav-link", attrs: { to: "/heures_supp" } },
+                  [_vm._v("Heures Supplimentaies")]
+                )
+              ],
+              1
             )
           ])
         ]
@@ -28126,6 +28520,721 @@ var staticRenderFns = [
       },
       [_c("span", { staticClass: "navbar-toggler-icon" })]
     )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HeureSupp/AddHeures.vue?vue&type=template&id=52e66f0c&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HeureSupp/AddHeures.vue?vue&type=template&id=52e66f0c& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "container" }, [
+      _c("h2", { staticClass: "text-center p-2 text-white bg-primary mt-5" }, [
+        _vm._v("Affectation des heures supplimentaires aux professeurs")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c("div", { staticClass: "col-md-6 offset-md-3" }, [
+          _c(
+            "form",
+            {
+              attrs: {
+                id: "validateForm",
+                enctype: "multipart/form-data",
+                novalidate: ""
+              },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.saveHeures($event)
+                }
+              }
+            },
+            [
+              _vm.errors.length
+                ? _c("div", { staticClass: "alert alert-danger" }, [
+                    _c(
+                      "ul",
+                      { staticClass: "mb-0" },
+                      _vm._l(_vm.errors, function(error, index) {
+                        return _c("li", { key: index }, [
+                          _vm._v(
+                            "\r\n                          " +
+                              _vm._s(error) +
+                              "\r\n                      "
+                          )
+                        ])
+                      }),
+                      0
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "" } }, [
+                  _vm._v("Nbr. d'heures jury ")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.heure_supp.h_jury,
+                      expression: "heure_supp.h_jury"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "h_jury",
+                    placeholder: "Entrer la somme brute"
+                  },
+                  domProps: { value: _vm.heure_supp.h_jury },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.heure_supp, "h_jury", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "" } }, [
+                  _vm._v("Nbr. d'heure d'encadrement")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.heure_supp.h_encadrement,
+                      expression: "heure_supp.h_encadrement"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "h_encadrement",
+                    placeholder: "Entrer la h_encadrement"
+                  },
+                  domProps: { value: _vm.heure_supp.h_encadrement },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.heure_supp,
+                        "h_encadrement",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "" } }, [
+                  _vm._v("Nbr. d'heures conseil")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.heure_supp.h_conseil,
+                      expression: "heure_supp.h_conseil"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "h_conseil",
+                    placeholder: "Entrer l'h_conseil"
+                  },
+                  domProps: { value: _vm.heure_supp.h_conseil },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.heure_supp, "h_conseil", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "" } }, [
+                  _vm._v("Numéro de semstre")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.heure_supp.semester,
+                      expression: "heure_supp.semester"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "semester",
+                    placeholder: "Entrer le net à payer"
+                  },
+                  domProps: { value: _vm.heure_supp.semester },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.heure_supp, "semester", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "" } }, [_vm._v("ID professeur")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.heure_supp.professor_id,
+                      expression: "heure_supp.professor_id"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "professor_id",
+                    placeholder: "Entrer lID du contrat"
+                  },
+                  domProps: { value: _vm.heure_supp.professor_id },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.heure_supp,
+                        "professor_id",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "" } }, [
+                  _vm._v("Nbr. d'heures de surveillance")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.heure_supp.h_surveillance,
+                      expression: "heure_supp.h_surveillance"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "h_surveillance",
+                    placeholder: "Entrer le nom du professeur"
+                  },
+                  domProps: { value: _vm.heure_supp.h_surveillance },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.heure_supp,
+                        "h_surveillance",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("button", { staticClass: "btn btn-primary mt-4" }, [
+                _vm._v(" Valider ")
+              ])
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HeureSupp/EditHeuresSupp.vue?vue&type=template&id=c1b63d7e&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HeureSupp/EditHeuresSupp.vue?vue&type=template&id=c1b63d7e& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "container" }, [
+      _c("h2", { staticClass: "text-center p-2 text-white bg-primary mt-5" }, [
+        _vm._v("Affectation des heures supplimentaires aux professeurs")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c("div", { staticClass: "col-md-6 offset-md-3" }, [
+          _c(
+            "form",
+            {
+              attrs: {
+                id: "validateForm",
+                enctype: "multipart/form-data",
+                novalidate: ""
+              },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.updateHeures($event)
+                }
+              }
+            },
+            [
+              _vm.errors.length
+                ? _c("div", { staticClass: "alert alert-danger" }, [
+                    _c(
+                      "ul",
+                      { staticClass: "mb-0" },
+                      _vm._l(_vm.errors, function(error, index) {
+                        return _c("li", { key: index }, [
+                          _vm._v(
+                            "\r\n                          " +
+                              _vm._s(error) +
+                              "\r\n                      "
+                          )
+                        ])
+                      }),
+                      0
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "" } }, [
+                  _vm._v("Nbr. d'heures jury ")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.heure_supp.h_jury,
+                      expression: "heure_supp.h_jury"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "h_jury",
+                    placeholder: "Entrer la somme brute"
+                  },
+                  domProps: { value: _vm.heure_supp.h_jury },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.heure_supp, "h_jury", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "" } }, [
+                  _vm._v("Nbr. d'heure d'encadrement")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.heure_supp.h_encadrement,
+                      expression: "heure_supp.h_encadrement"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "h_encadrement",
+                    placeholder: "Entrer la h_encadrement"
+                  },
+                  domProps: { value: _vm.heure_supp.h_encadrement },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.heure_supp,
+                        "h_encadrement",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "" } }, [
+                  _vm._v("Nbr. d'heures conseil")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.heure_supp.h_conseil,
+                      expression: "heure_supp.h_conseil"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "h_conseil",
+                    placeholder: "Entrer l'h_conseil"
+                  },
+                  domProps: { value: _vm.heure_supp.h_conseil },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.heure_supp, "h_conseil", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "" } }, [
+                  _vm._v("Numéro de semstre")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.heure_supp.semester,
+                      expression: "heure_supp.semester"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "semester",
+                    placeholder: "Entrer le net à payer"
+                  },
+                  domProps: { value: _vm.heure_supp.semester },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.heure_supp, "semester", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "" } }, [_vm._v("ID professeur")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.heure_supp.professor_id,
+                      expression: "heure_supp.professor_id"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "professor_id",
+                    placeholder: "Entrer lID du contrat"
+                  },
+                  domProps: { value: _vm.heure_supp.professor_id },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.heure_supp,
+                        "professor_id",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "" } }, [
+                  _vm._v("Nbr. d'heures de surveillance")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.heure_supp.h_surveillance,
+                      expression: "heure_supp.h_surveillance"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "h_surveillance",
+                    placeholder: "Entrer le nom du professeur"
+                  },
+                  domProps: { value: _vm.heure_supp.h_surveillance },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.heure_supp,
+                        "h_surveillance",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("button", { staticClass: "btn btn-primary mt-4" }, [
+                _vm._v(" Valider ")
+              ])
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HeureSupp/HeuresSuppList.vue?vue&type=template&id=267a7d56&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HeureSupp/HeuresSuppList.vue?vue&type=template&id=267a7d56& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("h2", { staticClass: "text-center p-2 text-white bg-primary mt-5" }, [
+        _vm._v("La liste des Heures supplimentaires")
+      ]),
+      _vm._v(" "),
+      _c(
+        "table",
+        { staticClass: "table" },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._l(_vm.h_supplemetaires, function(h_supplemetaire) {
+            return _c("tbody", { key: h_supplemetaire.id }, [
+              _c("tr", [
+                _c("td", { attrs: { scope: "row" } }, [
+                  _vm._v(_vm._s(h_supplemetaire.id))
+                ]),
+                _vm._v(" "),
+                _c("td", { attrs: { scope: "row" } }, [
+                  _vm._v(_vm._s(h_supplemetaire.h_jury))
+                ]),
+                _vm._v(" "),
+                _c("td", { attrs: { scope: "row" } }, [
+                  _vm._v(_vm._s(h_supplemetaire.h_encadrement))
+                ]),
+                _vm._v(" "),
+                _c("td", { attrs: { scope: "row" } }, [
+                  _vm._v(_vm._s(h_supplemetaire.h_conseil))
+                ]),
+                _vm._v(" "),
+                _c("td", { attrs: { scope: "row" } }, [
+                  _vm._v(_vm._s(h_supplemetaire.semester))
+                ]),
+                _vm._v(" "),
+                _c("td", { attrs: { scope: "row" } }, [
+                  _vm._v(_vm._s(h_supplemetaire.created_at))
+                ]),
+                _vm._v(" "),
+                _c("td", { attrs: { scope: "row" } }, [
+                  _vm._v(_vm._s(h_supplemetaire.updated_at))
+                ]),
+                _vm._v(" "),
+                _c("td", { attrs: { scope: "row" } }, [
+                  _vm._v(_vm._s(h_supplemetaire.professor_id))
+                ]),
+                _vm._v(" "),
+                _c("td", { attrs: { scope: "row" } }, [
+                  _vm._v(_vm._s(h_supplemetaire.h_surveillance))
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger btn-sm",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.deleteHeures(h_supplemetaire.id)
+                        }
+                      }
+                    },
+                    [_vm._v("Supprimer")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "btn btn-primary btn-sm",
+                        attrs: {
+                          to: {
+                            name: "/get_heures_supp",
+                            params: { id: h_supplemetaire.id }
+                          }
+                        }
+                      },
+                      [_vm._v("Modifier")]
+                    )
+                  ],
+                  1
+                )
+              ])
+            ])
+          })
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c("router-link", { attrs: { to: "/add_heures_supp" } }, [
+        _c("button", { staticClass: "btn btn-success btn-sm" }, [
+          _vm._v("Ajouter")
+        ])
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nbr. heures Jury")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [
+          _vm._v("Nbr. heures d'encadrement")
+        ]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [
+          _vm._v("Nbr. heures Conseil de classe")
+        ]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Numéro de semestre ")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Date Création")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Date modification")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("ID Professeur")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [
+          _vm._v("Nbr. heures de surveillance")
+        ]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Action")])
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -28446,7 +29555,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("button", { staticClass: "btn btn-primary mt-4" }, [
-                _vm._v(" Procerder ")
+                _vm._v(" Valider ")
               ])
             ]
           )
@@ -44377,8 +45486,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
 /* harmony import */ var _js_components_Paiement_AddPaiement__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../js/components/Paiement/AddPaiement */ "./resources/js/components/Paiement/AddPaiement.vue");
 /* harmony import */ var _js_components_Paiement_EditPaiement__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../js/components/Paiement/EditPaiement */ "./resources/js/components/Paiement/EditPaiement.vue");
-/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-sweetalert2 */ "./node_modules/vue-sweetalert2/dist/index.js");
-/* harmony import */ var _helpers_utilities__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./helpers/utilities */ "./resources/js/helpers/utilities.js");
+/* harmony import */ var _js_components_HeureSupp_HeuresSuppList__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../js/components/HeureSupp/HeuresSuppList */ "./resources/js/components/HeureSupp/HeuresSuppList.vue");
+/* harmony import */ var _js_components_HeureSupp_EditHeuresSupp__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../js/components/HeureSupp/EditHeuresSupp */ "./resources/js/components/HeureSupp/EditHeuresSupp.vue");
+/* harmony import */ var _js_components_HeureSupp_AddHeures__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../js/components/HeureSupp/AddHeures */ "./resources/js/components/HeureSupp/AddHeures.vue");
+/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vue-sweetalert2 */ "./node_modules/vue-sweetalert2/dist/index.js");
+/* harmony import */ var _helpers_utilities__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./helpers/utilities */ "./resources/js/helpers/utilities.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
@@ -44393,13 +45505,16 @@ vue__WEBPACK_IMPORTED_MODULE_3___default.a.use(vue_axios__WEBPACK_IMPORTED_MODUL
 
 
 
+
+
+
  //sweet alert2
 
 
 window.Swal = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-vue__WEBPACK_IMPORTED_MODULE_3___default.a.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_9__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_3___default.a.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_12__["default"]);
 
-vue__WEBPACK_IMPORTED_MODULE_3___default.a.prototype.$utils = _helpers_utilities__WEBPACK_IMPORTED_MODULE_10__["default"];
+vue__WEBPACK_IMPORTED_MODULE_3___default.a.prototype.$utils = _helpers_utilities__WEBPACK_IMPORTED_MODULE_13__["default"];
 var routes = [{
   name: '/',
   path: '/',
@@ -44416,6 +45531,18 @@ var routes = [{
   name: '/get_paiement',
   path: '/get_paiement/edit/:id?',
   component: _js_components_Paiement_EditPaiement__WEBPACK_IMPORTED_MODULE_8__["default"]
+}, {
+  name: '/get_heures_supp',
+  path: '/get_heures_supp/edit/:id?',
+  component: _js_components_HeureSupp_EditHeuresSupp__WEBPACK_IMPORTED_MODULE_10__["default"]
+}, {
+  name: '/heures_supp',
+  path: '/heures_supp',
+  component: _js_components_HeureSupp_HeuresSuppList__WEBPACK_IMPORTED_MODULE_9__["default"]
+}, {
+  name: '/add_heures_supp',
+  path: '/add_heures_supp',
+  component: _js_components_HeureSupp_AddHeures__WEBPACK_IMPORTED_MODULE_11__["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: 'history',
@@ -44523,6 +45650,213 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppDrawer_vue_vue_type_template_id_cc9614ee___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppDrawer_vue_vue_type_template_id_cc9614ee___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/HeureSupp/AddHeures.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/HeureSupp/AddHeures.vue ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AddHeures_vue_vue_type_template_id_52e66f0c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddHeures.vue?vue&type=template&id=52e66f0c& */ "./resources/js/components/HeureSupp/AddHeures.vue?vue&type=template&id=52e66f0c&");
+/* harmony import */ var _AddHeures_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddHeures.vue?vue&type=script&lang=js& */ "./resources/js/components/HeureSupp/AddHeures.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AddHeures_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AddHeures_vue_vue_type_template_id_52e66f0c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AddHeures_vue_vue_type_template_id_52e66f0c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/HeureSupp/AddHeures.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/HeureSupp/AddHeures.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/HeureSupp/AddHeures.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddHeures_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./AddHeures.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HeureSupp/AddHeures.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddHeures_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/HeureSupp/AddHeures.vue?vue&type=template&id=52e66f0c&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/HeureSupp/AddHeures.vue?vue&type=template&id=52e66f0c& ***!
+  \****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddHeures_vue_vue_type_template_id_52e66f0c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./AddHeures.vue?vue&type=template&id=52e66f0c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HeureSupp/AddHeures.vue?vue&type=template&id=52e66f0c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddHeures_vue_vue_type_template_id_52e66f0c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddHeures_vue_vue_type_template_id_52e66f0c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/HeureSupp/EditHeuresSupp.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/HeureSupp/EditHeuresSupp.vue ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EditHeuresSupp_vue_vue_type_template_id_c1b63d7e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditHeuresSupp.vue?vue&type=template&id=c1b63d7e& */ "./resources/js/components/HeureSupp/EditHeuresSupp.vue?vue&type=template&id=c1b63d7e&");
+/* harmony import */ var _EditHeuresSupp_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditHeuresSupp.vue?vue&type=script&lang=js& */ "./resources/js/components/HeureSupp/EditHeuresSupp.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EditHeuresSupp_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EditHeuresSupp_vue_vue_type_template_id_c1b63d7e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EditHeuresSupp_vue_vue_type_template_id_c1b63d7e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/HeureSupp/EditHeuresSupp.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/HeureSupp/EditHeuresSupp.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/HeureSupp/EditHeuresSupp.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditHeuresSupp_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./EditHeuresSupp.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HeureSupp/EditHeuresSupp.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditHeuresSupp_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/HeureSupp/EditHeuresSupp.vue?vue&type=template&id=c1b63d7e&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/HeureSupp/EditHeuresSupp.vue?vue&type=template&id=c1b63d7e& ***!
+  \*********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditHeuresSupp_vue_vue_type_template_id_c1b63d7e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./EditHeuresSupp.vue?vue&type=template&id=c1b63d7e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HeureSupp/EditHeuresSupp.vue?vue&type=template&id=c1b63d7e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditHeuresSupp_vue_vue_type_template_id_c1b63d7e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditHeuresSupp_vue_vue_type_template_id_c1b63d7e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/HeureSupp/HeuresSuppList.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/HeureSupp/HeuresSuppList.vue ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _HeuresSuppList_vue_vue_type_template_id_267a7d56___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./HeuresSuppList.vue?vue&type=template&id=267a7d56& */ "./resources/js/components/HeureSupp/HeuresSuppList.vue?vue&type=template&id=267a7d56&");
+/* harmony import */ var _HeuresSuppList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./HeuresSuppList.vue?vue&type=script&lang=js& */ "./resources/js/components/HeureSupp/HeuresSuppList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _HeuresSuppList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _HeuresSuppList_vue_vue_type_template_id_267a7d56___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _HeuresSuppList_vue_vue_type_template_id_267a7d56___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/HeureSupp/HeuresSuppList.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/HeureSupp/HeuresSuppList.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/HeureSupp/HeuresSuppList.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_HeuresSuppList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./HeuresSuppList.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HeureSupp/HeuresSuppList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_HeuresSuppList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/HeureSupp/HeuresSuppList.vue?vue&type=template&id=267a7d56&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/HeureSupp/HeuresSuppList.vue?vue&type=template&id=267a7d56& ***!
+  \*********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HeuresSuppList_vue_vue_type_template_id_267a7d56___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./HeuresSuppList.vue?vue&type=template&id=267a7d56& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HeureSupp/HeuresSuppList.vue?vue&type=template&id=267a7d56&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HeuresSuppList_vue_vue_type_template_id_267a7d56___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HeuresSuppList_vue_vue_type_template_id_267a7d56___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

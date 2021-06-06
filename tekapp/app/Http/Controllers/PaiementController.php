@@ -42,6 +42,7 @@ class PaiementController extends Controller
     {
         $paiement = paiement::where('id',$id)->first();
 
+        
         $paiement->sommeBrut = $request->sommeBrut;
         $paiement->retenue = $request->retenue;
         $paiement->avance = $request->avance;

@@ -16,6 +16,9 @@ import PaiementList from '../js/components/Paiement/PaiementList';
 import App from './App.vue';
 import AddPaiement from '../js/components/Paiement/AddPaiement';
 import EditPaiement from '../js/components/Paiement/EditPaiement';
+import HeuresSuppList from '../js/components/HeureSupp/HeuresSuppList'
+import EditHeuresSupp from '../js/components/HeureSupp/EditHeuresSupp'
+import AddHeuresSupp from '../js/components/HeureSupp/AddHeures'
 
 
 //sweet alert2
@@ -51,7 +54,25 @@ const routes = [
         path:'/get_paiement/edit/:id?',
         component:EditPaiement
 
-    }
+    },
+    {
+        name:'/get_heures_supp',
+        path:'/get_heures_supp/edit/:id?',
+        component:EditHeuresSupp
+
+    },
+    {
+        name:'/heures_supp',
+        path:'/heures_supp',
+        component:HeuresSuppList
+
+    },
+    {
+        name:'/add_heures_supp',
+        path:'/add_heures_supp',
+        component:AddHeuresSupp
+
+    },
 ];
 
 const router = new VueRouter({mode: 'history' , routes: routes});

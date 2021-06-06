@@ -13,6 +13,9 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/paiement">Paiement</router-link>
           </li>
+           <li class="nav-item">
+            <router-link class="nav-link" to="/heures_supp">Heures Supplimentaies</router-link>
+          </li>
         </ul>
       </div>
     </nav>
