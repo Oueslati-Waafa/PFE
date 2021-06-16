@@ -35,3 +35,12 @@ Route::group(['prefix' => 'paiement'], function () {
     Route::post('save_heure_supp/{id}', "HeureSuppController@updateHeures");
     Route::post('save_heure_supp', "HeureSuppController@saveHeures");
    });
+
+   Route::group(['prefix' => 'contracts'], function () {
+  
+    Route::delete("delete_contract/{id}", "ContractsController@deleteContract");;
+    Route::get("get", "ContractsController@getAll");
+   // Route::get('get_contract/{id}', 'ContractsController@getHeures');
+    //Route::post('save_contract/{id}', "ContractsController@updateHeures");
+    Route::post('save_contract', "ContractsController@saveContract");
+   });

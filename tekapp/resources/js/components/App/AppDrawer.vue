@@ -16,6 +16,9 @@
            <li class="nav-item">
             <router-link class="nav-link" to="/heures_supp">Heures Supplimentaies</router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/contracts">Les contrats</router-link>
+          </li>
         </ul>
       </div>
     </nav>

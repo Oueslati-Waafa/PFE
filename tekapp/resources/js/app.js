@@ -19,6 +19,8 @@ import EditPaiement from '../js/components/Paiement/EditPaiement';
 import HeuresSuppList from '../js/components/HeureSupp/HeuresSuppList'
 import EditHeuresSupp from '../js/components/HeureSupp/EditHeuresSupp'
 import AddHeuresSupp from '../js/components/HeureSupp/AddHeures'
+import ContractsList from '../js/components/Contracts/ContractsList'
+import AddContracts from '../js/components/Contracts/AddContracts'
 
 
 //sweet alert2
@@ -71,6 +73,19 @@ const routes = [
         name:'/add_heures_supp',
         path:'/add_heures_supp',
         component:AddHeuresSupp
+
+    },
+
+    {
+        name:'/contracts',
+        path:'/contracts',
+        component:ContractsList
+
+    },
+    {
+        name:'/add_contracts',
+        path:'/add_contracts',
+        component:AddContracts
 
     },
 ];

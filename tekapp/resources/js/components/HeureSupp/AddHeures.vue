@@ -16,7 +16,7 @@
               </div>
                 <div class="form-group">
                     <label for="">Nbr. d'heures jury </label>
-                    <input type="text" id="h_jury" v-model="heure_supp.h_jury" class="form-control" placeholder="Entrer la somme brute">
+                    <input type="text" id="h_jury" v-model="heure_supp.h_jury" class="form-control" placeholder="Entrer les heures jury">
                 </div>
                 <div class="form-group">
                     <label for="">Nbr. d'heure d'encadrement</label>
@@ -28,15 +28,15 @@
                 </div>
                 <div class="form-group">
                     <label for="">Numéro de semstre</label>
-                    <input type="text" id="semester" v-model="heure_supp.semester" class="form-control" placeholder="Entrer le net à payer">
+                    <input type="text" id="semester" v-model="heure_supp.semester" class="form-control" placeholder="Entrer le numéro de semstre">
                 </div>
                 <div class="form-group">
                     <label for="">ID professeur</label>
-                    <input type="text" id="professor_id" v-model="heure_supp.professor_id" class="form-control" placeholder="Entrer lID du contrat">
+                    <input type="text" id="professor_id" v-model="heure_supp.professor_id" class="form-control" placeholder="Entrer lID professeur">
                 </div>
                 <div class="form-group">
                     <label for="">Nbr. d'heures de surveillance</label>
-                    <input type="text" id="h_surveillance"  v-model="heure_supp.h_surveillance" class="form-control" placeholder="Entrer le nom du professeur">
+                    <input type="text" id="h_surveillance"  v-model="heure_supp.h_surveillance" class="form-control" placeholder="Entrer le heurs de surveillances">
                 </div>
                 <button class="btn btn-primary mt-4"> Valider </button>
               </form>
