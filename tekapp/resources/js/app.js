@@ -21,6 +21,7 @@ import EditHeuresSupp from '../js/components/HeureSupp/EditHeuresSupp'
 import AddHeuresSupp from '../js/components/HeureSupp/AddHeures'
 import ContractsList from '../js/components/Contracts/ContractsList'
 import AddContracts from '../js/components/Contracts/AddContracts'
+import EditContracts from '../js/components/Contracts/EditContracts'
 
 
 //sweet alert2
@@ -64,6 +65,12 @@ const routes = [
 
     },
     {
+        name:'/get_contracts',
+        path:'/get_contracts/edit/:id?',
+        component:EditContracts
+
+    },
+    {
         name:'/heures_supp',
         path:'/heures_supp',
         component:HeuresSuppList
@@ -88,6 +95,7 @@ const routes = [
         component:AddContracts
 
     },
+
 ];
 
 const router = new VueRouter({mode: 'history' , routes: routes});

@@ -67,7 +67,7 @@ data()
     methods : 
     {
     loadData()
-        {
+        { 
             let url = this.url+`/api/heures_supp/get_heure_supp/${this.$route.params.id}`;
             this.axios.get(url).then((response )=>{
                 this.heure_supp=response.data;

@@ -29,7 +29,7 @@
                      <td scope="row">{{contract.MF}}</td>
                      <td scope="row">{{contract.RC}}</td>
                      <td><button class="btn btn-danger btn-sm" @click.prevent="deleteContract(contract.id)">Supprimer</button></td>
-                    <td><router-link :to="{ name:'/get_heures_supp',params:{id:contracts.id}}" class="btn btn-primary btn-sm">Modifier</router-link></td>
+                    <td><router-link :to="{ name:'/get_contracts',params:{id:contract.id}}" class="btn btn-primary btn-sm">Modifier</router-link></td>
                 </tr>
             </tbody>
 

@@ -38,9 +38,9 @@ Route::group(['prefix' => 'paiement'], function () {
 
    Route::group(['prefix' => 'contracts'], function () {
   
-    Route::delete("delete_contract/{id}", "ContractsController@deleteContract");;
-    Route::get("get", "ContractsController@getAll");
-   // Route::get('get_contract/{id}', 'ContractsController@getHeures');
-    //Route::post('save_contract/{id}', "ContractsController@updateHeures");
-    Route::post('save_contract', "ContractsController@saveContract");
+    Route::delete("delete_contract/{id}", "ContractsController@deleteContract");;//done
+    Route::get("get", "ContractsController@getAll");//done
+    Route::get('get_contracts/{id}', 'ContractsController@getContracts');
+    Route::post('save_contracts/{id}', "ContractsController@updateContracts");
+    Route::post('save_contracts', "ContractsController@saveContract");//done
    });

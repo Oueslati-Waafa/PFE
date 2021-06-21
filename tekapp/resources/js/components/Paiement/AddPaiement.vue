@@ -117,13 +117,8 @@ export default {
                     if(response.status)
                     {
                       this.$utils.showSuccess('success', response.message);
-                      document.getElementById("sommeBrut").value = '';
-                      document.getElementById("retenue").value = '';
-                      document.getElementById("avance").value = '';
-                      document.getElementById("net_a_payer").value = '';
-                      document.getElementById("contract_id").value = '';
-                      document.getElementById("professor_id").value = '';
-                      document.getElementById("datepaiement").value = '';
+                    this.$router.push({
+                          name:'/paiement'});
                     }
                     else {
                     this.$utils.showError('Error', response.message);

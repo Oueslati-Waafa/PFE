@@ -111,12 +111,6 @@ data()
                     if(response.status)
                     {
                       this.$utils.showSuccess('success', response.message);
-                      document.getElementById("h_jury").value = '';
-                      document.getElementById("h_encadrement").value = '';
-                      document.getElementById("h_conseil").value = '';
-                      document.getElementById("semester").value = '';
-                      document.getElementById("professor_id").value = '';
-                      document.getElementById("h_surveillance").value = '';
                       this.$router.push({
                           name:'/heures_supp'});
                     }

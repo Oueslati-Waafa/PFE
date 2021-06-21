@@ -1,11 +1,11 @@
-<template>
+ <template>
   <div>
 <div class="container">
-      <h2 class="text-center p-2 text-white bg-primary mt-5">Ajouter des contrats</h2>
+      <h2 class="text-center p-2 text-white bg-primary mt-5">Modifier des contrats</h2>
 
       <div class="card-body">
           <div class="col-md-6 offset-md-3">
-              <form id="validateForm" @submit.prevent="saveContract" enctype="multipart/form-data" novalidate> 
+              <form id="validateForm" @submit.prevent="updateContracts" enctype="multipart/form-data" novalidate> 
               <div  class="alert alert-danger" v-if="errors.length">
                   <ul class="mb-0">
                       <li v-for="(error,index) in errors" :key="index">
@@ -46,9 +46,10 @@
 </div>  
 </div>
 </template>
-
 <script>
+
 export default {
+
 data()
     {
         return{
@@ -65,14 +66,23 @@ data()
         
     },
 
-        methods : 
+    methods : 
     {
-        saveContract()
+    loadData()
         {
-            this.errors = [];
+            let url = this.url+`/api/contracts/get_contracts/${this.$route.params.id}`;
+            this.axios.get(url).then((response )=>{
+                this.contract=response.data;
+                console.log(this.contract);
+            });
+        },
+        
+ 
+updateContracts()
+        { this.errors = [];
             if(!this.contract.professor_id)
             {
-                this.errors.push('Somme brut est requis');
+                this.errors.push('proffesor id est requis');
             }
             if(!this.contract.date_debut)
             {
@@ -106,15 +116,15 @@ data()
                 formData.append('MF',this.contract.MF);
                 formData.append('RC',this.contract.RC);
               
-                let url = this.url + '/api/contracts/save_contracts';
+                let url = this.url + `/api/contracts/save_contracts/${this.$route.params.id}`;
                 this.axios.post(url,formData).then((response) => {
                     if(response.status)
                     {
-                        
                       this.$utils.showSuccess('success', response.message);
-
                       this.$router.push({
-                          name:'/contracts'});
+                          name:'/contracts'
+                      });
+                      
                     }
                     else {
                     this.$utils.showError('Error', response.message);
@@ -123,17 +133,16 @@ data()
                     this.errors.push(error.response.data.error);
                 });  
             }
-        }
+        },
+       
+    },
+    created()
+    {
+        this.loadData();
     },
     mounted: function()
     {
-        console.log('add contract component loaded');
+        console.log('Edit Contracts component loaded');
     }
-
 }
-
 </script>
-
-<style>
-
-</style>
