@@ -22,6 +22,9 @@ import AddHeuresSupp from '../js/components/HeureSupp/AddHeures'
 import ContractsList from '../js/components/Contracts/ContractsList'
 import AddContracts from '../js/components/Contracts/AddContracts'
 import EditContracts from '../js/components/Contracts/EditContracts'
+import BilanList from '../js/components/Bilan/BilanList'
+import EditBilan from '../js/components/Bilan/EditBilan'
+import AddBilan from '../js/components/Bilan/AddBilan'
 
 
 //sweet alert2
@@ -93,6 +96,25 @@ const routes = [
         name:'/add_contracts',
         path:'/add_contracts',
         component:AddContracts
+
+    },
+    {
+        name:'/bilan',
+        path:'/bilan',
+        component:BilanList
+
+    },
+
+    {
+        name:'/add_bilan',
+        path:'/add_bilan',
+        component:AddBilan
+
+    },
+    {
+        name:'/get_bilan',
+        path:'/get_bilan/edit/:id?',
+        component:EditBilan
 
     },
 

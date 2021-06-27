@@ -44,3 +44,12 @@ Route::group(['prefix' => 'paiement'], function () {
     Route::post('save_contracts/{id}', "ContractsController@updateContracts");
     Route::post('save_contracts', "ContractsController@saveContract");//done
    });
+
+   Route::group(['prefix' => 'bilans'], function () {
+  
+    Route::delete("delete_bilan/{id}", "BilanModuleController@deleteBilan");;//done
+    Route::get("get", "BilanModuleController@getAll");//done
+    Route::get('get_bilan/{id}', 'BilanModuleController@getBilan');
+    Route::post('save_bilan/{id}', "BilanModuleController@updateBilan");
+    Route::post('save_bilan', "BilanModuleController@saveBilan");//done
+   });

@@ -19,6 +19,9 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/contracts">Les contrats</router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/bilan">Les Bilans</router-link>
+          </li>
         </ul>
       </div>
     </nav>
