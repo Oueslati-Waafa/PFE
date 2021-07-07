@@ -1,125 +1,35 @@
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
+
 require('./bootstrap');
+
 window.Vue = require('vue');
 
+import Vuetify from '../plugins/vuetify'
+/**
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their "basename".
+ *
+ * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ */
 
-import VueRouter from 'vue-router'
-Vue.use(VueRouter)
+// const files = require.context('./', true, /\.vue$/i)
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-import VueAxios from 'vue-axios';
-import axios from 'axios';
-import Vue from 'vue';
-Vue.use(VueAxios,axios);
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('appdrawer-component', require('./App.vue').default);
 
-//Views 
-import Home from '../js/components/Home';
-import PaiementList from '../js/components/Paiement/PaiementList';
-import App from './App.vue';
-import AddPaiement from '../js/components/Paiement/AddPaiement';
-import EditPaiement from '../js/components/Paiement/EditPaiement';
-import HeuresSuppList from '../js/components/HeureSupp/HeuresSuppList'
-import EditHeuresSupp from '../js/components/HeureSupp/EditHeuresSupp'
-import AddHeuresSupp from '../js/components/HeureSupp/AddHeures'
-import ContractsList from '../js/components/Contracts/ContractsList'
-import AddContracts from '../js/components/Contracts/AddContracts'
-import EditContracts from '../js/components/Contracts/EditContracts'
-import BilanList from '../js/components/Bilan/BilanList'
-import EditBilan from '../js/components/Bilan/EditBilan'
-import AddBilan from '../js/components/Bilan/AddBilan'
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
 
-
-//sweet alert2
-import VueSweetalert2 from 'vue-sweetalert2';
-window.Swal = require('sweetalert2');
-Vue.use(VueSweetalert2);
-
-import utils from './helpers/utilities';
-Vue.prototype.$utils = utils
-
-
-
-const routes = [
-    {
-        name:'/',
-        path:'/',
-        component:Home
-    },
-    {
-        name:'/paiement',
-        path:'/paiement',
-        component:PaiementList
-
-    },
-    {
-        name:'/add_paiement',
-        path:'/add_paiement',
-        component:AddPaiement
-
-    },
-    {
-        name:'/get_paiement',
-        path:'/get_paiement/edit/:id?',
-        component:EditPaiement
-
-    },
-    {
-        name:'/get_heures_supp',
-        path:'/get_heures_supp/edit/:id?',
-        component:EditHeuresSupp
-
-    },
-    {
-        name:'/get_contracts',
-        path:'/get_contracts/edit/:id?',
-        component:EditContracts
-
-    },
-    {
-        name:'/heures_supp',
-        path:'/heures_supp',
-        component:HeuresSuppList
-
-    },
-    {
-        name:'/add_heures_supp',
-        path:'/add_heures_supp',
-        component:AddHeuresSupp
-
-    },
-
-    {
-        name:'/contracts',
-        path:'/contracts',
-        component:ContractsList
-
-    },
-    {
-        name:'/add_contracts',
-        path:'/add_contracts',
-        component:AddContracts
-
-    },
-    {
-        name:'/bilan',
-        path:'/bilan',
-        component:BilanList
-
-    },
-
-    {
-        name:'/add_bilan',
-        path:'/add_bilan',
-        component:AddBilan
-
-    },
-    {
-        name:'/get_bilan',
-        path:'/get_bilan/edit/:id?',
-        component:EditBilan
-
-    },
-
-];
-
-const router = new VueRouter({mode: 'history' , routes: routes});
-const app = new Vue(Vue.util.extend({ router },App)).$mount('#app');
-
+const app = new Vue({
+    vuetify:Vuetify,
+    el: '#app',
+});

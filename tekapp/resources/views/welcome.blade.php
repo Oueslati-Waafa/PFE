@@ -29,6 +29,8 @@
             <div class="content">
                 <div id="app">
                     @yield('content')
+                  
+                    <appdrawer-component></appdrawer-component>
                 </div>
 
                 
