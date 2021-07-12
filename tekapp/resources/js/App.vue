@@ -1,19 +1,24 @@
+
 <template>
-<div>
+  <v-app class="grey lighten-4">
     <Navbar />
-    <router-view />
-</div>
-  
+
+    <v-main>
+      <router-view></router-view>
+    </v-main>
+    
+  </v-app>
 </template>
 
 <script>
-import Navbar from './components/App/AppDrawer';
+import Navbar from './components/App/AppDrawer.vue'
 export default {
-    name : 'app',
-    components : 
-    {
-        Navbar
+  components: { Navbar },
+  name: 'App',
+  data () {
+    return {
+      
     }
+  }
 }
 </script>
-

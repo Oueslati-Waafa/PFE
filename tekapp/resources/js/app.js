@@ -9,6 +9,15 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import Vuetify from '../plugins/vuetify'
+
+
+Vue.use(Vuetify)
+
+import router from './router'
+import store from './store'
+import i18n from './i18n'
+
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -28,8 +37,15 @@ Vue.component('appdrawer-component', require('./App.vue').default);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+// file: ./tests/setup.js
+
+
+
 
 const app = new Vue({
     vuetify:Vuetify,
+    router,
+    store,
+    i18n,
     el: '#app',
 });
