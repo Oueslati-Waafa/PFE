@@ -7,8 +7,14 @@ import PaimementList from './components/Paiement/PaiementList';
 import BilanList from './components/Bilan/BilanList';
 import ContractList from './components/Contracts/ContractsList';
 import HeureSuppList from './components/HeureSupp/HeuresSuppList';
+import Home from './components/Home.vue';
 
 const routes = [
+    {
+        path: '/',
+        name: 'Home',
+        component: Home
+    },
     { 
         name:'/paiement',
         path: '/paiement', 

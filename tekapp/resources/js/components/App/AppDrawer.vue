@@ -1,4 +1,4 @@
-<template>
+<!--<template>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
       <a class="navbar-brand" href="#">TEKAPP</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,82 +20,67 @@
             <router-link class="nav-link" to="/contracts">Les contrats</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/bilan">Les Bilans</router-link>
+            <router-link class="nav-link" to="/bilans">Les Bilans</router-link>
           </li>
         </ul>
       </div>
     </nav>
+</template>-->
+
+<template>
+<v-navigation-drawer v-model="drawer" permanent color="#F4F5F9" app>
+  <v-list-item class="px-2 py-5">
+    <v-list-item-title class="text-capitalize" align="center">
+      
+        <v-img src="/images/logo.png"></v-img>
+        
+    </v-list-item-title>
+  </v-list-item>
+  <v-list nav dense>
+    <v-list-item-group v-model="selectedItem" color="blue">
+      <v-list-item v-for="(item,i) in items" :key="i" :to="item.route" route>
+        <v-list-item-icon>
+          <v-icon v-text="item.icon"></v-icon>
+        </v-list-item-icon>
+<v-list-item-content>
+  <v-list-item-title v-text="item.text">
+
+  </v-list-item-title>
+</v-list-item-content>
+      </v-list-item>
+    </v-list-item-group>
+  </v-list>
+<template v-slot:append>
+  <div class="pa-2"> 
+    <h5 align="center">PFE 2020-2021</h5>
+  </div >
+</template>
+</v-navigation-drawer>
+  
 </template>
 
 <script>
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  data: () =>({
+    selectedItem: 0,
+    drawer : null ,
+    items: [
+      {icon: 'fas fa-home',text: 'Dashboard', route:'/'},
+      {icon: 'fas fa-money-check-alt',text: 'Paiement', route:'/paiement'},
+      {icon: 'fas fa-clock',text: 'Heures Supplimentaires', route:'/heures_supp'},
+      {icon: 'fas fa-address-card',text: 'Les contrats', route:'/contracts'},
+      {icon: 'fas fa-file',text: 'Les bilans', route:'/bilans'},
+    ]
+  })
 }
 </script>
 
 <style>
-
+div >>> .v-list a {
+  text-decoration: none;
+}
 </style>
 
 
-
-
-<!--<template>
-  <v-card
-    height="400"
-    width="256"
-    class="mx-auto"
-  >
-    <v-navigation-drawer permanent>
-      <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title class="title">
-            Tekapp
-          </v-list-item-title>
-          <v-list-item-subtitle>
-            Paiments module
-          </v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-item>
-
-      <v-divider></v-divider>
-
-      <v-list
-        dense
-        nav
-      >
-        <v-list-item
-          v-for="item in items"
-          :key="item.title"
-          link
-        >
-          <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-  </v-card>
-</template>
-<script>
-
-
-  export default {
-   name: 'Navbar',
-   data () {
-      return {
-        items: [
-          { title: 'Dashboard', icon: 'mdi-view-dashboard' },
-          { title: 'Photos', icon: 'mdi-image' },
-          { title: 'About', icon: 'mdi-help-box' },
-        ],
-        right: null,
-      }
-    },
-  }
-</script>-->
 
