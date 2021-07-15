@@ -1,8 +1,8 @@
 <template>
     <div class="container">
-        <h2 class="text-center p-2 text-white bg-primary mt-5">La liste des Contrats</h2>
+        <h2 class="text-center p-2 text-white bg-primary mt-5">La liste des Bilans</h2>
 
-        <table class="table">
+        <!--<table class="table">
             <thead>
                 <tr>
                 <th scope="col">#</th>
@@ -28,8 +28,39 @@
             </tbody>
 
 
-        </table>
-        <router-link to="/add_bilan"> <button class="btn btn-success btn-sm" >Ajouter</button></router-link>
+        </table>-->
+  <v-simple-table>
+    <template v-slot:default>
+      <thead>
+        <tr>
+        <th class="text-left">#</th>
+        <th class="text-left">Date de bilan</th>
+        <th class="text-left">Nom de professeur</th>
+        <th class="text-left">Cours</th>
+        <th class="text-left">Actions</th>
+        </tr>
+      </thead>
+      <tbody v-for="bilan_module in bilan_modules" :key="bilan_module.id">
+        <tr>
+         <td><p class="font-weight-medium">{{bilan_module.id}}</p></td>
+         <td><p class="font-weight-medium">{{bilan_module.dateBM}}</p></td>
+         <td><p class="font-weight-medium">{{bilan_module.professor_id }}</p></td>
+         <td><p class="font-weight-medium">{{bilan_module.course_id}}</p></td>
+         <td><v-icon small class="mr-2">mdi-pencil</v-icon>
+         <v-icon small @click.prevent="deleteBilan(bilan_module.id)">mdi-delete</v-icon> </td>
+        </tr>
+      </tbody>
+    </template>
+  </v-simple-table>
+
+        <v-btn
+              color="primary"
+              dark
+              class="mb-2"
+              to="/add_bilan"
+            >
+              Ajouter
+            </v-btn>
     </div>
 </template>
 
@@ -57,11 +88,11 @@ export default {
             this.axios.delete(url).then(response =>{
                 if (response.status)
                 {
-                    this.$utils.showSuccess('success',response.message);
+                    
                     this.loadData();
                 }
                 else {
-                    this.$utils.showError('Error', response.message);
+                    console.log('error')
                     }
             });
         }

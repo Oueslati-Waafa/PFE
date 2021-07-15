@@ -1,33 +1,6 @@
-<!--<template>
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="#">TEKAPP</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <router-link class="nav-link" to="/">Home <span class="sr-only">(current)</span></router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/paiement">Paiement</router-link>
-          </li>
-           <li class="nav-item">
-            <router-link class="nav-link" to="/heures_supp">Heures Supplimentaies</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/contracts">Les contrats</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/bilans">Les Bilans</router-link>
-          </li>
-        </ul>
-      </div>
-    </nav>
-</template>-->
 
 <template>
+
 <v-navigation-drawer v-model="drawer" permanent color="#F4F5F9" app>
   <v-list-item class="px-2 py-5">
     <v-list-item-title class="text-capitalize" align="center">
@@ -56,7 +29,7 @@
   </div >
 </template>
 </v-navigation-drawer>
-  
+ 
 </template>
 
 <script>

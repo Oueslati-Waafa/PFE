@@ -9,13 +9,21 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import Vuetify from '../plugins/vuetify'
+//import VueResource from 'vue-resource';
+import VueAxios from 'vue-axios';
+import axios from 'axios';
 
+Vue.use(VueAxios,axios);
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
 
 Vue.use(Vuetify)
 
 import router from './router'
 import store from './store'
 import i18n from './i18n'
+import Vue from 'vue';
 
 
 /**

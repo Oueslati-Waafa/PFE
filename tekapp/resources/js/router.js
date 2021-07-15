@@ -8,6 +8,7 @@ import BilanList from './components/Bilan/BilanList';
 import ContractList from './components/Contracts/ContractsList';
 import HeureSuppList from './components/HeureSupp/HeuresSuppList';
 import Home from './components/Home.vue';
+import AddBilan from './components/Bilan/AddBilan.vue';
 
 const routes = [
     {
@@ -34,6 +35,11 @@ const routes = [
         name:'/heures_supp',
         path: '/heures_supp', 
         component: HeureSuppList ,
+    },
+    { 
+        name:'/add_bilan',
+        path: '/add_bilan', 
+        component: AddBilan ,
     },
   ];
 
