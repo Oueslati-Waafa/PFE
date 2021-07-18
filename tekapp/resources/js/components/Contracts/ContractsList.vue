@@ -1,43 +1,44 @@
+
 <template>
     <div class="container">
         <h2 class="text-center p-2 text-white bg-primary mt-5">La liste des Contrats</h2>
+  <v-simple-table>
+    <template v-slot:default>
+      <thead>
+        <tr>
+        <th scope="col">#</th>
+                <th class="text-left">Nom de professeur</th>
+                <th class="text-left">Date de début</th>
+                <th class="text-left">Date de fin</th>
+                <th class="text-left">Type </th>
+                <th class="text-left">MF</th>
+                <th class="text-left">RC</th>
+                <th class="text-left">Action</th>
+        </tr>
+      </thead>
+      <tbody v-for="contract in contracts" :key="contract.id">
+        <tr>
+         <td><p class="font-weight-medium">{{contract.id}}</p></td>
+         <td><p class="font-weight-medium">{{contract.professor_id }}</p></td>
+         <td><p class="font-weight-medium">{{contract.date_debut}}</p></td>
+         <td><p class="font-weight-medium">{{contract.date_fin}}</p></td>
+         <td><p class="font-weight-medium">{{contract.type}}</p></td>
+         <td><p class="font-weight-medium">{{contract.MF}}</p></td>
+         <td><p class="font-weight-medium">{{contract.RC}}</p></td>
+         <td><v-btn color="success" fab x-small dark :to="{ name:'/get_contract',params:{id:contract.id}}"><v-icon>mdi-pencil</v-icon></v-btn>
+            <v-btn color="red" fab x-small dark @click.prevent="deleteContract(contract.id)"><v-icon>mdi-delete</v-icon></v-btn>
+         </td>
+        </tr>
+      </tbody>
+    </template>
+  </v-simple-table>
 
-        <table class="table">
-            <thead>
-                <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nom de professeur</th>
-                <th scope="col">Date de début</th>
-                <th scope="col">Date de fin</th>
-                <th scope="col">Type </th>
-                <th scope="col">Date Création</th>
-                <th scope="col">Date modification</th>
-                <th scope="col">MF</th>
-                <th scope="col">RC</th>
-                <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody v-for="contract in contracts" :key="contract.id">
-                <tr>
-                     <td scope="row">{{contract.id}}</td>
-                     <td scope="row">{{contract.professor_id }}</td>
-                     <td scope="row">{{contract.date_debut}}</td>
-                     <td scope="row">{{contract.date_fin}}</td>
-                     <td scope="row">{{contract.type}}</td>
-                     <td scope="row">{{contract.created_at}}</td>
-                     <td scope="row">{{contract.updated_at}}</td>
-                     <td scope="row">{{contract.MF}}</td>
-                     <td scope="row">{{contract.RC}}</td>
-                     <td><button class="btn btn-danger btn-sm" @click.prevent="deleteContract(contract.id)">Supprimer</button></td>
-                    <td><router-link :to="{ name:'/get_contracts',params:{id:contract.id}}" class="btn btn-primary btn-sm">Modifier</router-link></td>
-                </tr>
-            </tbody>
+ <v-btn depressed color="success" to="/add_contract"> <v-icon left>mdi-plus</v-icon>Ajouter</v-btn>
 
-
-        </table>
-        <router-link to="/add_contracts"> <button class="btn btn-success btn-sm" >Ajouter</button></router-link>
     </div>
+
 </template>
+
 
 <script>
 export default {
@@ -67,7 +68,8 @@ export default {
                     this.loadData();
                 }
                 else {
-                    this.$utils.showError('Error', response.message);
+                   this.$utils.showError('Error', response.message);
+                   console.log('error')
                     }
             });
         }

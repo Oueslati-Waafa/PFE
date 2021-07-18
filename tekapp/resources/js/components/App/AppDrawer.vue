@@ -10,7 +10,7 @@
     </v-list-item-title>
   </v-list-item>
   <v-list nav dense>
-    <v-list-item-group v-model="selectedItem" color="blue">
+    <v-list-item-group v-model="selectedItem" color="primary">
       <v-list-item v-for="(item,i) in items" :key="i" :to="item.route" route>
         <v-list-item-icon>
           <v-icon v-text="item.icon"></v-icon>

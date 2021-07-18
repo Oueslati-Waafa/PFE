@@ -2,42 +2,51 @@
     <div class="container">
         <h2 class="text-center p-2 text-white bg-primary mt-5">Page Paiement</h2>
 
-        <table class="table">
+  <v-simple-table>
+    <template v-slot:default>
             <thead>
                 <tr>
-                <th scope="col">#</th>
-                <th scope="col">Somme Brut</th>
-                <th scope="col">Retenue</th>
-                <th scope="col">Avance</th>
-                <th scope="col">Net à payer</th>
-                <th scope="col">Date creation</th>
-                <th scope="col">Date modification</th>
-                <th scope="col">ID Contrat</th>
-                <th scope="col">ID Professeur</th>
-                <th scope="col">Date de paiement</th>
-                <th scope="col">Action</th>
+                <th class="text-left">#</th>
+                <th class="text-left">Somme Brut</th>
+                <th class="text-left">Retenue</th>
+                <th class="text-left">Avance</th>
+                <th class="text-left">Net à payer</th>
+                <th class="text-left">ID Contrat</th>
+                <th class="text-left">ID Professeur</th>
+                <th class="text-left">Date de paiement</th>
+                <th class="text-left">Action</th>
                 </tr>
             </thead>
             <tbody v-for="paiement in paiements" :key="paiement.id">
                 <tr>
-                     <td scope="row">{{paiement.id}}</td>
-                     <td scope="row">{{paiement.sommeBrut}}</td>
-                     <td scope="row">{{paiement.retenue}}</td>
-                     <td scope="row">{{paiement.avance}}</td>
-                     <td scope="row">{{paiement.net_a_payer}}</td>
-                     <td scope="row">{{paiement.created_at}}</td>
-                     <td scope="row">{{paiement.updated_at}}</td>
-                     <td scope="row">{{paiement.contract_id}}</td>
-                     <td scope="row">{{paiement.professor_id}}</td>
-                     <td scope="row">{{paiement.datepaiement}}</td>
-                     <td><button class="btn btn-danger btn-sm" @click.prevent="deletePaiement(paiement.id)">Supprimer</button></td>
-                    <td><router-link :to="{ name:'/get_paiement',params:{id:paiement.id}}" class="btn btn-primary btn-sm">Modifier</router-link></td>
-                </tr>
+                     <td ><p class="font-weight-medium">{{paiement.id}}</p></td>
+                     <td ><p class="font-weight-medium">{{paiement.sommeBrut}}</p></td>
+                     <td ><p class="font-weight-medium">{{paiement.retenue}}</p></td>
+                     <td ><p class="font-weight-medium">{{paiement.avance}}</p></td>
+                     <td ><p class="font-weight-medium">{{paiement.net_a_payer}}</p></td>
+                     <td ><p class="font-weight-medium">{{paiement.contract_id}}</p></td>
+                     <td ><p class="font-weight-medium">{{paiement.professor_id}}</p></td>
+                     <td ><p class="font-weight-medium">{{paiement.datepaiement}}</p></td>
+                     <td><v-btn color="success" fab x-small dark :to="{ name:'/get_paiement',params:{id:paiement.id}}"><v-icon>mdi-pencil</v-icon></v-btn>
+            <v-btn color="red" fab x-small dark @click.prevent="deletePaiement(paiement.id)"><v-icon>mdi-delete</v-icon></v-btn>
+         </td>
+                     
+         </tr>
             </tbody>
+   </template>
+  </v-simple-table>
 
+  <v-btn
+      depressed
+      color="success"
+      to="/add_paiement"
+    >
+      <v-icon left>
+        mdi-plus
+      </v-icon>
+      Ajouter
+    </v-btn>
 
-        </table>
-        <router-link to="/add_paiement"> <button class="btn btn-success btn-sm" >Ajouter</button></router-link>
     </div>
 </template>
 

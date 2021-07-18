@@ -8,7 +8,17 @@ import BilanList from './components/Bilan/BilanList';
 import ContractList from './components/Contracts/ContractsList';
 import HeureSuppList from './components/HeureSupp/HeuresSuppList';
 import Home from './components/Home.vue';
+
 import AddBilan from './components/Bilan/AddBilan.vue';
+import AddContract from './components/Contracts/AddContracts.vue';
+import AddPaiement from './components/Paiement/AddPaiement.vue';
+import AddHeureSupp from './components/HeureSupp/AddHeures.vue';
+
+import EditPaiement from './components/Paiement/EditPaiement.vue';
+import EditHeureSupp from './components/HeureSupp/EditHeuresSupp.vue';
+import EditContract from './components/Contracts/EditContracts.vue';
+import EditBilan from './components/Bilan/EditBilan.vue';
+
 
 const routes = [
     {
@@ -40,6 +50,41 @@ const routes = [
         name:'/add_bilan',
         path: '/add_bilan', 
         component: AddBilan ,
+    },
+    { 
+        name:'/add_contract',
+        path: '/add_contract', 
+        component: AddContract ,
+    },
+    { 
+        name:'/add_paiement',
+        path: '/add_paiement', 
+        component: AddPaiement ,
+    },
+    { 
+        name:'/add_heures_supp',
+        path: '/add_heures_supp', 
+        component: AddHeureSupp ,
+    },
+    { 
+        name:'/get_bilan',
+        path: '/get_bilan', 
+        component: EditBilan ,
+    },
+    { 
+        name:'/get_contract',
+        path: '/get_contract', 
+        component: EditContract ,
+    },
+    { 
+        name:'/get_heure_supp',
+        path: '/get_heure_supp', 
+        component: EditHeureSupp ,
+    },
+    { 
+        name:'/get_paiement',
+        path: '/get_paiement', 
+        component: EditPaiement ,
     },
   ];
 

@@ -8,10 +8,15 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import VueSweetalert2 from 'vue-sweetalert2';
+window.Swal = require('sweetalert2');
+Vue.use(VueSweetalert2)
 import Vuetify from '../plugins/vuetify'
 //import VueResource from 'vue-resource';
 import VueAxios from 'vue-axios';
 import axios from 'axios';
+import utils from './helpers/utilities';
+Vue.prototype.$utils= utils
 
 Vue.use(VueAxios,axios);
 import Vuex from 'vuex'
