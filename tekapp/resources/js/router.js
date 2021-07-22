@@ -68,22 +68,22 @@ const routes = [
     },
     { 
         name:'/get_bilan',
-        path: '/get_bilan', 
+        path: '/get_bilan/edit/:id?', 
         component: EditBilan ,
     },
     { 
         name:'/get_contract',
-        path: '/get_contract', 
+        path: '/get_contract/edit/:id?', 
         component: EditContract ,
     },
     { 
-        name:'/get_heure_supp',
-        path: '/get_heure_supp', 
+        name:'/get_heures_supp',
+        path: '/get_heures_supp/edit/:id?', 
         component: EditHeureSupp ,
     },
     { 
         name:'/get_paiement',
-        path: '/get_paiement', 
+        path: '/get_paiement/edit/:id?', 
         component: EditPaiement ,
     },
   ];

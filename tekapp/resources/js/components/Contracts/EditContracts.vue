@@ -14,30 +14,27 @@
                   </ul>
 
               </div>
-                <div class="form-group">
-                    <label for="">Nom de professeur </label>
-                    <input type="text" id="professor_id " v-model="contract.professor_id " class="form-control" placeholder="Entrer l'ID de professeur">
-                </div>
-                <div class="form-group">
-                    <label for="">Date de début</label>
-                    <input type="text" id="date_debut" v-model="contract.date_debut" class="form-control" placeholder="Entrer la date debut">
-                </div>
-                <div class="form-group">
-                    <label for="">Date de fin</label>
-                    <input type="text" id="date_fin" v-model="contract.date_fin" class="form-control" placeholder="Entrer l'date fin">
-                </div>
-                 <div class="form-group">
-                    <label for="">Type</label>
-                    <input type="text" id="type"  v-model="contract.type" class="form-control" placeholder="Entrer le type">
-                </div>
-                <div class="form-group">
-                    <label for="">MF</label>
-                    <input type="text" id="MF" v-model="contract.MF" class="form-control" placeholder="Entrer le MF">
-                </div>
-                <div class="form-group">
-                    <label for="">RC</label>
-                    <input type="text" id="RC" v-model="contract.RC" class="form-control" placeholder="Entrer l'RC">
-                </div>
+               
+                    <label for="" class="font-weight-regular">Nom de professeur </label>
+                    <v-text-field type="text" id="professor_id " v-model="contract.professor_id "  placeholder="Entrer l'ID de professeur"></v-text-field>
+              
+                    <label for="" class="font-weight-regular">Date de début</label>
+                    <v-text-field type="text" id="date_debut" v-model="contract.date_debut"  placeholder="Entrer la date debut"></v-text-field>
+                
+                    <label for="" class="font-weight-regular">Date de fin</label>
+                    <v-text-field type="text" id="date_fin" v-model="contract.date_fin"  placeholder="Entrer l'date fin"></v-text-field>
+             
+                    <label for="" class="font-weight-regular">Type</label>
+                    <v-text-field type="text" id="type"  v-model="contract.type"  placeholder="Entrer le type"></v-text-field>
+                
+                
+                    <label for="" class="font-weight-regular">MF</label>
+                    <v-text-field type="text" id="MF" v-model="contract.MF"  placeholder="Entrer le MF"></v-text-field>
+                
+                
+                    <label for="" class="font-weight-regular">RC</label>
+                    <v-text-field type="text" id="RC" v-model="contract.RC"  placeholder="Entrer l'RC"></v-text-field>
+               
                
                 <button class="btn btn-primary mt-4"> Valider </button>
               </form>

@@ -2581,7 +2581,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2808,9 +2807,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2986,10 +2982,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3075,12 +3067,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3406,12 +3392,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3503,12 +3483,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -50006,7 +49980,11 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _c("label", { attrs: { for: "" } }, [_vm._v("Date de bilan ")]),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Date de bilan ")]
+              ),
               _vm._v(" "),
               _c("v-text-field", {
                 attrs: {
@@ -50022,7 +50000,11 @@ var render = function() {
                 }
               }),
               _vm._v(" "),
-              _c("label", { attrs: { for: "" } }, [_vm._v("Cours")]),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Cours")]
+              ),
               _vm._v(" "),
               _c("v-text-field", {
                 attrs: {
@@ -50038,9 +50020,11 @@ var render = function() {
                 }
               }),
               _vm._v(" "),
-              _c("label", { attrs: { for: "" } }, [
-                _vm._v("Nom de professeur")
-              ]),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Nom de professeur")]
+              ),
               _vm._v(" "),
               _c("v-text-field", {
                 attrs: {
@@ -50241,7 +50225,7 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "container" }, [
       _c("h2", { staticClass: "text-center p-2 text-white bg-primary mt-5" }, [
-        _vm._v("Ajouter des contrats")
+        _vm._v("Modifier le bilan")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
@@ -50281,110 +50265,71 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("Date de bilan ")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.bilan_module.dateBM,
-                      expression: "bilan_module.dateBM "
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "dateBM ",
-                    placeholder: "Entrer la date de bilan"
-                  },
-                  domProps: { value: _vm.bilan_module.dateBM },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.bilan_module, "dateBM", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Date de bilan ")]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("Cours")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.bilan_module.course_id,
-                      expression: "bilan_module.course_id"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "course_id",
-                    placeholder: "Entrer le nom du cours"
+              _c("v-text-field", {
+                attrs: {
+                  id: "dateBM ",
+                  placeholder: "Entrer la date de bilan"
+                },
+                model: {
+                  value: _vm.bilan_module.dateBM,
+                  callback: function($$v) {
+                    _vm.$set(_vm.bilan_module, "dateBM", $$v)
                   },
-                  domProps: { value: _vm.bilan_module.course_id },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.bilan_module,
-                        "course_id",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
+                  expression: "bilan_module.dateBM "
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [
-                  _vm._v("Nom de professeur")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.bilan_module.professor_id,
-                      expression: "bilan_module.professor_id"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "professor_id",
-                    placeholder: "Entrer e nom du professeur"
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Cours")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  id: "course_id",
+                  placeholder: "Entrer le nom du cours"
+                },
+                model: {
+                  value: _vm.bilan_module.course_id,
+                  callback: function($$v) {
+                    _vm.$set(_vm.bilan_module, "course_id", $$v)
                   },
-                  domProps: { value: _vm.bilan_module.professor_id },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.bilan_module,
-                        "professor_id",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
+                  expression: "bilan_module.course_id"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Nom de professeur")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  id: "professor_id",
+                  placeholder: "Entrer e nom du professeur"
+                },
+                model: {
+                  value: _vm.bilan_module.professor_id,
+                  callback: function($$v) {
+                    _vm.$set(_vm.bilan_module, "professor_id", $$v)
+                  },
+                  expression: "bilan_module.professor_id"
+                }
+              }),
               _vm._v(" "),
               _c("button", { staticClass: "btn btn-primary mt-4" }, [
                 _vm._v(" Valider ")
               ])
-            ]
+            ],
+            1
           )
         ])
       ])
@@ -50456,192 +50401,129 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [
-                  _vm._v("Nom de professeur ")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.contract.professor_id,
-                      expression: "contract.professor_id "
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "professor_id ",
-                    placeholder: "Entrer l'ID de professeur"
-                  },
-                  domProps: { value: _vm.contract.professor_id },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.contract,
-                        "professor_id",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Nom de professeur ")]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("Date de début")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.contract.date_debut,
-                      expression: "contract.date_debut"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "date_debut",
-                    placeholder: "Entrer la date debut"
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "professor_id ",
+                  placeholder: "Entrer l'ID de professeur"
+                },
+                model: {
+                  value: _vm.contract.professor_id,
+                  callback: function($$v) {
+                    _vm.$set(_vm.contract, "professor_id", $$v)
                   },
-                  domProps: { value: _vm.contract.date_debut },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.contract, "date_debut", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+                  expression: "contract.professor_id "
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("Date de fin")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.contract.date_fin,
-                      expression: "contract.date_fin"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "date_fin",
-                    placeholder: "Entrer l'date fin"
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Date de début")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "date_debut",
+                  placeholder: "Entrer la date debut"
+                },
+                model: {
+                  value: _vm.contract.date_debut,
+                  callback: function($$v) {
+                    _vm.$set(_vm.contract, "date_debut", $$v)
                   },
-                  domProps: { value: _vm.contract.date_fin },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.contract, "date_fin", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+                  expression: "contract.date_debut"
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("Type")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.contract.type,
-                      expression: "contract.type"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "type",
-                    placeholder: "Entrer le type"
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Date de fin")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "date_fin",
+                  placeholder: "Entrer l'date fin"
+                },
+                model: {
+                  value: _vm.contract.date_fin,
+                  callback: function($$v) {
+                    _vm.$set(_vm.contract, "date_fin", $$v)
                   },
-                  domProps: { value: _vm.contract.type },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.contract, "type", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+                  expression: "contract.date_fin"
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("MF")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.contract.MF,
-                      expression: "contract.MF"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "MF",
-                    placeholder: "Entrer le MF"
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Type")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "type",
+                  placeholder: "Entrer le type"
+                },
+                model: {
+                  value: _vm.contract.type,
+                  callback: function($$v) {
+                    _vm.$set(_vm.contract, "type", $$v)
                   },
-                  domProps: { value: _vm.contract.MF },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.contract, "MF", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+                  expression: "contract.type"
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("RC")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.contract.RC,
-                      expression: "contract.RC"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text", id: "RC", placeholder: "Entrer l'RC" },
-                  domProps: { value: _vm.contract.RC },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.contract, "RC", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("MF")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: { type: "text", id: "MF", placeholder: "Entrer le MF" },
+                model: {
+                  value: _vm.contract.MF,
+                  callback: function($$v) {
+                    _vm.$set(_vm.contract, "MF", $$v)
+                  },
+                  expression: "contract.MF"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("RC")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: { type: "text", id: "RC", placeholder: "Entrer l'RC" },
+                model: {
+                  value: _vm.contract.RC,
+                  callback: function($$v) {
+                    _vm.$set(_vm.contract, "RC", $$v)
+                  },
+                  expression: "contract.RC"
+                }
+              }),
               _vm._v(" "),
               _c("button", { staticClass: "btn btn-primary mt-4" }, [
                 _vm._v(" Valider ")
               ])
-            ]
+            ],
+            1
           )
         ])
       ])
@@ -50886,192 +50768,129 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [
-                  _vm._v("Nom de professeur ")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.contract.professor_id,
-                      expression: "contract.professor_id "
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "professor_id ",
-                    placeholder: "Entrer l'ID de professeur"
-                  },
-                  domProps: { value: _vm.contract.professor_id },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.contract,
-                        "professor_id",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Nom de professeur ")]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("Date de début")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.contract.date_debut,
-                      expression: "contract.date_debut"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "date_debut",
-                    placeholder: "Entrer la date debut"
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "professor_id ",
+                  placeholder: "Entrer l'ID de professeur"
+                },
+                model: {
+                  value: _vm.contract.professor_id,
+                  callback: function($$v) {
+                    _vm.$set(_vm.contract, "professor_id", $$v)
                   },
-                  domProps: { value: _vm.contract.date_debut },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.contract, "date_debut", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+                  expression: "contract.professor_id "
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("Date de fin")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.contract.date_fin,
-                      expression: "contract.date_fin"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "date_fin",
-                    placeholder: "Entrer l'date fin"
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Date de début")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "date_debut",
+                  placeholder: "Entrer la date debut"
+                },
+                model: {
+                  value: _vm.contract.date_debut,
+                  callback: function($$v) {
+                    _vm.$set(_vm.contract, "date_debut", $$v)
                   },
-                  domProps: { value: _vm.contract.date_fin },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.contract, "date_fin", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+                  expression: "contract.date_debut"
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("Type")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.contract.type,
-                      expression: "contract.type"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "type",
-                    placeholder: "Entrer le type"
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Date de fin")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "date_fin",
+                  placeholder: "Entrer l'date fin"
+                },
+                model: {
+                  value: _vm.contract.date_fin,
+                  callback: function($$v) {
+                    _vm.$set(_vm.contract, "date_fin", $$v)
                   },
-                  domProps: { value: _vm.contract.type },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.contract, "type", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+                  expression: "contract.date_fin"
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("MF")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.contract.MF,
-                      expression: "contract.MF"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "MF",
-                    placeholder: "Entrer le MF"
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Type")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "type",
+                  placeholder: "Entrer le type"
+                },
+                model: {
+                  value: _vm.contract.type,
+                  callback: function($$v) {
+                    _vm.$set(_vm.contract, "type", $$v)
                   },
-                  domProps: { value: _vm.contract.MF },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.contract, "MF", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+                  expression: "contract.type"
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("RC")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.contract.RC,
-                      expression: "contract.RC"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text", id: "RC", placeholder: "Entrer l'RC" },
-                  domProps: { value: _vm.contract.RC },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.contract, "RC", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("MF")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: { type: "text", id: "MF", placeholder: "Entrer le MF" },
+                model: {
+                  value: _vm.contract.MF,
+                  callback: function($$v) {
+                    _vm.$set(_vm.contract, "MF", $$v)
+                  },
+                  expression: "contract.MF"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("RC")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: { type: "text", id: "RC", placeholder: "Entrer l'RC" },
+                model: {
+                  value: _vm.contract.RC,
+                  callback: function($$v) {
+                    _vm.$set(_vm.contract, "RC", $$v)
+                  },
+                  expression: "contract.RC"
+                }
+              }),
               _vm._v(" "),
               _c("button", { staticClass: "btn btn-primary mt-4" }, [
                 _vm._v(" Valider ")
               ])
-            ]
+            ],
+            1
           )
         ])
       ])
@@ -51190,212 +51009,137 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [
-                  _vm._v("Nbr. d'heures jury ")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.heure_supp.h_jury,
-                      expression: "heure_supp.h_jury"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "h_jury",
-                    placeholder: "Entrer les heures jury"
-                  },
-                  domProps: { value: _vm.heure_supp.h_jury },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.heure_supp, "h_jury", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Nbr. d'heures jury ")]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [
-                  _vm._v("Nbr. d'heure d'encadrement")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.heure_supp.h_encadrement,
-                      expression: "heure_supp.h_encadrement"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "h_encadrement",
-                    placeholder: "Entrer la h_encadrement"
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "h_jury",
+                  placeholder: "Entrer les heures jury"
+                },
+                model: {
+                  value: _vm.heure_supp.h_jury,
+                  callback: function($$v) {
+                    _vm.$set(_vm.heure_supp, "h_jury", $$v)
                   },
-                  domProps: { value: _vm.heure_supp.h_encadrement },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.heure_supp,
-                        "h_encadrement",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
+                  expression: "heure_supp.h_jury"
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [
-                  _vm._v("Nbr. d'heures conseil")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.heure_supp.h_conseil,
-                      expression: "heure_supp.h_conseil"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "h_conseil",
-                    placeholder: "Entrer l'h_conseil"
-                  },
-                  domProps: { value: _vm.heure_supp.h_conseil },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.heure_supp, "h_conseil", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Nbr. d'heure d'encadrement")]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [
-                  _vm._v("Numéro de semstre")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.heure_supp.semester,
-                      expression: "heure_supp.semester"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "semester",
-                    placeholder: "Entrer le numéro de semstre"
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "h_encadrement",
+                  placeholder: "Entrer la h_encadrement"
+                },
+                model: {
+                  value: _vm.heure_supp.h_encadrement,
+                  callback: function($$v) {
+                    _vm.$set(_vm.heure_supp, "h_encadrement", $$v)
                   },
-                  domProps: { value: _vm.heure_supp.semester },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.heure_supp, "semester", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+                  expression: "heure_supp.h_encadrement"
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("ID professeur")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.heure_supp.professor_id,
-                      expression: "heure_supp.professor_id"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "professor_id",
-                    placeholder: "Entrer lID professeur"
-                  },
-                  domProps: { value: _vm.heure_supp.professor_id },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.heure_supp,
-                        "professor_id",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Nbr. d'heures conseil")]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [
-                  _vm._v("Nbr. d'heures de surveillance")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.heure_supp.h_surveillance,
-                      expression: "heure_supp.h_surveillance"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "h_surveillance",
-                    placeholder: "Entrer le heurs de surveillances"
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "h_conseil",
+                  placeholder: "Entrer l'h_conseil"
+                },
+                model: {
+                  value: _vm.heure_supp.h_conseil,
+                  callback: function($$v) {
+                    _vm.$set(_vm.heure_supp, "h_conseil", $$v)
                   },
-                  domProps: { value: _vm.heure_supp.h_surveillance },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.heure_supp,
-                        "h_surveillance",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
+                  expression: "heure_supp.h_conseil"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Numéro de semstre")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "semester",
+                  placeholder: "Entrer le numéro de semstre"
+                },
+                model: {
+                  value: _vm.heure_supp.semester,
+                  callback: function($$v) {
+                    _vm.$set(_vm.heure_supp, "semester", $$v)
+                  },
+                  expression: "heure_supp.semester"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("ID professeur")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "professor_id",
+                  placeholder: "Entrer lID professeur"
+                },
+                model: {
+                  value: _vm.heure_supp.professor_id,
+                  callback: function($$v) {
+                    _vm.$set(_vm.heure_supp, "professor_id", $$v)
+                  },
+                  expression: "heure_supp.professor_id"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Nbr. d'heures de surveillance")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "h_surveillance",
+                  placeholder: "Entrer le heurs de surveillances"
+                },
+                model: {
+                  value: _vm.heure_supp.h_surveillance,
+                  callback: function($$v) {
+                    _vm.$set(_vm.heure_supp, "h_surveillance", $$v)
+                  },
+                  expression: "heure_supp.h_surveillance"
+                }
+              }),
               _vm._v(" "),
               _c("button", { staticClass: "btn btn-primary mt-4" }, [
                 _vm._v(" Valider ")
               ])
-            ]
+            ],
+            1
           )
         ])
       ])
@@ -51467,212 +51211,137 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [
-                  _vm._v("Nbr. d'heures jury ")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.heure_supp.h_jury,
-                      expression: "heure_supp.h_jury"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "h_jury",
-                    placeholder: "Entrer la somme brute"
-                  },
-                  domProps: { value: _vm.heure_supp.h_jury },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.heure_supp, "h_jury", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Nbr. d'heures jury ")]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [
-                  _vm._v("Nbr. d'heure d'encadrement")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.heure_supp.h_encadrement,
-                      expression: "heure_supp.h_encadrement"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "h_encadrement",
-                    placeholder: "Entrer la h_encadrement"
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "h_jury",
+                  placeholder: "Entrer la somme brute"
+                },
+                model: {
+                  value: _vm.heure_supp.h_jury,
+                  callback: function($$v) {
+                    _vm.$set(_vm.heure_supp, "h_jury", $$v)
                   },
-                  domProps: { value: _vm.heure_supp.h_encadrement },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.heure_supp,
-                        "h_encadrement",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
+                  expression: "heure_supp.h_jury"
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [
-                  _vm._v("Nbr. d'heures conseil")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.heure_supp.h_conseil,
-                      expression: "heure_supp.h_conseil"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "h_conseil",
-                    placeholder: "Entrer l'h_conseil"
-                  },
-                  domProps: { value: _vm.heure_supp.h_conseil },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.heure_supp, "h_conseil", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Nbr. d'heure d'encadrement")]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [
-                  _vm._v("Numéro de semstre")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.heure_supp.semester,
-                      expression: "heure_supp.semester"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "semester",
-                    placeholder: "Entrer le net à payer"
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "h_encadrement",
+                  placeholder: "Entrer la h_encadrement"
+                },
+                model: {
+                  value: _vm.heure_supp.h_encadrement,
+                  callback: function($$v) {
+                    _vm.$set(_vm.heure_supp, "h_encadrement", $$v)
                   },
-                  domProps: { value: _vm.heure_supp.semester },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.heure_supp, "semester", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+                  expression: "heure_supp.h_encadrement"
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("ID professeur")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.heure_supp.professor_id,
-                      expression: "heure_supp.professor_id"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "professor_id",
-                    placeholder: "Entrer lID du contrat"
-                  },
-                  domProps: { value: _vm.heure_supp.professor_id },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.heure_supp,
-                        "professor_id",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Nbr. d'heures conseil")]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [
-                  _vm._v("Nbr. d'heures de surveillance")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.heure_supp.h_surveillance,
-                      expression: "heure_supp.h_surveillance"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "h_surveillance",
-                    placeholder: "Entrer le nom du professeur"
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "h_conseil",
+                  placeholder: "Entrer l'h_conseil"
+                },
+                model: {
+                  value: _vm.heure_supp.h_conseil,
+                  callback: function($$v) {
+                    _vm.$set(_vm.heure_supp, "h_conseil", $$v)
                   },
-                  domProps: { value: _vm.heure_supp.h_surveillance },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.heure_supp,
-                        "h_surveillance",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
+                  expression: "heure_supp.h_conseil"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Numéro de semstre")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "semester",
+                  placeholder: "Entrer le net à payer"
+                },
+                model: {
+                  value: _vm.heure_supp.semester,
+                  callback: function($$v) {
+                    _vm.$set(_vm.heure_supp, "semester", $$v)
+                  },
+                  expression: "heure_supp.semester"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("ID professeur")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "professor_id",
+                  placeholder: "Entrer lID du contrat"
+                },
+                model: {
+                  value: _vm.heure_supp.professor_id,
+                  callback: function($$v) {
+                    _vm.$set(_vm.heure_supp, "professor_id", $$v)
+                  },
+                  expression: "heure_supp.professor_id"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Nbr. d'heures de surveillance")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "h_surveillance",
+                  placeholder: "Entrer le nom du professeur"
+                },
+                model: {
+                  value: _vm.heure_supp.h_surveillance,
+                  callback: function($$v) {
+                    _vm.$set(_vm.heure_supp, "h_surveillance", $$v)
+                  },
+                  expression: "heure_supp.h_surveillance"
+                }
+              }),
               _vm._v(" "),
               _c("button", { staticClass: "btn btn-primary mt-4" }, [
                 _vm._v(" Valider ")
               ])
-            ]
+            ],
+            1
           )
         ])
       ])
@@ -51965,230 +51634,158 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("Somme Brut")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.paiement.sommeBrut,
-                      expression: "paiement.sommeBrut"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "sommeBrut",
-                    placeholder: "Entrer la somme brute"
-                  },
-                  domProps: { value: _vm.paiement.sommeBrut },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.paiement, "sommeBrut", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Somme Brut")]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("Retenue")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.paiement.retenue,
-                      expression: "paiement.retenue"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "retenue",
-                    placeholder: "Entrer la retenue"
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "sommeBrut",
+                  placeholder: "Entrer la somme brute"
+                },
+                model: {
+                  value: _vm.paiement.sommeBrut,
+                  callback: function($$v) {
+                    _vm.$set(_vm.paiement, "sommeBrut", $$v)
                   },
-                  domProps: { value: _vm.paiement.retenue },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.paiement, "retenue", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+                  expression: "paiement.sommeBrut"
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("Avance")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.paiement.avance,
-                      expression: "paiement.avance"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "avance",
-                    placeholder: "Entrer l'avance"
-                  },
-                  domProps: { value: _vm.paiement.avance },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.paiement, "avance", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Retenue")]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v(".Net à payer")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.paiement.net_a_payer,
-                      expression: "paiement.net_a_payer"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "net",
-                    placeholder: "Entrer le net à payer"
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "retenue",
+                  placeholder: "Entrer la retenue"
+                },
+                model: {
+                  value: _vm.paiement.retenue,
+                  callback: function($$v) {
+                    _vm.$set(_vm.paiement, "retenue", $$v)
                   },
-                  domProps: { value: _vm.paiement.net_a_payer },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.paiement, "net_a_payer", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+                  expression: "paiement.retenue"
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("ID contrat")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.paiement.contract_id,
-                      expression: "paiement.contract_id"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "contrat",
-                    placeholder: "Entrer lID du contrat"
-                  },
-                  domProps: { value: _vm.paiement.contract_id },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.paiement, "contract_id", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Avance")]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("ID professeur")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.paiement.professor_id,
-                      expression: "paiement.professor_id"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "professeur",
-                    placeholder: "Entrer le nom du professeur"
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "avance",
+                  placeholder: "Entrer l'avance"
+                },
+                model: {
+                  value: _vm.paiement.avance,
+                  callback: function($$v) {
+                    _vm.$set(_vm.paiement, "avance", $$v)
                   },
-                  domProps: { value: _vm.paiement.professor_id },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.paiement,
-                        "professor_id",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
+                  expression: "paiement.avance"
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [
-                  _vm._v("Date de paiement")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.paiement.datepaiement,
-                      expression: "paiement.datepaiement"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "datepaiement",
-                    placeholder: "Entrer la date de paiement"
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v(".Net à payer")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "net",
+                  placeholder: "Entrer le net à payer"
+                },
+                model: {
+                  value: _vm.paiement.net_a_payer,
+                  callback: function($$v) {
+                    _vm.$set(_vm.paiement, "net_a_payer", $$v)
                   },
-                  domProps: { value: _vm.paiement.datepaiement },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.paiement,
-                        "datepaiement",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
+                  expression: "paiement.net_a_payer"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("ID contrat")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "contrat",
+                  placeholder: "Entrer lID du contrat"
+                },
+                model: {
+                  value: _vm.paiement.contract_id,
+                  callback: function($$v) {
+                    _vm.$set(_vm.paiement, "contract_id", $$v)
+                  },
+                  expression: "paiement.contract_id"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("ID professeur")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "professeur",
+                  placeholder: "Entrer le nom du professeur"
+                },
+                model: {
+                  value: _vm.paiement.professor_id,
+                  callback: function($$v) {
+                    _vm.$set(_vm.paiement, "professor_id", $$v)
+                  },
+                  expression: "paiement.professor_id"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Date de paiement")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "datepaiement",
+                  placeholder: "Entrer la date de paiement"
+                },
+                model: {
+                  value: _vm.paiement.datepaiement,
+                  callback: function($$v) {
+                    _vm.$set(_vm.paiement, "datepaiement", $$v)
+                  },
+                  expression: "paiement.datepaiement"
+                }
+              }),
               _vm._v(" "),
               _c("button", { staticClass: "btn btn-primary mt-4" }, [
                 _vm._v(" Valider ")
               ])
-            ]
+            ],
+            1
           )
         ])
       ])
@@ -52260,230 +51857,158 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("Somme Brut")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.paiement.sommeBrut,
-                      expression: "paiement.sommeBrut"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "sommeBrut",
-                    placeholder: "Entrer la somme brute"
-                  },
-                  domProps: { value: _vm.paiement.sommeBrut },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.paiement, "sommeBrut", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Somme Brut")]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("Retenue")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.paiement.retenue,
-                      expression: "paiement.retenue"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "retenue",
-                    placeholder: "Entrer la retenue"
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "sommeBrut",
+                  placeholder: "Entrer la somme brute"
+                },
+                model: {
+                  value: _vm.paiement.sommeBrut,
+                  callback: function($$v) {
+                    _vm.$set(_vm.paiement, "sommeBrut", $$v)
                   },
-                  domProps: { value: _vm.paiement.retenue },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.paiement, "retenue", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+                  expression: "paiement.sommeBrut"
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("Avance")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.paiement.avance,
-                      expression: "paiement.avance"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "avance",
-                    placeholder: "Entrer l'avance"
-                  },
-                  domProps: { value: _vm.paiement.avance },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.paiement, "avance", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Retenue")]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v(".Net à payer")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.paiement.net_a_payer,
-                      expression: "paiement.net_a_payer"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "net",
-                    placeholder: "Entrer le net à payer"
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "retenue",
+                  placeholder: "Entrer la retenue"
+                },
+                model: {
+                  value: _vm.paiement.retenue,
+                  callback: function($$v) {
+                    _vm.$set(_vm.paiement, "retenue", $$v)
                   },
-                  domProps: { value: _vm.paiement.net_a_payer },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.paiement, "net_a_payer", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+                  expression: "paiement.retenue"
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("ID contrat")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.paiement.contract_id,
-                      expression: "paiement.contract_id"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "contrat",
-                    placeholder: "Entrer lID du contrat"
-                  },
-                  domProps: { value: _vm.paiement.contract_id },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.paiement, "contract_id", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Avance")]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("ID professeur")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.paiement.professor_id,
-                      expression: "paiement.professor_id"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "professeur",
-                    placeholder: "Entrer le nom du professeur"
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "avance",
+                  placeholder: "Entrer l'avance"
+                },
+                model: {
+                  value: _vm.paiement.avance,
+                  callback: function($$v) {
+                    _vm.$set(_vm.paiement, "avance", $$v)
                   },
-                  domProps: { value: _vm.paiement.professor_id },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.paiement,
-                        "professor_id",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
+                  expression: "paiement.avance"
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [
-                  _vm._v("Date de paiement")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.paiement.datepaiement,
-                      expression: "paiement.datepaiement"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "datepaiement",
-                    placeholder: "Entrer la date de paiement"
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v(".Net à payer")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "net",
+                  placeholder: "Entrer le net à payer"
+                },
+                model: {
+                  value: _vm.paiement.net_a_payer,
+                  callback: function($$v) {
+                    _vm.$set(_vm.paiement, "net_a_payer", $$v)
                   },
-                  domProps: { value: _vm.paiement.datepaiement },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.paiement,
-                        "datepaiement",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
+                  expression: "paiement.net_a_payer"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("ID contrat")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "contrat",
+                  placeholder: "Entrer lID du contrat"
+                },
+                model: {
+                  value: _vm.paiement.contract_id,
+                  callback: function($$v) {
+                    _vm.$set(_vm.paiement, "contract_id", $$v)
+                  },
+                  expression: "paiement.contract_id"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("ID professeur")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "professeur",
+                  placeholder: "Entrer le nom du professeur"
+                },
+                model: {
+                  value: _vm.paiement.professor_id,
+                  callback: function($$v) {
+                    _vm.$set(_vm.paiement, "professor_id", $$v)
+                  },
+                  expression: "paiement.professor_id"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Date de paiement")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  type: "text",
+                  id: "datepaiement",
+                  placeholder: "Entrer la date de paiement"
+                },
+                model: {
+                  value: _vm.paiement.datepaiement,
+                  callback: function($$v) {
+                    _vm.$set(_vm.paiement, "datepaiement", $$v)
+                  },
+                  expression: "paiement.datepaiement"
+                }
+              }),
               _vm._v(" "),
               _c("button", { staticClass: "btn btn-primary mt-4" }, [
                 _vm._v(" Procerder ")
               ])
-            ]
+            ],
+            1
           )
         ])
       ])
@@ -116188,19 +115713,19 @@ var routes = [{
   component: _components_HeureSupp_AddHeures_vue__WEBPACK_IMPORTED_MODULE_10__["default"]
 }, {
   name: '/get_bilan',
-  path: '/get_bilan',
+  path: '/get_bilan/edit/:id?',
   component: _components_Bilan_EditBilan_vue__WEBPACK_IMPORTED_MODULE_14__["default"]
 }, {
   name: '/get_contract',
-  path: '/get_contract',
+  path: '/get_contract/edit/:id?',
   component: _components_Contracts_EditContracts_vue__WEBPACK_IMPORTED_MODULE_13__["default"]
 }, {
-  name: '/get_heure_supp',
-  path: '/get_heure_supp',
+  name: '/get_heures_supp',
+  path: '/get_heures_supp/edit/:id?',
   component: _components_HeureSupp_EditHeuresSupp_vue__WEBPACK_IMPORTED_MODULE_12__["default"]
 }, {
   name: '/get_paiement',
-  path: '/get_paiement',
+  path: '/get_paiement/edit/:id?',
   component: _components_Paiement_EditPaiement_vue__WEBPACK_IMPORTED_MODULE_11__["default"]
 }];
 /* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({

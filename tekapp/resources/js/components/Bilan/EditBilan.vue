@@ -1,7 +1,7 @@
 <template>
   <div>
 <div class="container">
-      <h2 class="text-center p-2 text-white bg-primary mt-5">Ajouter des contrats</h2>
+      <h2 class="text-center p-2 text-white bg-primary mt-5">Modifier le bilan</h2>
 
       <div class="card-body">
           <div class="col-md-6 offset-md-3">
@@ -14,18 +14,18 @@
                   </ul>
 
               </div>
-                <div class="form-group">
-                    <label for="">Date de bilan </label>
-                    <input type="text" id="dateBM " v-model="bilan_module.dateBM " class="form-control" placeholder="Entrer la date de bilan">
-                </div>
-                 <div class="form-group">
-                    <label for="">Cours</label>
-                    <input type="text" id="course_id" v-model="bilan_module.course_id" class="form-control" placeholder="Entrer le nom du cours">
-                </div>
-                <div class="form-group">
-                    <label for="">Nom de professeur</label>
-                    <input type="text" id="professor_id" v-model="bilan_module.professor_id" class="form-control" placeholder="Entrer e nom du professeur">
-                </div>
+                
+                    <label for="" class="font-weight-regular">Date de bilan </label>
+                    <v-text-field  id="dateBM " v-model="bilan_module.dateBM "  placeholder="Entrer la date de bilan"></v-text-field>
+                
+                 
+                    <label for="" class="font-weight-regular">Cours</label>
+                    <v-text-field id="course_id" v-model="bilan_module.course_id"  placeholder="Entrer le nom du cours"></v-text-field>
+                
+                
+                    <label for="" class="font-weight-regular">Nom de professeur</label>
+                    <v-text-field id="professor_id" v-model="bilan_module.professor_id" placeholder="Entrer e nom du professeur"></v-text-field>
+                
 
                
                 <button class="btn btn-primary mt-4"> Valider </button>

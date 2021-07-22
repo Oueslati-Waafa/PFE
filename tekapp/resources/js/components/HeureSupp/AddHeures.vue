@@ -14,30 +14,26 @@
                   </ul>
 
               </div>
-                <div class="form-group">
-                    <label for="">Nbr. d'heures jury </label>
-                    <input type="text" id="h_jury" v-model="heure_supp.h_jury" class="form-control" placeholder="Entrer les heures jury">
-                </div>
-                <div class="form-group">
-                    <label for="">Nbr. d'heure d'encadrement</label>
-                    <input type="text" id="h_encadrement" v-model="heure_supp.h_encadrement" class="form-control" placeholder="Entrer la h_encadrement">
-                </div>
-                <div class="form-group">
-                    <label for="">Nbr. d'heures conseil</label>
-                    <input type="text" id="h_conseil" v-model="heure_supp.h_conseil" class="form-control" placeholder="Entrer l'h_conseil">
-                </div>
-                <div class="form-group">
-                    <label for="">Numéro de semstre</label>
-                    <input type="text" id="semester" v-model="heure_supp.semester" class="form-control" placeholder="Entrer le numéro de semstre">
-                </div>
-                <div class="form-group">
-                    <label for="">ID professeur</label>
-                    <input type="text" id="professor_id" v-model="heure_supp.professor_id" class="form-control" placeholder="Entrer lID professeur">
-                </div>
-                <div class="form-group">
-                    <label for="">Nbr. d'heures de surveillance</label>
-                    <input type="text" id="h_surveillance"  v-model="heure_supp.h_surveillance" class="form-control" placeholder="Entrer le heurs de surveillances">
-                </div>
+                
+                    <label for="" class="font-weight-regular">Nbr. d'heures jury </label>
+                    <v-text-field type="text" id="h_jury" v-model="heure_supp.h_jury"  placeholder="Entrer les heures jury"></v-text-field>
+                
+                    <label for="" class="font-weight-regular">Nbr. d'heure d'encadrement</label>
+                    <v-text-field type="text" id="h_encadrement" v-model="heure_supp.h_encadrement"  placeholder="Entrer la h_encadrement"></v-text-field>
+               
+                    <label for="" class="font-weight-regular">Nbr. d'heures conseil</label>
+                    <v-text-field type="text" id="h_conseil" v-model="heure_supp.h_conseil"  placeholder="Entrer l'h_conseil"></v-text-field>
+               
+                    <label for="" class="font-weight-regular">Numéro de semstre</label>
+                    <v-text-field type="text" id="semester" v-model="heure_supp.semester"  placeholder="Entrer le numéro de semstre"></v-text-field>
+               
+                    <label for="" class="font-weight-regular">ID professeur</label>
+                    <v-text-field type="text" id="professor_id" v-model="heure_supp.professor_id"  placeholder="Entrer lID professeur"></v-text-field>
+               
+                
+                    <label for="" class="font-weight-regular">Nbr. d'heures de surveillance</label>
+                    <v-text-field type="text" id="h_surveillance"  v-model="heure_supp.h_surveillance"  placeholder="Entrer le heurs de surveillances"></v-text-field>
+                
                 <button class="btn btn-primary mt-4"> Valider </button>
               </form>
           </div>

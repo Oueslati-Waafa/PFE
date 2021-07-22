@@ -15,15 +15,15 @@
 
               </div>
                 
-                    <label for="">Date de bilan </label>
+                    <label for="" class="font-weight-regular">Date de bilan </label>
                     <v-text-field id="dateBM " v-model="bilan_module.dateBM " placeholder="Entrer la date de bilan"></v-text-field>
                 
                  
-                    <label for="">Cours</label>
+                    <label for="" class="font-weight-regular">Cours</label>
                     <v-text-field id="course_id" v-model="bilan_module.course_id" placeholder="Entrer le nom du cours"></v-text-field>
                 
                 
-                    <label for="">Nom de professeur</label>
+                    <label for="" class="font-weight-regular">Nom de professeur</label>
                     <v-text-field id="professor_id" v-model="bilan_module.professor_id" placeholder="Entrer e nom du professeur"></v-text-field>
                 
 

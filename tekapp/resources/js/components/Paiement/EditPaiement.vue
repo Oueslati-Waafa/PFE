@@ -13,34 +13,28 @@
                   </ul>
 
               </div>
-                <div class="form-group">
-                    <label for="">Somme Brut</label>
-                    <input type="text" id="sommeBrut" v-model="paiement.sommeBrut" class="form-control" placeholder="Entrer la somme brute">
-                </div>
-                <div class="form-group">
-                    <label for="">Retenue</label>
-                    <input type="text" id="retenue" v-model="paiement.retenue" class="form-control" placeholder="Entrer la retenue">
-                </div>
-                <div class="form-group">
-                    <label for="">Avance</label>
-                    <input type="text" id="avance" v-model="paiement.avance" class="form-control" placeholder="Entrer l'avance">
-                </div>
-                <div class="form-group">
-                    <label for="">.Net à payer</label>
-                    <input type="text" id="net" v-model="paiement.net_a_payer" class="form-control" placeholder="Entrer le net à payer">
-                </div>
-                <div class="form-group">
-                    <label for="">ID contrat</label>
-                    <input type="text" id="contrat" v-model="paiement.contract_id" class="form-control" placeholder="Entrer lID du contrat">
-                </div>
-                <div class="form-group">
-                    <label for="">ID professeur</label>
-                    <input type="text" id="professeur"  v-model="paiement.professor_id" class="form-control" placeholder="Entrer le nom du professeur">
-                </div>
-                <div class="form-group">
-                    <label for="">Date de paiement</label>
-                    <input type="text" id="datepaiement" v-model="paiement.datepaiement" class="form-control" placeholder="Entrer la date de paiement">
-                </div>
+               
+                    <label for="" class="font-weight-regular">Somme Brut</label>
+                    <v-text-field type="text" id="sommeBrut" v-model="paiement.sommeBrut"  placeholder="Entrer la somme brute"></v-text-field>
+                
+                    <label for="" class="font-weight-regular">Retenue</label>
+                    <v-text-field type="text" id="retenue" v-model="paiement.retenue"  placeholder="Entrer la retenue"></v-text-field>
+                
+                    <label for="" class="font-weight-regular">Avance</label>
+                    <v-text-field type="text" id="avance" v-model="paiement.avance"  placeholder="Entrer l'avance"></v-text-field>
+                
+                    <label for="" class="font-weight-regular">.Net à payer</label>
+                    <v-text-field type="text" id="net" v-model="paiement.net_a_payer"  placeholder="Entrer le net à payer"></v-text-field>
+              
+                    <label for="" class="font-weight-regular">ID contrat</label>
+                    <v-text-field type="text" id="contrat" v-model="paiement.contract_id"  placeholder="Entrer lID du contrat"></v-text-field>
+           
+                    <label for="" class="font-weight-regular">ID professeur</label>
+                    <v-text-field type="text" id="professeur"  v-model="paiement.professor_id"  placeholder="Entrer le nom du professeur"></v-text-field>
+              
+                    <label for="" class="font-weight-regular">Date de paiement</label>
+                    <v-text-field type="text" id="datepaiement" v-model="paiement.datepaiement"  placeholder="Entrer la date de paiement"></v-text-field>
+               
                 <button class="btn btn-primary mt-4"> Procerder </button>
               </form>
           </div>
