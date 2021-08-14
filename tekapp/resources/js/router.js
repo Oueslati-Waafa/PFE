@@ -7,6 +7,8 @@ import PaimementList from './components/Paiement/PaiementList';
 import BilanList from './components/Bilan/BilanList';
 import ContractList from './components/Contracts/ContractsList';
 import HeureSuppList from './components/HeureSupp/HeuresSuppList';
+import PrixHeures from './components/PrixHeures/PrixHeuresList.vue';
+import ProfessorList from './components/ProfessorsList.vue';
 import Home from './components/Home.vue';
 
 import AddBilan from './components/Bilan/AddBilan.vue';
@@ -18,6 +20,8 @@ import EditPaiement from './components/Paiement/EditPaiement.vue';
 import EditHeureSupp from './components/HeureSupp/EditHeuresSupp.vue';
 import EditContract from './components/Contracts/EditContracts.vue';
 import EditBilan from './components/Bilan/EditBilan.vue';
+import AddPrixHeures from './components/PrixHeures/AddPrixHeures.vue';
+import EditPrix from './components/PrixHeures/EditPrix.vue';
 
 
 const routes = [
@@ -30,6 +34,11 @@ const routes = [
         name:'/paiement',
         path: '/paiement', 
         component: PaimementList ,
+    },
+    { 
+        name:'/professor',
+        path: '/professor', 
+        component: ProfessorList ,
     },
     { 
         name:'/bilans',
@@ -45,6 +54,11 @@ const routes = [
         name:'/heures_supp',
         path: '/heures_supp', 
         component: HeureSuppList ,
+    },
+    { 
+        name:'/prix_heures',
+        path: '/prix_heures', 
+        component: PrixHeures ,
     },
     { 
         name:'/add_bilan',
@@ -85,6 +99,16 @@ const routes = [
         name:'/get_paiement',
         path: '/get_paiement/edit/:id?', 
         component: EditPaiement ,
+    },
+    { 
+        name:'/add_prix_heures',
+        path: '/add_prix_heures', 
+        component: AddPrixHeures ,
+    },
+    { 
+        name:'/get_prix',
+        path: '/get_prix/edit/:id?', 
+        component: EditPrix,
     },
   ];
 

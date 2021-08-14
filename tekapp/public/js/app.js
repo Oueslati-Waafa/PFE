@@ -2183,6 +2183,14 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Dashboard',
         route: '/'
       }, {
+        icon: 'fas fa-money-bill-alt',
+        text: 'Prix des Heures',
+        route: '/prix_heures'
+      }, {
+        icon: 'fas fa-book-reader',
+        text: 'Liste des Professeurs',
+        route: '/professor'
+      }, {
         icon: 'fas fa-money-check-alt',
         text: 'Paiement',
         route: '/paiement'
@@ -2195,7 +2203,7 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Les contrats',
         route: '/contracts'
       }, {
-        icon: 'fas fa-file',
+        icon: 'fas fa-file-invoice-dollar',
         text: 'Les bilans',
         route: '/bilans'
       }]
@@ -2319,6 +2327,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -3720,6 +3729,413 @@ __webpack_require__.r(__webpack_exports__);
     return {
       url: document.head.querySelector('meta[name="url"]').content,
       paiements: []
+    };
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrixHeures/AddPrixHeures.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PrixHeures/AddPrixHeures.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      url: document.head.querySelector('meta[name="url"]').content,
+      prix_heure: {},
+      jour: '',
+      soir: '',
+      suivie: '',
+      conseil_pfe: '',
+      errors: []
+    };
+  },
+  methods: {
+    savePrix: function savePrix() {
+      var _this = this;
+
+      this.errors = [];
+
+      if (!this.prix_heure.jour) {
+        this.errors.push('prix des heures du jour est requis');
+      }
+
+      if (!this.prix_heure.soir) {
+        this.errors.push('prix des heures de soir est requis');
+      }
+
+      if (!this.prix_heure.suivie) {
+        this.errors.push('prix des heures suivie est requis');
+      }
+
+      if (!this.prix_heure.conseil_pfe) {
+        this.errors.push('prix des heures conseil/pfe est requis');
+      }
+
+      if (!this.errors.length) {
+        var formData = new FormData();
+        formData.append('jour', this.prix_heure.jour);
+        formData.append('soir', this.prix_heure.soir);
+        formData.append('suivie', this.prix_heure.suivie);
+        formData.append('conseil_pfe', this.prix_heure.conseil_pfe);
+        var url = this.url + '/api/prix/save_prix';
+        this.axios.post(url, formData).then(function (response) {
+          if (response.status) {
+            _this.$utils.showSuccess('success', response.message);
+
+            _this.$router.push({
+              name: '/prix_heures'
+            });
+          } else {
+            _this.$utils.showError('Error', response.message);
+          }
+        })["catch"](function (error) {
+          _this.errors.push(error.response.data.error);
+        });
+      }
+    }
+  },
+  mounted: function mounted() {
+    console.log('add prix component loaded');
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrixHeures/EditPrix.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PrixHeures/EditPrix.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      url: document.head.querySelector('meta[name="url"]').content,
+      prix_heure: {},
+      jour: '',
+      soir: '',
+      suivie: '',
+      conseil_pfe: '',
+      errors: []
+    };
+  },
+  methods: {
+    loadData: function loadData() {
+      var _this = this;
+
+      var url = this.url + "/api/prix/get_prix/".concat(this.$route.params.id);
+      this.axios.get(url).then(function (response) {
+        _this.prix_heure = response.data;
+        console.log(_this.prix_heure);
+      });
+    },
+    updatePrix: function updatePrix() {
+      var _this2 = this;
+
+      this.errors = [];
+
+      if (!this.prix_heure.jour) {
+        this.errors.push('jour id est requis');
+      }
+
+      if (!this.prix_heure.soir) {
+        this.errors.push('soir est requis');
+      }
+
+      if (!this.prix_heure.suivie) {
+        this.errors.push('suivie est requis');
+      }
+
+      if (!this.prix_heure.conseil_pfe) {
+        this.errors.push('conseil_pfe est requis');
+      }
+
+      if (!this.errors.length) {
+        var formData = new FormData();
+        formData.append('jour', this.prix_heure.jour);
+        formData.append('soir', this.prix_heure.soir);
+        formData.append('suivie', this.prix_heure.suivie);
+        formData.append('conseil_pfe', this.prix_heure.conseil_pfe);
+        var url = this.url + "/api/prix/save_prix/".concat(this.$route.params.id);
+        this.axios.post(url, formData).then(function (response) {
+          if (response.status) {
+            _this2.$utils.showSuccess('success', response.message);
+
+            _this2.$router.push({
+              name: '/prix_heures'
+            });
+          } else {
+            _this2.$utils.showError('Error', response.message);
+          }
+        })["catch"](function (error) {
+          _this2.errors.push(error.response.data.error);
+        });
+      }
+    }
+  },
+  created: function created() {
+    this.loadData();
+  },
+  mounted: function mounted() {
+    console.log('Edit Prix component loaded');
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrixHeures/PrixHeuresList.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PrixHeures/PrixHeuresList.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'prix_heures',
+  created: function created() {
+    this.loadData();
+  },
+  methods: {
+    loadData: function loadData() {
+      var _this = this;
+
+      var url = this.url + '/api/prix/get';
+      this.axios.get(url).then(function (response) {
+        _this.prix_heures = response.data;
+        console.log(_this.prix_heures);
+      });
+    },
+    deletePrix: function deletePrix(id) {
+      var _this2 = this;
+
+      var url = this.url + "/api/prix/delete_prix/".concat(id);
+      this.axios["delete"](url).then(function (response) {
+        if (response.status) {
+          _this2.$utils.showSuccess('success', response.message);
+
+          _this2.loadData();
+        } else {
+          _this2.$utils.showError('Error', response.message);
+        }
+      });
+    }
+  },
+  mounted: function mounted() {
+    console.log('Prix component mounted ');
+  },
+  data: function data() {
+    return {
+      url: document.head.querySelector('meta[name="url"]').content,
+      prix_heures: []
+    };
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProfessorsList.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ProfessorsList.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'professors',
+  created: function created() {
+    this.loadData();
+  },
+  methods: {
+    loadData: function loadData() {
+      var _this = this;
+
+      var url = this.url + '/api/professor/get';
+      this.axios.get(url).then(function (response) {
+        _this.professors = response.data;
+        console.log(_this.professors);
+      });
+    }
+  },
+  mounted: function mounted() {
+    console.log('Professors component mounted ');
+  },
+  data: function data() {
+    return {
+      url: document.head.querySelector('meta[name="url"]').content,
+      professors: []
     };
   }
 });
@@ -52198,6 +52614,596 @@ var render = function() {
         ],
         1
       )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrixHeures/AddPrixHeures.vue?vue&type=template&id=3161ca6f&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PrixHeures/AddPrixHeures.vue?vue&type=template&id=3161ca6f& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "container" }, [
+      _c("h2", { staticClass: "text-center p-2 text-white bg-primary mt-5" }, [
+        _vm._v("Saisie des prix des heures")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c("div", { staticClass: "col-md-6 offset-md-3" }, [
+          _c(
+            "form",
+            {
+              attrs: {
+                id: "validateForm",
+                enctype: "multipart/form-data",
+                novalidate: ""
+              },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.savePrix($event)
+                }
+              }
+            },
+            [
+              _vm.errors.length
+                ? _c("div", { staticClass: "alert alert-danger" }, [
+                    _c(
+                      "ul",
+                      { staticClass: "mb-0" },
+                      _vm._l(_vm.errors, function(error, index) {
+                        return _c("li", { key: index }, [
+                          _vm._v(
+                            "\n                          " +
+                              _vm._s(error) +
+                              "\n                      "
+                          )
+                        ])
+                      }),
+                      0
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Prix des Heures du Jour ")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  id: "jour ",
+                  placeholder: "Entrer le Prix des Heures du Jour"
+                },
+                model: {
+                  value: _vm.prix_heure.jour,
+                  callback: function($$v) {
+                    _vm.$set(_vm.prix_heure, "jour", $$v)
+                  },
+                  expression: "prix_heure.jour "
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Prix des Heures du Soir")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  id: "soir",
+                  placeholder: "Entrer le Prix des Heures du Soir"
+                },
+                model: {
+                  value: _vm.prix_heure.soir,
+                  callback: function($$v) {
+                    _vm.$set(_vm.prix_heure, "soir", $$v)
+                  },
+                  expression: "prix_heure.soir"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Prix des Heures de Suivie")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  id: "suivie",
+                  placeholder: "Entrer le prix des heures de suivie"
+                },
+                model: {
+                  value: _vm.prix_heure.suivie,
+                  callback: function($$v) {
+                    _vm.$set(_vm.prix_heure, "suivie", $$v)
+                  },
+                  expression: "prix_heure.suivie"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Prix des Heures de Conseil/PFE")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  id: "suivie",
+                  placeholder: "Entrer le Prix des Heures de Conseil/PFE"
+                },
+                model: {
+                  value: _vm.prix_heure.conseil_pfe,
+                  callback: function($$v) {
+                    _vm.$set(_vm.prix_heure, "conseil_pfe", $$v)
+                  },
+                  expression: "prix_heure.conseil_pfe"
+                }
+              }),
+              _vm._v(" "),
+              _c("button", { staticClass: "btn btn-primary mt-4" }, [
+                _vm._v(" Valider ")
+              ])
+            ],
+            1
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrixHeures/EditPrix.vue?vue&type=template&id=38c0ba16&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PrixHeures/EditPrix.vue?vue&type=template&id=38c0ba16& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "container" }, [
+      _c("h2", { staticClass: "text-center p-2 text-white bg-primary mt-5" }, [
+        _vm._v("Modifier les Prix des Heures")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c("div", { staticClass: "col-md-6 offset-md-3" }, [
+          _c(
+            "form",
+            {
+              attrs: {
+                id: "validateForm",
+                enctype: "multipart/form-data",
+                novalidate: ""
+              },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.updatePrix($event)
+                }
+              }
+            },
+            [
+              _vm.errors.length
+                ? _c("div", { staticClass: "alert alert-danger" }, [
+                    _c(
+                      "ul",
+                      { staticClass: "mb-0" },
+                      _vm._l(_vm.errors, function(error, index) {
+                        return _c("li", { key: index }, [
+                          _vm._v(
+                            "\n                          " +
+                              _vm._s(error) +
+                              "\n                      "
+                          )
+                        ])
+                      }),
+                      0
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Prix des Heures du Jour ")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  id: "jour ",
+                  placeholder: "Entrer le Prix des Heures du Jour"
+                },
+                model: {
+                  value: _vm.prix_heure.jour,
+                  callback: function($$v) {
+                    _vm.$set(_vm.prix_heure, "jour", $$v)
+                  },
+                  expression: "prix_heure.jour "
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Prix des Heures du Soir")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  id: "soir",
+                  placeholder: "Entrer le Prix des Heures du Soir"
+                },
+                model: {
+                  value: _vm.prix_heure.soir,
+                  callback: function($$v) {
+                    _vm.$set(_vm.prix_heure, "soir", $$v)
+                  },
+                  expression: "prix_heure.soir"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Prix des Heures de Suivie")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  id: "suivie",
+                  placeholder: "Entrer le prix des heures de suivie"
+                },
+                model: {
+                  value: _vm.prix_heure.suivie,
+                  callback: function($$v) {
+                    _vm.$set(_vm.prix_heure, "suivie", $$v)
+                  },
+                  expression: "prix_heure.suivie"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "font-weight-regular", attrs: { for: "" } },
+                [_vm._v("Prix des Heures de Conseil/PFE")]
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  id: "suivie",
+                  placeholder: "Entrer le Prix des Heures de Conseil/PFE"
+                },
+                model: {
+                  value: _vm.prix_heure.conseil_pfe,
+                  callback: function($$v) {
+                    _vm.$set(_vm.prix_heure, "conseil_pfe", $$v)
+                  },
+                  expression: "prix_heure.conseil_pfe"
+                }
+              }),
+              _vm._v(" "),
+              _c("button", { staticClass: "btn btn-primary mt-4" }, [
+                _vm._v(" Valider ")
+              ])
+            ],
+            1
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrixHeures/PrixHeuresList.vue?vue&type=template&id=2c2e2ad2&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PrixHeures/PrixHeuresList.vue?vue&type=template&id=2c2e2ad2& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("h2", { staticClass: "text-center p-2 text-white bg-primary mt-5" }, [
+        _vm._v("La liste des Prix des Heures")
+      ]),
+      _vm._v(" "),
+      _c("v-simple-table", {
+        scopedSlots: _vm._u([
+          {
+            key: "default",
+            fn: function() {
+              return [
+                _c("thead", [
+                  _c("tr", [
+                    _c("th", { staticClass: "text-left" }, [_vm._v("#")]),
+                    _vm._v(" "),
+                    _c("th", { staticClass: "text-left" }, [
+                      _vm._v("Heures du Jour")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { staticClass: "text-left" }, [
+                      _vm._v("Heures du Soir")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { staticClass: "text-left" }, [
+                      _vm._v("Heures de suivie")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { staticClass: "text-left" }, [
+                      _vm._v("Heures de Conseil/PEF")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { staticClass: "text-left" }, [_vm._v("Actions")])
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.prix_heures, function(prix_heure) {
+                  return _c("tbody", { key: prix_heure.id }, [
+                    _c("tr", [
+                      _c("td", [
+                        _c("p", { staticClass: "font-weight-medium" }, [
+                          _vm._v(_vm._s(prix_heure.id))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("p", { staticClass: "font-weight-medium" }, [
+                          _vm._v(_vm._s(prix_heure.jour))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("p", { staticClass: "font-weight-medium" }, [
+                          _vm._v(_vm._s(prix_heure.soir))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("p", { staticClass: "font-weight-medium" }, [
+                          _vm._v(_vm._s(prix_heure.suivie))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("p", { staticClass: "font-weight-medium" }, [
+                          _vm._v(_vm._s(prix_heure.conseil_pfe))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        [
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: {
+                                color: "success",
+                                fab: "",
+                                "x-small": "",
+                                dark: "",
+                                to: {
+                                  name: "/get_prix",
+                                  params: { id: prix_heure.id }
+                                }
+                              }
+                            },
+                            [_c("v-icon", [_vm._v("mdi-pencil")])],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: {
+                                color: "red",
+                                fab: "",
+                                "x-small": "",
+                                dark: ""
+                              },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.deletePrix(prix_heure.id)
+                                }
+                              }
+                            },
+                            [_c("v-icon", [_vm._v("mdi-delete")])],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ])
+                  ])
+                })
+              ]
+            },
+            proxy: true
+          }
+        ])
+      }),
+      _vm._v(" "),
+      _c(
+        "v-btn",
+        { attrs: { depressed: "", color: "success", to: "/add_prix_heures" } },
+        [
+          _c("v-icon", { attrs: { left: "" } }, [
+            _vm._v("\n      mdi-plus\n    ")
+          ]),
+          _vm._v("\n    Ajouter\n  ")
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProfessorsList.vue?vue&type=template&id=aace5666&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ProfessorsList.vue?vue&type=template&id=aace5666& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("h2", { staticClass: "text-center p-2 text-white bg-primary mt-5" }, [
+        _vm._v("La liste des Prix des Heures")
+      ]),
+      _vm._v(" "),
+      _c("v-simple-table", {
+        scopedSlots: _vm._u([
+          {
+            key: "default",
+            fn: function() {
+              return [
+                _c("thead", [
+                  _c("tr", [
+                    _c("th", { staticClass: "text-left" }, [_vm._v("#")]),
+                    _vm._v(" "),
+                    _c("th", { staticClass: "text-left" }, [
+                      _vm._v("Heures du Jour")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { staticClass: "text-left" }, [
+                      _vm._v("Heures du Soir")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { staticClass: "text-left" }, [
+                      _vm._v("Heures de suivie")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { staticClass: "text-left" }, [
+                      _vm._v("Heures de Conseil/PEF")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { staticClass: "text-left" }, [_vm._v("Actions")])
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.professors, function(professor) {
+                  return _c("tbody", { key: professor.id }, [
+                    _c("tr", [
+                      _c("td", [
+                        _c("p", { staticClass: "font-weight-medium" }, [
+                          _vm._v(_vm._s(professor.id))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("p", { staticClass: "font-weight-medium" }, [
+                          _vm._v(_vm._s(professor.grade))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("p", { staticClass: "font-weight-medium" }, [
+                          _vm._v(_vm._s(professor.cin_delivered_at))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("p", { staticClass: "font-weight-medium" }, [
+                          _vm._v(_vm._s(professor.cnrps))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("p", { staticClass: "font-weight-medium" }, [
+                          _vm._v(_vm._s(professor.cnss))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        [
+                          _c(
+                            "v-btn",
+                            { attrs: { depressed: "", color: "primary" } },
+                            [_vm._v("Saisir les heures de travail ")]
+                          )
+                        ],
+                        1
+                      )
+                    ])
+                  ])
+                })
+              ]
+            },
+            proxy: true
+          }
+        ])
+      })
     ],
     1
   )
@@ -115572,6 +116578,282 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/PrixHeures/AddPrixHeures.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/PrixHeures/AddPrixHeures.vue ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AddPrixHeures_vue_vue_type_template_id_3161ca6f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddPrixHeures.vue?vue&type=template&id=3161ca6f& */ "./resources/js/components/PrixHeures/AddPrixHeures.vue?vue&type=template&id=3161ca6f&");
+/* harmony import */ var _AddPrixHeures_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddPrixHeures.vue?vue&type=script&lang=js& */ "./resources/js/components/PrixHeures/AddPrixHeures.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AddPrixHeures_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AddPrixHeures_vue_vue_type_template_id_3161ca6f___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AddPrixHeures_vue_vue_type_template_id_3161ca6f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PrixHeures/AddPrixHeures.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PrixHeures/AddPrixHeures.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/PrixHeures/AddPrixHeures.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPrixHeures_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./AddPrixHeures.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrixHeures/AddPrixHeures.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPrixHeures_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PrixHeures/AddPrixHeures.vue?vue&type=template&id=3161ca6f&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/PrixHeures/AddPrixHeures.vue?vue&type=template&id=3161ca6f& ***!
+  \*********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPrixHeures_vue_vue_type_template_id_3161ca6f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./AddPrixHeures.vue?vue&type=template&id=3161ca6f& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrixHeures/AddPrixHeures.vue?vue&type=template&id=3161ca6f&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPrixHeures_vue_vue_type_template_id_3161ca6f___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPrixHeures_vue_vue_type_template_id_3161ca6f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PrixHeures/EditPrix.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/PrixHeures/EditPrix.vue ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EditPrix_vue_vue_type_template_id_38c0ba16___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditPrix.vue?vue&type=template&id=38c0ba16& */ "./resources/js/components/PrixHeures/EditPrix.vue?vue&type=template&id=38c0ba16&");
+/* harmony import */ var _EditPrix_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditPrix.vue?vue&type=script&lang=js& */ "./resources/js/components/PrixHeures/EditPrix.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EditPrix_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EditPrix_vue_vue_type_template_id_38c0ba16___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EditPrix_vue_vue_type_template_id_38c0ba16___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PrixHeures/EditPrix.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PrixHeures/EditPrix.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/PrixHeures/EditPrix.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPrix_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./EditPrix.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrixHeures/EditPrix.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPrix_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PrixHeures/EditPrix.vue?vue&type=template&id=38c0ba16&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/PrixHeures/EditPrix.vue?vue&type=template&id=38c0ba16& ***!
+  \****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPrix_vue_vue_type_template_id_38c0ba16___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./EditPrix.vue?vue&type=template&id=38c0ba16& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrixHeures/EditPrix.vue?vue&type=template&id=38c0ba16&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPrix_vue_vue_type_template_id_38c0ba16___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPrix_vue_vue_type_template_id_38c0ba16___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PrixHeures/PrixHeuresList.vue":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/PrixHeures/PrixHeuresList.vue ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PrixHeuresList_vue_vue_type_template_id_2c2e2ad2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PrixHeuresList.vue?vue&type=template&id=2c2e2ad2& */ "./resources/js/components/PrixHeures/PrixHeuresList.vue?vue&type=template&id=2c2e2ad2&");
+/* harmony import */ var _PrixHeuresList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PrixHeuresList.vue?vue&type=script&lang=js& */ "./resources/js/components/PrixHeures/PrixHeuresList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PrixHeuresList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PrixHeuresList_vue_vue_type_template_id_2c2e2ad2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PrixHeuresList_vue_vue_type_template_id_2c2e2ad2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PrixHeures/PrixHeuresList.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PrixHeures/PrixHeuresList.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/PrixHeures/PrixHeuresList.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PrixHeuresList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./PrixHeuresList.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrixHeures/PrixHeuresList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PrixHeuresList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PrixHeures/PrixHeuresList.vue?vue&type=template&id=2c2e2ad2&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/PrixHeures/PrixHeuresList.vue?vue&type=template&id=2c2e2ad2& ***!
+  \**********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrixHeuresList_vue_vue_type_template_id_2c2e2ad2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./PrixHeuresList.vue?vue&type=template&id=2c2e2ad2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PrixHeures/PrixHeuresList.vue?vue&type=template&id=2c2e2ad2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrixHeuresList_vue_vue_type_template_id_2c2e2ad2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrixHeuresList_vue_vue_type_template_id_2c2e2ad2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ProfessorsList.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/ProfessorsList.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ProfessorsList_vue_vue_type_template_id_aace5666___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProfessorsList.vue?vue&type=template&id=aace5666& */ "./resources/js/components/ProfessorsList.vue?vue&type=template&id=aace5666&");
+/* harmony import */ var _ProfessorsList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProfessorsList.vue?vue&type=script&lang=js& */ "./resources/js/components/ProfessorsList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ProfessorsList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ProfessorsList_vue_vue_type_template_id_aace5666___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ProfessorsList_vue_vue_type_template_id_aace5666___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ProfessorsList.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ProfessorsList.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/ProfessorsList.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfessorsList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ProfessorsList.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProfessorsList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfessorsList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ProfessorsList.vue?vue&type=template&id=aace5666&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/ProfessorsList.vue?vue&type=template&id=aace5666& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfessorsList_vue_vue_type_template_id_aace5666___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ProfessorsList.vue?vue&type=template&id=aace5666& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProfessorsList.vue?vue&type=template&id=aace5666&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfessorsList_vue_vue_type_template_id_aace5666___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfessorsList_vue_vue_type_template_id_aace5666___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/helpers/utilities.js":
 /*!*******************************************!*\
   !*** ./resources/js/helpers/utilities.js ***!
@@ -115649,15 +116931,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Bilan_BilanList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Bilan/BilanList */ "./resources/js/components/Bilan/BilanList.vue");
 /* harmony import */ var _components_Contracts_ContractsList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Contracts/ContractsList */ "./resources/js/components/Contracts/ContractsList.vue");
 /* harmony import */ var _components_HeureSupp_HeuresSuppList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/HeureSupp/HeuresSuppList */ "./resources/js/components/HeureSupp/HeuresSuppList.vue");
-/* harmony import */ var _components_Home_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/Home.vue */ "./resources/js/components/Home.vue");
-/* harmony import */ var _components_Bilan_AddBilan_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/Bilan/AddBilan.vue */ "./resources/js/components/Bilan/AddBilan.vue");
-/* harmony import */ var _components_Contracts_AddContracts_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/Contracts/AddContracts.vue */ "./resources/js/components/Contracts/AddContracts.vue");
-/* harmony import */ var _components_Paiement_AddPaiement_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/Paiement/AddPaiement.vue */ "./resources/js/components/Paiement/AddPaiement.vue");
-/* harmony import */ var _components_HeureSupp_AddHeures_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/HeureSupp/AddHeures.vue */ "./resources/js/components/HeureSupp/AddHeures.vue");
-/* harmony import */ var _components_Paiement_EditPaiement_vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/Paiement/EditPaiement.vue */ "./resources/js/components/Paiement/EditPaiement.vue");
-/* harmony import */ var _components_HeureSupp_EditHeuresSupp_vue__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/HeureSupp/EditHeuresSupp.vue */ "./resources/js/components/HeureSupp/EditHeuresSupp.vue");
-/* harmony import */ var _components_Contracts_EditContracts_vue__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/Contracts/EditContracts.vue */ "./resources/js/components/Contracts/EditContracts.vue");
-/* harmony import */ var _components_Bilan_EditBilan_vue__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/Bilan/EditBilan.vue */ "./resources/js/components/Bilan/EditBilan.vue");
+/* harmony import */ var _components_PrixHeures_PrixHeuresList_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/PrixHeures/PrixHeuresList.vue */ "./resources/js/components/PrixHeures/PrixHeuresList.vue");
+/* harmony import */ var _components_ProfessorsList_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/ProfessorsList.vue */ "./resources/js/components/ProfessorsList.vue");
+/* harmony import */ var _components_Home_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/Home.vue */ "./resources/js/components/Home.vue");
+/* harmony import */ var _components_Bilan_AddBilan_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/Bilan/AddBilan.vue */ "./resources/js/components/Bilan/AddBilan.vue");
+/* harmony import */ var _components_Contracts_AddContracts_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/Contracts/AddContracts.vue */ "./resources/js/components/Contracts/AddContracts.vue");
+/* harmony import */ var _components_Paiement_AddPaiement_vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/Paiement/AddPaiement.vue */ "./resources/js/components/Paiement/AddPaiement.vue");
+/* harmony import */ var _components_HeureSupp_AddHeures_vue__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/HeureSupp/AddHeures.vue */ "./resources/js/components/HeureSupp/AddHeures.vue");
+/* harmony import */ var _components_Paiement_EditPaiement_vue__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/Paiement/EditPaiement.vue */ "./resources/js/components/Paiement/EditPaiement.vue");
+/* harmony import */ var _components_HeureSupp_EditHeuresSupp_vue__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/HeureSupp/EditHeuresSupp.vue */ "./resources/js/components/HeureSupp/EditHeuresSupp.vue");
+/* harmony import */ var _components_Contracts_EditContracts_vue__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/Contracts/EditContracts.vue */ "./resources/js/components/Contracts/EditContracts.vue");
+/* harmony import */ var _components_Bilan_EditBilan_vue__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/Bilan/EditBilan.vue */ "./resources/js/components/Bilan/EditBilan.vue");
+/* harmony import */ var _components_PrixHeures_AddPrixHeures_vue__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/PrixHeures/AddPrixHeures.vue */ "./resources/js/components/PrixHeures/AddPrixHeures.vue");
+/* harmony import */ var _components_PrixHeures_EditPrix_vue__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/PrixHeures/EditPrix.vue */ "./resources/js/components/PrixHeures/EditPrix.vue");
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]); //import views
@@ -115675,14 +116961,22 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 
 
 
+
+
+
+
 var routes = [{
   path: '/',
   name: 'Home',
-  component: _components_Home_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
+  component: _components_Home_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
 }, {
   name: '/paiement',
   path: '/paiement',
   component: _components_Paiement_PaiementList__WEBPACK_IMPORTED_MODULE_2__["default"]
+}, {
+  name: '/professor',
+  path: '/professor',
+  component: _components_ProfessorsList_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
 }, {
   name: '/bilans',
   path: '/bilans',
@@ -115696,37 +116990,49 @@ var routes = [{
   path: '/heures_supp',
   component: _components_HeureSupp_HeuresSuppList__WEBPACK_IMPORTED_MODULE_5__["default"]
 }, {
+  name: '/prix_heures',
+  path: '/prix_heures',
+  component: _components_PrixHeures_PrixHeuresList_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
+}, {
   name: '/add_bilan',
   path: '/add_bilan',
-  component: _components_Bilan_AddBilan_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
+  component: _components_Bilan_AddBilan_vue__WEBPACK_IMPORTED_MODULE_9__["default"]
 }, {
   name: '/add_contract',
   path: '/add_contract',
-  component: _components_Contracts_AddContracts_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
+  component: _components_Contracts_AddContracts_vue__WEBPACK_IMPORTED_MODULE_10__["default"]
 }, {
   name: '/add_paiement',
   path: '/add_paiement',
-  component: _components_Paiement_AddPaiement_vue__WEBPACK_IMPORTED_MODULE_9__["default"]
+  component: _components_Paiement_AddPaiement_vue__WEBPACK_IMPORTED_MODULE_11__["default"]
 }, {
   name: '/add_heures_supp',
   path: '/add_heures_supp',
-  component: _components_HeureSupp_AddHeures_vue__WEBPACK_IMPORTED_MODULE_10__["default"]
+  component: _components_HeureSupp_AddHeures_vue__WEBPACK_IMPORTED_MODULE_12__["default"]
 }, {
   name: '/get_bilan',
   path: '/get_bilan/edit/:id?',
-  component: _components_Bilan_EditBilan_vue__WEBPACK_IMPORTED_MODULE_14__["default"]
+  component: _components_Bilan_EditBilan_vue__WEBPACK_IMPORTED_MODULE_16__["default"]
 }, {
   name: '/get_contract',
   path: '/get_contract/edit/:id?',
-  component: _components_Contracts_EditContracts_vue__WEBPACK_IMPORTED_MODULE_13__["default"]
+  component: _components_Contracts_EditContracts_vue__WEBPACK_IMPORTED_MODULE_15__["default"]
 }, {
   name: '/get_heures_supp',
   path: '/get_heures_supp/edit/:id?',
-  component: _components_HeureSupp_EditHeuresSupp_vue__WEBPACK_IMPORTED_MODULE_12__["default"]
+  component: _components_HeureSupp_EditHeuresSupp_vue__WEBPACK_IMPORTED_MODULE_14__["default"]
 }, {
   name: '/get_paiement',
   path: '/get_paiement/edit/:id?',
-  component: _components_Paiement_EditPaiement_vue__WEBPACK_IMPORTED_MODULE_11__["default"]
+  component: _components_Paiement_EditPaiement_vue__WEBPACK_IMPORTED_MODULE_13__["default"]
+}, {
+  name: '/add_prix_heures',
+  path: '/add_prix_heures',
+  component: _components_PrixHeures_AddPrixHeures_vue__WEBPACK_IMPORTED_MODULE_17__["default"]
+}, {
+  name: '/get_prix',
+  path: '/get_prix/edit/:id?',
+  component: _components_PrixHeures_EditPrix_vue__WEBPACK_IMPORTED_MODULE_18__["default"]
 }];
 /* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: routes

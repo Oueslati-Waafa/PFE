@@ -19,7 +19,7 @@ class BilanModuleController extends Controller
            $bilan = bilan_module::find($id);
            if($bilan->delete())
            {
-               return response()->json(['status'=> true, 'message'=>'contract a été supprimer avec succés']);
+               return response()->json(['status'=> true, 'message'=>'Bilan a été supprimer avec succées']);
            }
            else
            {

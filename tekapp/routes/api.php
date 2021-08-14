@@ -53,3 +53,18 @@ Route::group(['prefix' => 'paiement'], function () {
     Route::post('save_bilan/{id}', "BilanModuleController@updateBilan");
     Route::post('save_bilan', "BilanModuleController@saveBilan");//done
    });
+
+    Route::group(['prefix' => 'prix'], function () {
+  
+    Route::delete("delete_prix/{id}", "PrixHeureController@deletePrix");;//done
+    Route::get("get", "PrixHeureController@getAll");//done
+    Route::get('get_prix/{id}', 'PrixHeureController@getPrix');
+    Route::post('save_prix/{id}', "PrixHeureController@updatePrix");
+    Route::post('save_prix', "PrixHeureController@savePrix");//done
+   });
+
+   Route::group(['prefix' => 'professor'], function () {
+  
+    Route::get("get", "ProfessorController@getAll");//done
+    Route::get('get_professor/{id}', 'ProfessorController@getProfessor');
+   });

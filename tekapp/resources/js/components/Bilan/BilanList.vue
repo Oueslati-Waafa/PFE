@@ -1,4 +1,5 @@
 <template>
+
     <div class="container">
         <h2 class="text-center p-2 text-white bg-primary mt-5">La liste des Bilans</h2>
   <v-simple-table>
