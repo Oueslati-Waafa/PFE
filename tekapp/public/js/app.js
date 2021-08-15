@@ -4113,6 +4113,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'professors',
   created: function created() {
@@ -53118,7 +53120,7 @@ var render = function() {
     { staticClass: "container" },
     [
       _c("h2", { staticClass: "text-center p-2 text-white bg-primary mt-5" }, [
-        _vm._v("La liste des Prix des Heures")
+        _vm._v("La liste des Professeur de TEK-UP")
       ]),
       _vm._v(" "),
       _c("v-simple-table", {
@@ -53132,22 +53134,26 @@ var render = function() {
                     _c("th", { staticClass: "text-left" }, [_vm._v("#")]),
                     _vm._v(" "),
                     _c("th", { staticClass: "text-left" }, [
-                      _vm._v("Heures du Jour")
+                      _vm._v("Nom de professeur")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { staticClass: "text-left" }, [_vm._v("Grade")]),
+                    _vm._v(" "),
+                    _c("th", { staticClass: "text-left" }, [
+                      _vm._v("Date de delivrance CIN ")
                     ]),
                     _vm._v(" "),
                     _c("th", { staticClass: "text-left" }, [
-                      _vm._v("Heures du Soir")
+                      _vm._v("Code CNRPS")
                     ]),
                     _vm._v(" "),
                     _c("th", { staticClass: "text-left" }, [
-                      _vm._v("Heures de suivie")
+                      _vm._v("Code CNSS")
                     ]),
                     _vm._v(" "),
                     _c("th", { staticClass: "text-left" }, [
-                      _vm._v("Heures de Conseil/PEF")
-                    ]),
-                    _vm._v(" "),
-                    _c("th", { staticClass: "text-left" }, [_vm._v("Actions")])
+                      _vm._v("Saisir les heures de travails")
+                    ])
                   ])
                 ]),
                 _vm._v(" "),
@@ -53157,6 +53163,12 @@ var render = function() {
                       _c("td", [
                         _c("p", { staticClass: "font-weight-medium" }, [
                           _vm._v(_vm._s(professor.id))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("p", { staticClass: "font-weight-medium" }, [
+                          _vm._v(_vm._s(professor.user.fullname))
                         ])
                       ]),
                       _vm._v(" "),
@@ -53190,7 +53202,7 @@ var render = function() {
                           _c(
                             "v-btn",
                             { attrs: { depressed: "", color: "primary" } },
-                            [_vm._v("Saisir les heures de travail ")]
+                            [_vm._v("Aller à")]
                           )
                         ],
                         1

@@ -36,4 +36,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $appends = ['fullname'];
+
+    public function getFullnameAttribute()
+    {
+      return "$this->lastname $this->name";
+    }
+
+    public static function validate($id)
+    {
+      if (!User::find($id))
+        return response()->json(["error" => "User is not found"], 404);
+    }
+
+    public function name()
+    {
+      return $this->belongsTo("App\User", "name");
+    }
 }
