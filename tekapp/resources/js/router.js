@@ -22,6 +22,10 @@ import EditContract from './components/Contracts/EditContracts.vue';
 import EditBilan from './components/Bilan/EditBilan.vue';
 import AddPrixHeures from './components/PrixHeures/AddPrixHeures.vue';
 import EditPrix from './components/PrixHeures/EditPrix.vue';
+import SessionList from './components/Session/SessionList';
+import PeriodList from './components/Period/PeriodList';
+import WeekList from './components/Week/WeekList';
+import UserList from './components/User/UserList';
 
 
 const routes = [
@@ -34,6 +38,11 @@ const routes = [
         name:'/paiement',
         path: '/paiement', 
         component: PaimementList ,
+    },
+    { 
+        name:'/users',
+        path: '/users', 
+        component: UserList ,
     },
     { 
         name:'/professor',
@@ -59,6 +68,21 @@ const routes = [
         name:'/prix_heures',
         path: '/prix_heures', 
         component: PrixHeures ,
+    },
+    { 
+        name:'/session',
+        path: '/session', 
+        component: SessionList ,
+    },
+    { 
+        name:'/period',
+        path: '/period', 
+        component: PeriodList ,
+    },
+    { 
+        name:'/week',
+        path: '/week', 
+        component: WeekList ,
     },
     { 
         name:'/add_bilan',

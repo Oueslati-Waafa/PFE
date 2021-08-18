@@ -68,3 +68,7 @@ Route::group(['prefix' => 'paiement'], function () {
     Route::get("get", "ProfessorController@all");//done
     Route::get('get_professor/{id}', 'ProfessorController@getProfessor');
    });
+   Route::group(['prefix' => 'user'], function () {
+  
+    Route::get("get", "UserController@getAll");//done
+   });

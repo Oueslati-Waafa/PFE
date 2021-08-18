@@ -1,11 +1,186 @@
 <template>
     <div class="home">
-        <v-toolbar class="mt-5" flat>
-            <v-toolbar-title>
-                <span class="caption">Dashboard></span>
-            </v-toolbar-title>
+        <div class="container">
+        
+    <h2 class="text-center p-2 text-white bg-primary mt-5" style="margin-bottom: 1em;">Tableau de bord</h2>
+    
+    <v-row>
+        <v-col cols="4">
+<v-card
+    class="mx-auto"
+    max-width="344"
+    color="light-blue lighten-5"
+    outlined>
+    <v-list-item three-line>
+      <v-list-item-content>
+        <v-list-item-title class="text-h5 mb-1">
+          Les Sessions
+        </v-list-item-title>
+        <v-list-item-subtitle class="font-weight-regular">Vous pouvez afficher, modifier, supprimer des sessions</v-list-item-subtitle>
+      </v-list-item-content>
 
-        </v-toolbar>
+    </v-list-item>
+
+    <v-card-actions>
+      <v-btn
+        outlined
+        rounded
+        text
+        color="primary"
+        to="/session"
+      >
+        Visiter
+      </v-btn>
+    </v-card-actions>
+  </v-card>
+        </v-col>
+        <v-col cols="4"><v-card
+    class="mx-auto"
+    max-width="344"
+    color="light-blue lighten-5"
+    outlined>
+    <v-list-item three-line>
+      <v-list-item-content>
+        <v-list-item-title class="text-h5 mb-1">
+          Les Périodes
+        </v-list-item-title>
+        <v-list-item-subtitle class="font-weight-regular">Vous pouvez afficher, modifier, supprimer des Périodes</v-list-item-subtitle>
+      </v-list-item-content>
+
+    </v-list-item>
+
+    <v-card-actions>
+      <v-btn
+        outlined
+        rounded
+        text
+        color="primary"
+        to="/period"
+      >
+        Visiter
+      </v-btn>
+    </v-card-actions>
+  </v-card></v-col>
+          <v-col cols="4"><v-card
+    class="mx-auto"
+    max-width="344"
+    color="light-blue lighten-5"
+    outlined>
+    <v-list-item three-line>
+      <v-list-item-content>
+        <v-list-item-title class="text-h5 mb-1">
+          Les Semaines
+        </v-list-item-title>
+        <v-list-item-subtitle class="font-weight-regular">Vous pouvez afficher, modifier, supprimer des Semaines</v-list-item-subtitle>
+      </v-list-item-content>
+
+    </v-list-item>
+
+    <v-card-actions>
+      <v-btn
+        outlined
+        rounded
+        text
+        color="primary"
+        to="/week"
+      >
+        Visiter
+      </v-btn>
+    </v-card-actions>
+  </v-card></v-col>
+    </v-row>
+
+    <v-row>
+        <v-col cols="4">
+            <v-card
+    class="mx-auto"
+    max-width="344"
+    color="light-blue lighten-5"
+    outlined>
+    <v-list-item three-line>
+      <v-list-item-content>
+        <v-list-item-title class="text-h5 mb-1">
+          Les Professeurs
+        </v-list-item-title>
+        <v-list-item-subtitle class="font-weight-regular">Vous pouvez afficher, modifier, supprimer des Professuers</v-list-item-subtitle>
+      </v-list-item-content>
+
+    </v-list-item>
+
+    <v-card-actions>
+      <v-btn
+        outlined
+        rounded
+        text
+        color="primary"
+        to="/professor"
+      >
+        Visiter
+      </v-btn>
+    </v-card-actions>
+  </v-card>
+        </v-col>
+        <v-col cols="4">
+            <v-card
+    class="mx-auto"
+    max-width="344"
+    color="light-blue lighten-5"
+    outlined>
+    <v-list-item three-line>
+      <v-list-item-content>
+        <v-list-item-title class="text-h5 mb-1">
+          Les Utilisateurs
+        </v-list-item-title>
+        <v-list-item-subtitle class="font-weight-regular">Vous pouvez afficher, modifier, supprimer des Utilisateurs</v-list-item-subtitle>
+      </v-list-item-content>
+
+    </v-list-item>
+
+    <v-card-actions>
+      <v-btn
+        outlined
+        rounded
+        text
+        color="primary"
+        to="/users"
+      >
+        Visiter
+      </v-btn>
+    </v-card-actions>
+  </v-card>
+        </v-col>
+        <v-col cols="4">
+            <v-card
+    class="mx-auto"
+    max-width="344"
+    color="light-blue lighten-5"
+    outlined>
+    <v-list-item three-line>
+      <v-list-item-content>
+        <v-list-item-title class="text-h5 mb-1">
+          Paiement
+        </v-list-item-title>
+        <v-list-item-subtitle class="font-weight-regular">Vous pouvez afficher, modifier, supprimer des Paiement</v-list-item-subtitle>
+      </v-list-item-content>
+
+    </v-list-item>
+
+    <v-card-actions>
+      <v-btn
+        outlined
+        rounded
+        text
+        color="primary"
+        to="/paiement"
+      >
+        Visiter
+      </v-btn>
+    </v-card-actions>
+  </v-card>
+        </v-col>
+    </v-row>
+       
+        </div>
     </div>
 </template>
 

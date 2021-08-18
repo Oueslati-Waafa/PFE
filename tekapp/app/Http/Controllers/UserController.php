@@ -11,4 +11,11 @@ class UserController extends Controller
     {
       return User::where('type', 'professor')->with('name')->get();
     }
+
+    //get all prix
+    public function getAll()
+    {
+      $user= User::all(); 
+      return $user;
+    }
 }
