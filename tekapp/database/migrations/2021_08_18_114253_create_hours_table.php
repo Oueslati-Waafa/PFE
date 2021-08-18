@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWeeksHoursTable extends Migration
+class CreateHoursTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateWeeksHoursTable extends Migration
      */
     public function up()
     {
-        Schema::create('weeks_hours', function (Blueprint $table) {
+        Schema::create('hours', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('weeks_id');
-            $table->float("h_suivie");
-            $table->string("type");
+            $table->float('heure_suivie');
+            $table->string('type');
             $table->timestamps();
 
-              //constraints
-            $table->foreign('weeks_id')->references('id')->on('weeks')->onDelete('cascade');
+             //constraints
+             $table->foreign("weeks_id")->references("id")->on("weeks")->onDelete("cascade");
+
         });
     }
 
@@ -32,6 +33,6 @@ class CreateWeeksHoursTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('weeks_hours');
+        Schema::dropIfExists('hours');
     }
 }
