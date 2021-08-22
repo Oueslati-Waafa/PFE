@@ -96,5 +96,5 @@ Route::group(['prefix' => 'paiement'], function () {
     Route::get('get_session/{id}', 'SessionController@getSession');
     Route::post('save_session/{id}', "SessionController@updateSession");
     Route::post('save_session', "SessionController@saveSession");//done
-    Route::get("get_first_session", "SessionController@getSessionPeriods");//done
+    //Route::get("get_session_periods", "SessionController@getSessionWithPeriods");//done
    });

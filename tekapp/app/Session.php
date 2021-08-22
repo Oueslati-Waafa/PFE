@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Session extends Model
 {
-    protected $appends = ['academic_year'];
+      protected $appends = ['academic_year'];
 
     public function getAcademicYearAttribute()
     {
@@ -51,4 +51,4 @@ class Session extends Model
      return Session::orderBy('start_date', 'desc');
    }
  
-}
+  }

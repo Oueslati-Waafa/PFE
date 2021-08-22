@@ -18,5 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::get('/get_session_periods','SessionController@getSessionWithPeriods');
 
