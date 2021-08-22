@@ -13,7 +13,7 @@
         <th class="text-left">Type</th>
         </tr>
       </thead>
-      <tbody v-for="user in users" :key="user.id">
+      <tbody v-for="user in users.data" :key="user.id">
         <tr>
          <td><p class="font-weight-medium">{{user.id}}</p></td>
          <td><p class="font-weight-medium">{{user.fullname}}</p></td>
@@ -27,7 +27,7 @@
       </tbody>
     </template>
   </v-simple-table>
-
+<pagination :data="users" @pagination-change-page="getResults"></pagination>
     </div>
 </template>
 
@@ -46,21 +46,27 @@ export default {
             let url = this.url + '/api/user/get';
             this.axios.get(url).then(response => {
                 this.users = response.data
-                console.log(this.users);
             });
         },
         
-      
+      getResults(page = 1) {
+			axios.get('http://localhost:8000/api/user/get?page=' + page)
+				.then(response => {
+					this.users = response.data;
+				});
+		},
         },
         mounted()
         {
             console.log('Prix component mounted ');
+            // Fetch initial results
+	         	this.getResults();
         },
       
         data() {
             return {
                 url: document.head.querySelector('meta[name="url"]').content,
-                users:[],
+                users:{},
                 
             }
         },

@@ -18,6 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+//paiement routes 
 Route::group(['prefix' => 'paiement'], function () {
   
    Route::delete("delete_paiement/{id}", "PaiementController@deletePaiement");
@@ -26,6 +28,8 @@ Route::group(['prefix' => 'paiement'], function () {
    Route::post('update_paiement/{id}', "PaiementController@updatePaiement");
    Route::post('save_paiement', "PaiementController@savePaiement");
   });
+
+  //Heures supp routes
   
   Route::group(['prefix' => 'heures_supp'], function () {
   
@@ -36,6 +40,8 @@ Route::group(['prefix' => 'paiement'], function () {
     Route::post('save_heure_supp', "HeureSuppController@saveHeures");
    });
 
+   //contract routes
+
    Route::group(['prefix' => 'contracts'], function () {
   
     Route::delete("delete_contract/{id}", "ContractsController@deleteContract");;//done
@@ -44,6 +50,8 @@ Route::group(['prefix' => 'paiement'], function () {
     Route::post('save_contracts/{id}', "ContractsController@updateContracts");
     Route::post('save_contracts', "ContractsController@saveContract");//done
    });
+
+   //Bilan Routes
 
    Route::group(['prefix' => 'bilans'], function () {
   
@@ -54,6 +62,8 @@ Route::group(['prefix' => 'paiement'], function () {
     Route::post('save_bilan', "BilanModuleController@saveBilan");//done
    });
 
+   //prix routes
+
     Route::group(['prefix' => 'prix'], function () {
   
     Route::delete("delete_prix/{id}", "PrixHeureController@deletePrix");;//done
@@ -63,12 +73,28 @@ Route::group(['prefix' => 'paiement'], function () {
     Route::post('save_prix', "PrixHeureController@savePrix");//done
    });
 
-   Route::group(['prefix' => 'professor'], function () {
+
+    // professor routes
+    Route::group(['prefix' => 'professor'], function () {
   
     Route::get("get", "ProfessorController@all");//done
     Route::get('get_professor/{id}', 'ProfessorController@getProfessor');
    });
+   
+   //user routes
    Route::group(['prefix' => 'user'], function () {
   
-    Route::get("get", "UserController@getAll");//done
+   Route::get("get", "UserController@getAll");//done
+   });
+
+   //session routes
+   
+   Route::group(['prefix' => 'session'], function () {
+  
+    Route::delete("delete_session/{id}", "SessionController@deleteSession");;//done
+    Route::get("get", "SessionController@getAll");//done
+    Route::get('get_session/{id}', 'SessionController@getSession');
+    Route::post('save_session/{id}', "SessionController@updateSession");
+    Route::post('save_session', "SessionController@saveSession");//done
+    Route::get("get_first_session", "SessionController@getSessionPeriods");//done
    });

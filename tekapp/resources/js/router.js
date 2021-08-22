@@ -15,6 +15,8 @@ import AddBilan from './components/Bilan/AddBilan.vue';
 import AddContract from './components/Contracts/AddContracts.vue';
 import AddPaiement from './components/Paiement/AddPaiement.vue';
 import AddHeureSupp from './components/HeureSupp/AddHeures.vue';
+import AddSession from './components/Session/AddSession.vue';
+import EditSession from './components/Session/EditSession.vue';
 
 import EditPaiement from './components/Paiement/EditPaiement.vue';
 import EditHeureSupp from './components/HeureSupp/EditHeuresSupp.vue';
@@ -133,6 +135,16 @@ const routes = [
         name:'/get_prix',
         path: '/get_prix/edit/:id?', 
         component: EditPrix,
+    },
+    { 
+        name:'/add_session',
+        path: '/add_session', 
+        component: AddSession ,
+    },
+    { 
+        name:'/get_session',
+        path: '/get_session/edit/:id?', 
+        component: EditSession ,
     },
   ];
 

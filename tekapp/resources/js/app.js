@@ -44,6 +44,8 @@ import Vue from 'vue';
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('appdrawer-component', require('./App.vue').default);
+Vue.component('pagination', require('laravel-vue-pagination'));
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

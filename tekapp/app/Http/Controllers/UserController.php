@@ -15,7 +15,7 @@ class UserController extends Controller
     //get all prix
     public function getAll()
     {
-      $user= User::all(); 
+      $user= User::paginate(10); 
       return $user;
     }
 }
