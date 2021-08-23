@@ -3,7 +3,13 @@
         <div class="container">
         
     <h2 class="text-center p-2 text-white bg-primary mt-5" style="margin-bottom: 1em;">Tableau de bord</h2>
-    
+    <v-alert
+      border="top"
+      colored-border
+      type="info"
+      elevation="2"
+    >
+<p class="font-weight-regular">Pour ajouter des semaines il faut d'abord ajouter une session puis des périodes et enfin des semaines. (session->periode->semaine)   </p> </v-alert>
     <v-row>
         <v-col cols="4">
 <v-card

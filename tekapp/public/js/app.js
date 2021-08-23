@@ -3502,6 +3502,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Home',
   data: function data() {
@@ -4624,30 +4630,31 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var url = this.url + '/api/session/get';
-      this.axios.get(url).then(function (response) {
-        _this.sessions = response.data;
+      axios.get(url).then(function (response) {
+        _this.sessions = response.data.sessions;
         console.log(_this.sessions);
+      })["catch"](function (error) {
+        console.log(error);
       });
     },
-    getResults: function getResults() {
-      var _this2 = this;
 
-      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get('http://localhost:8000/api/session/get?page=' + page).then(function (response) {
-        _this2.sessions = response.data;
-      });
-    },
+    /*  getResults(page = 1) {
+    axios.get('http://localhost:8000/api/session/get?page=' + page)
+    .then(response => {
+    this.sessions = response.data;
+    });
+    },*/
     deleteSession: function deleteSession(id) {
-      var _this3 = this;
+      var _this2 = this;
 
       var url = this.url + "/api/session/delete_session/".concat(id);
       this.axios["delete"](url).then(function (response) {
         if (response.status) {
-          _this3.$utils.showSuccess('success', response.message);
+          _this2.$utils.showSuccess('success', response.message);
 
-          _this3.loadData();
+          _this2.loadData();
         } else {
-          _this3.$utils.showError('Error', response.message);
+          _this2.$utils.showError('Error', response.message);
         }
       });
     }
@@ -4658,7 +4665,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       url: document.head.querySelector('meta[name="url"]').content,
-      sessions: {}
+      sessions: []
     };
   }
 });
@@ -53178,6 +53185,25 @@ var render = function() {
         ),
         _vm._v(" "),
         _c(
+          "v-alert",
+          {
+            attrs: {
+              border: "top",
+              "colored-border": "",
+              type: "info",
+              elevation: "2"
+            }
+          },
+          [
+            _c("p", { staticClass: "font-weight-regular" }, [
+              _vm._v(
+                "Pour ajouter des semaines il faut d'abord ajouter une session puis des périodes et enfin des semaines. (session->periode->semaine)   "
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
           "v-row",
           [
             _c(
@@ -55256,7 +55282,7 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._l(_vm.sessions.data, function(session) {
+                _vm._l(_vm.sessions, function(session) {
                   return _c("tbody", { key: session.id }, [
                     _c("tr", [
                       _c("td", [
@@ -55340,11 +55366,6 @@ var render = function() {
             proxy: true
           }
         ])
-      }),
-      _vm._v(" "),
-      _c("pagination", {
-        attrs: { data: _vm.sessions },
-        on: { "pagination-change-page": _vm.getResults }
       }),
       _vm._v(" "),
       _c(

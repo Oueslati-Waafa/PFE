@@ -40,6 +40,21 @@ class SessionController extends Controller
         'error' => 'No session defined'
       ], Response::HTTP_BAD_REQUEST);
     }
+
+  }
+
+  function allWithPeriods()
+  {
+    $sessions =
+      Session::orderBy('end_date', 'desc')
+        ->with([
+          '_periods',
+        ])
+        ->get();
+    
+    return response()->json([
+      'sessions' => $sessions
+    ]);
   }
 
   //  get session by ID
@@ -108,6 +123,5 @@ class SessionController extends Controller
              return response()->json(['status => false', 'message'=> 'There is some problem']);
          }
      }
-
 
 }

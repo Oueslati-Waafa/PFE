@@ -13,7 +13,7 @@
         <th class="text-left">Actions</th>
         </tr>
       </thead>
-      <tbody v-for="session in sessions.data" :key="session.id">
+      <tbody v-for="session in sessions" :key="session.id">
         <tr>
          <td><p class="font-weight-medium">{{session.id}}</p></td>
          <td><p class="font-weight-medium">{{session.name}}</p></td>
@@ -28,7 +28,7 @@
       </tbody>
     </template>
   </v-simple-table>
-  <pagination :data="sessions" @pagination-change-page="getResults"></pagination>
+  <!--<pagination :data="sessions" @pagination-change-page="getResults"></pagination>-->
 
 
      <v-btn
@@ -57,18 +57,20 @@ export default {
     {
         loadData()
         {
-            let url = this.url + '/api/session/get';
-            this.axios.get(url).then(response => {
-                this.sessions = response.data
-                console.log(this.sessions);
-            });
-        },
-        getResults(page = 1) {
+          let url = this.url + '/api/session/get';
+          axios.get(url).then(response => {
+            this.sessions = response.data.sessions;
+            console.log(this.sessions);
+          }).catch(error => {
+            console.log(error)
+          });
+      },
+      /*  getResults(page = 1) {
 			axios.get('http://localhost:8000/api/session/get?page=' + page)
 				.then(response => {
 					this.sessions = response.data;
 				});
-		},
+		},*/
         
       deleteSession(id)
         {
@@ -93,7 +95,7 @@ export default {
         data() {
             return {
                 url: document.head.querySelector('meta[name="url"]').content,
-                sessions:{},
+                sessions:[],
                 
             }
         },

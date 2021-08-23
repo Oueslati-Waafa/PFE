@@ -92,7 +92,7 @@ Route::group(['prefix' => 'paiement'], function () {
    Route::group(['prefix' => 'session'], function () {
   
     Route::delete("delete_session/{id}", "SessionController@deleteSession");;//done
-    Route::get("get", "SessionController@getAll");//done
+    Route::get("get", "SessionController@allWithPeriods");//done
     Route::get('get_session/{id}', 'SessionController@getSession');
     Route::post('save_session/{id}', "SessionController@updateSession");
     Route::post('save_session', "SessionController@saveSession");//done
