@@ -37,21 +37,20 @@
 </template>
 
 <script>
+import axios from 'axios';
+
+const ajax = axios.create({
+  baseURL: 'http://127.0.0.1:8000/api',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
 export default {
-created()
-    {
-let url = this.url + '/api/session/get';
-          axios.get(url).then(response => {
-            this.sessions = response.data.sessions;
-            console.log(this.sessions);
-          }).catch(error => {
-            console.log(error)
-          });
-    },
-data()
-    {
-        return{
-            url: document.head.querySelector('meta[name="url"]').content,
+
+  data()
+  {
+    return {
+       url: document.head.querySelector('meta[name="url"]').content,
             period:[],
             sessions:[],
             name : '',
@@ -59,14 +58,31 @@ data()
             start_date : '',
             end_date : '',
             errors: [],
-            
-        }
-        
-    },
-
-        methods : 
+            currentSession: null,
+    }
+  },
+  mounted()
+  {
+    this.fetchData();
+  },
+  methods:
+  {
+    // To make sure that the component is correctly mounted
+    mounted: function()
     {
-        savePeriod()
+        console.log('add period component loaded');
+    },
+    // Return the data as an array for the select component
+    fetchData()
+    {
+      ajax.get('/session/get').then(response =>
+      {
+        this.currentSession = null;
+        this.sessions = response.data.sessions;
+      });
+    },
+    // Save the data given to the database
+    savePeriod()
         {
             this.errors = [];
             if(!this.period.name)
@@ -114,13 +130,10 @@ data()
                 });  
             }
         }
-    },
-    mounted: function()
-    {
-        console.log('add period component loaded');
-    }
 
+  }
 }
+
 
 </script>
 
