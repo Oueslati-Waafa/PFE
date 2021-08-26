@@ -16,7 +16,9 @@ import AddContract from './components/Contracts/AddContracts.vue';
 import AddPaiement from './components/Paiement/AddPaiement.vue';
 import AddHeureSupp from './components/HeureSupp/AddHeures.vue';
 import AddSession from './components/Session/AddSession.vue';
+import AddPriod from './components/Period/AddPeriod.vue';
 import EditSession from './components/Session/EditSession.vue';
+import EditPeriod from './components/Period/EditPeriod.vue';
 
 import EditPaiement from './components/Paiement/EditPaiement.vue';
 import EditHeureSupp from './components/HeureSupp/EditHeuresSupp.vue';
@@ -145,6 +147,16 @@ const routes = [
         name:'/get_session',
         path: '/get_session/edit/:id?', 
         component: EditSession ,
+    },
+    { 
+        name:'/add_period',
+        path: '/add_period', 
+        component: AddPriod ,
+    },
+    { 
+        name:'/get_period',
+        path: '/get_period/edit/:id?', 
+        component: EditPeriod ,
     },
   ];
 

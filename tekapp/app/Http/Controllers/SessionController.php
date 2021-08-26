@@ -18,8 +18,9 @@ class SessionController extends Controller
 
   public function getSessionWithPeriods(Request $request)
   {
+ 
 
-    $session = null;
+   $session = null;
     if ($request->id) {
       $session = Session::where('id', $request->id)->first();
     }
@@ -45,13 +46,7 @@ class SessionController extends Controller
 
   function allWithPeriods()
   {
-    $sessions =
-      Session::orderBy('end_date', 'desc')
-        ->with([
-          '_periods',
-        ])
-        ->get();
-    
+    $sessions = Session::orderBy('end_date', 'desc')->with(['_periods',])->get();
     return response()->json([
       'sessions' => $sessions
     ]);

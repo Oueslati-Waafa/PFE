@@ -56,7 +56,7 @@ data()
 
         methods : 
     {
-        savePrix()
+        saveSession()
         {
             this.errors = [];
             if(!this.session.name)

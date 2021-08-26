@@ -1,6 +1,108 @@
 <template>
-    <div class="container">
-        
-    <h2 class="text-center p-2 text-white bg-primary mt-5" style="margin-bottom: 1em;">La Liste des Périodes</h2>
+            <div class="container">
+        <h2 class="text-center p-2 text-white bg-primary mt-5">La liste des Périodes Universitaires</h2>
+  <v-simple-table>
+    <template v-slot:default>
+      <thead>
+        <tr>
+        <th class="text-left">#</th>
+        <th class="text-left">Titre de la Période</th>
+        <th class="text-left">Date de début de période</th>
+        <th class="text-left">Date de cloture de période</th>
+        <th class="text-left">La session</th>
+        <!--<th class="text-left">La Session</th>-->
+        <th class="text-left">Actions</th>
+        </tr>
+      </thead>
+      <tbody v-for="period in periods" :key="period.id">
+        <tr>
+         <td><p class="font-weight-medium">{{period.id}}</p></td>
+         <td><p class="font-weight-medium">{{period.name}}</p></td>
+         <td><p class="font-weight-medium">{{period.start_date}}</p></td>
+         <td><p class="font-weight-medium">{{period.end_date}}</p></td>
+         <td><p class="font-weight-medium">{{period.session.name}}</p></td>
+         <td><v-btn color="success" fab x-small dark :to="{ name:'/get_period',params:{id:period.id}}"><v-icon>mdi-pencil</v-icon></v-btn>
+            <v-btn color="red" fab x-small dark @click.prevent="deleteSession(period.id)"><v-icon>mdi-delete</v-icon></v-btn>
+         </td>
+         
+        </tr>
+      </tbody>
+    </template>
+  </v-simple-table>
+  <!--<pagination :data="sessions" @pagination-change-page="getResults"></pagination>-->
+  
+
+
+     <v-btn
+      depressed
+      color="success"
+      to="/add_period"
+    >
+      <v-icon left>
+        mdi-plus
+      </v-icon>
+      Ajouter
+    </v-btn>
+
     </div>
 </template>
+
+<script>
+export default {
+    name:'periods',
+    
+    created()
+    {
+        this.loadData();
+    },
+    methods:
+    {
+        loadData()
+        {
+         /* let url = this.url + '/api/period/get';
+          axios.get(url).then(response => {
+            this.periods = response.data.periods;
+            console.log(this.periods);
+          }).catch(error => {
+            console.log(error)
+          });*/
+
+            let url = this.url + '/api/period/get';
+            this.axios.get(url).then(response => {
+                this.periods = response.data
+                console.log(this.periods);
+            });
+      },
+
+        
+      deletePeriod(id)
+        {
+            let url = this.url + `/api/period/delete_period/${id}`;
+            this.axios.delete(url).then(response =>{
+                if (response.status)
+                {
+                    this.$utils.showSuccess('success',response.message);
+                    this.loadData();
+                }
+                else {
+                    this.$utils.showError('Error', response.message);
+                    }
+            });
+        }
+        },
+        mounted()
+        {
+            console.log('period component mounted ');
+        },
+      
+        data() {
+            return {
+                url: document.head.querySelector('meta[name="url"]').content,
+                periods:[],
+                
+            }
+        },
+}
+
+
+</script>

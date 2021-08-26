@@ -98,3 +98,12 @@ Route::group(['prefix' => 'paiement'], function () {
     Route::post('save_session', "SessionController@saveSession");//done
     //Route::get("get_session_periods", "SessionController@getSessionWithPeriods");//done
    });
+
+   Route::group(['prefix' => 'period'], function () {
+  
+    Route::delete("delete_period/{id}", "PeriodController@deletePeriod");;//done
+    Route::get("get", "PeriodController@getAllPeriods");//done
+    Route::get('get_period/{id}', 'PeriodController@getPeriod');
+    Route::post('save_period/{id}', "PeriodController@updatePeriod");
+    Route::post('save_period', "PeriodController@savePeriod");//done
+   });

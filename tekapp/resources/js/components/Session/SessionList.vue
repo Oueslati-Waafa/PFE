@@ -10,6 +10,7 @@
         <th class="text-left">Type</th>
         <th class="text-left">Date de début de session</th>
         <th class="text-left">Date de cloture de session</th>
+        <th class="text-left">L'année Universitaire</th>
         <th class="text-left">Actions</th>
         </tr>
       </thead>
@@ -20,6 +21,7 @@
          <td><p class="font-weight-medium">{{session.type }}</p></td>
          <td><p class="font-weight-medium">{{session.start_date}}</p></td>
          <td><p class="font-weight-medium">{{session.end_date}}</p></td>
+         <td><p class="font-weight-medium">{{session.academic_year}}</p></td>
          <td><v-btn color="success" fab x-small dark :to="{ name:'/get_session',params:{id:session.id}}"><v-icon>mdi-pencil</v-icon></v-btn>
             <v-btn color="red" fab x-small dark @click.prevent="deleteSession(session.id)"><v-icon>mdi-delete</v-icon></v-btn>
          </td>
@@ -29,6 +31,7 @@
     </template>
   </v-simple-table>
   <!--<pagination :data="sessions" @pagination-change-page="getResults"></pagination>-->
+  
 
 
      <v-btn
@@ -65,12 +68,7 @@ export default {
             console.log(error)
           });
       },
-      /*  getResults(page = 1) {
-			axios.get('http://localhost:8000/api/session/get?page=' + page)
-				.then(response => {
-					this.sessions = response.data;
-				});
-		},*/
+
         
       deleteSession(id)
         {

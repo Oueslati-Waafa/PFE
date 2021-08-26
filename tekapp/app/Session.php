@@ -40,6 +40,7 @@ class Session extends Model
      $session = Session::find($id);
      if (!$session) return response()->json(["error" => "Session not found"], 404);
    }
+   
  
    public static function getLastSession()
    {

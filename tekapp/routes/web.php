@@ -19,5 +19,5 @@ Route::get('/', function () {
 });
 
 Route::get('/get_session_periods/{id}','SessionController@getSessionWithPeriods');
-Route::get('/get_periods','SessionController@allWithPeriods');
+Route::get('/get','PeriodController@getAllPeriods');
 
