@@ -72,7 +72,7 @@ data()
     {
         return{
             url: document.head.querySelector('meta[name="url"]').content,
-            session:{},
+            session:[],
             name : '',
             type : '', 
             start_date : '',
