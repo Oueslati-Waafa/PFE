@@ -7,7 +7,6 @@
         <tr>
         <th class="text-left">#</th>
         <th class="text-left">Titre de la session</th>
-        <th class="text-left">Type</th>
         <th class="text-left">Date de début de session</th>
         <th class="text-left">Date de cloture de session</th>
         <th class="text-left">L'année Universitaire</th>
@@ -18,12 +17,12 @@
         <tr>
          <td><p class="font-weight-medium">{{session.id}}</p></td>
          <td><p class="font-weight-medium">{{session.name}}</p></td>
-         <td><p class="font-weight-medium">{{session.type }}</p></td>
          <td><p class="font-weight-medium">{{session.start_date}}</p></td>
          <td><p class="font-weight-medium">{{session.end_date}}</p></td>
          <td><p class="font-weight-medium">{{session.academic_year}}</p></td>
          <td><v-btn color="success" fab x-small dark :to="{ name:'/get_session',params:{id:session.id}}"><v-icon>mdi-pencil</v-icon></v-btn>
             <v-btn color="red" fab x-small dark @click.prevent="deleteSession(session.id)"><v-icon>mdi-delete</v-icon></v-btn>
+            <v-btn color="primary" fab x-small dark><v-icon>mdi-book-information-variant</v-icon></v-btn>
          </td>
          
         </tr>

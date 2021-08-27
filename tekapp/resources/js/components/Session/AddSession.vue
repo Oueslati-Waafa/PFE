@@ -5,7 +5,7 @@
 
       <div class="card-body">
           <div class="col-md-6 offset-md-3">
-              <form id="validateForm" @submit.prevent="saveSession" enctype="multipart/form-data" novalidate> 
+              <form id="validateForm"  enctype="multipart/form-data" novalidate> 
               <div  class="alert alert-danger" v-if="errors.length">
                   <ul class="mb-0">
                       <li v-for="(error,index) in errors" :key="index">
@@ -29,8 +29,33 @@
                     <label for="" class="font-weight-regular">Date de la fin de session</label>
                     <v-text-field id="start_date" v-model="session.end_date" placeholder="Entrer la Date de la fin de session"></v-text-field>
 
-               
-                <button class="btn btn-primary mt-4"> Valider </button>
+<v-row align="center" justify="space-around">
+    <v-col>
+<v-btn 
+  rounded 
+  block 
+  color="blue darken-3" 
+  dark 
+  large 
+  @click="saveSession()"
+>
+  ENREGISTER
+</v-btn>
+</v-col>
+<v-col>
+<v-btn 
+  rounded 
+  block 
+  color="error" 
+  dark 
+  large 
+  to="/session"
+>
+  ANNULER
+</v-btn>
+</v-col>
+</v-row>
+
               </form>
           </div>
       </div>

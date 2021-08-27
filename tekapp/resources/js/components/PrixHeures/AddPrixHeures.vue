@@ -5,7 +5,7 @@
 
       <div class="card-body">
           <div class="col-md-6 offset-md-3">
-              <form id="validateForm" @submit.prevent="savePrix" enctype="multipart/form-data" novalidate> 
+              <form id="validateForm"  enctype="multipart/form-data" novalidate> 
               <div  class="alert alert-danger" v-if="errors.length">
                   <ul class="mb-0">
                       <li v-for="(error,index) in errors" :key="index">
@@ -30,7 +30,32 @@
                     <v-text-field id="suivie" v-model="prix_heure.conseil_pfe" placeholder="Entrer le Prix des Heures de Conseil/PFE"></v-text-field>
 
                
-                <button class="btn btn-primary mt-4"> Valider </button>
+<v-row align="center" justify="space-around">
+    <v-col>
+<v-btn 
+  rounded 
+  block 
+  color="blue darken-3" 
+  dark 
+  large 
+  @click="savePrix()"
+>
+  ENREGISTER
+</v-btn>
+</v-col>
+<v-col>
+<v-btn 
+  rounded 
+  block 
+  color="error" 
+  dark 
+  large 
+  to="/prix_heures"
+>
+  ANNULER
+</v-btn>
+</v-col>
+</v-row>
               </form>
           </div>
       </div>

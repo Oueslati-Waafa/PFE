@@ -5,7 +5,7 @@
 
       <div class="card-body">
           <div class="col-md-6 offset-md-3">
-              <form id="validateForm" @submit.prevent="saveBilan" enctype="multipart/form-data" novalidate> 
+              <form id="validateForm" enctype="multipart/form-data" novalidate> 
               <div  class="alert alert-danger" v-if="errors.length">
                   <ul class="mb-0">
                       <li v-for="(error,index) in errors" :key="index">
@@ -26,9 +26,32 @@
                     <label for="" class="font-weight-regular">Nom de professeur</label>
                     <v-text-field id="professor_id" v-model="bilan_module.professor_id" placeholder="Entrer e nom du professeur"></v-text-field>
                 
-
-               
-                <button class="btn btn-primary mt-4"> Valider </button>
+<v-row align="center" justify="space-around">
+    <v-col>
+<v-btn 
+  rounded 
+  block 
+  color="blue darken-3" 
+  dark 
+  large 
+  @click="saveBilan()"
+>
+  ENREGISTER
+</v-btn>
+</v-col>
+<v-col>
+<v-btn 
+  rounded 
+  block 
+  color="error" 
+  dark 
+  large 
+  to="/bilan"
+>
+  ANNULER
+</v-btn>
+</v-col>
+</v-row>
               </form>
           </div>
       </div>

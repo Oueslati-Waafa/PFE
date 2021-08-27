@@ -5,7 +5,7 @@
 
       <div class="card-body">
           <div class="col-md-6 offset-md-3">
-              <form id="validateForm" @submit.prevent="saveperiod" enctype="multipart/form-data" novalidate> 
+              <form id="validateForm" @submit.prevent="savePeriod" enctype="multipart/form-data" novalidate> 
               <div  class="alert alert-danger" v-if="errors.length">
                   <ul class="mb-0">
                       <li v-for="(error,index) in errors" :key="index">
@@ -26,9 +26,35 @@
                     <v-text-field id="start_date" v-model="period.end_date" placeholder="Entrer la Date de la fin de period"></v-text-field>
 
                    <label for="" class="font-weight-regular">Les sessions</label>
-                   <v-select class="font-weight-regular" :items="sessions"  item-text="name" item-value="id" label="Les Sessions" solo></v-select>
-               
-                <button class="btn btn-primary mt-4"> Valider </button>
+                   <input type="hidden" v-model="session">
+                   <v-select v-model="session" class="font-weight-regular" :items="sessions"  item-text="name" item-value="id" label="Les Sessions" solo></v-select>
+<v-row align="center" justify="space-around">
+    <v-col>
+<v-btn 
+  rounded 
+  block 
+  color="blue darken-3" 
+  dark 
+  large 
+  @click="savePeriod()"
+>
+  ENREGISTER
+</v-btn>
+</v-col>
+<v-col>
+<v-btn 
+  rounded 
+  block 
+  color="error" 
+  dark 
+  large 
+  to="/period"
+>
+  ANNULER
+</v-btn>
+</v-col>
+</v-row>
+            
               </form>
           </div>
       </div>
@@ -50,15 +76,18 @@ export default {
   data()
   {
     return {
+        
        url: document.head.querySelector('meta[name="url"]').content,
             period:[],
             sessions:[],
+            session:null,
             name : '',
             type : '',
             start_date : '',
             end_date : '',
             errors: [],
             currentSession: null,
+            
     }
   },
   mounted()
@@ -67,6 +96,9 @@ export default {
   },
   methods:
   {
+    directToSession() {
+      console.log("Value: ", this.session)        
+    },
     // To make sure that the component is correctly mounted
     mounted: function()
     {
@@ -89,10 +121,6 @@ export default {
             {
                 this.errors.push(' titre de period est requis');
             }
-               if(!this.period.type)
-            {
-                this.errors.push(' type de period est requis');
-            }
             if(!this.period.start_date)
             {
                 this.errors.push('la date de la début de period est requis');
@@ -101,22 +129,23 @@ export default {
             {
                 this.errors.push('la date de la fin de period est requis');
             }
+             if(!this.session)
+            {
+                this.errors.push('la session de period est requis');
+            }
             
             if (!this.errors.length)
             {
                 let formData = new FormData();
                 formData.append('name',this.period.name);
-                formData.append('type',this.period.type);
                 formData.append('start_date',this.period.start_date);
                 formData.append('end_date',this.period.end_date);
-                
-           
+                formData.append('session_id',this.session);
             
                 let url = this.url + '/api/period/save_period';
                 this.axios.post(url,formData).then((response) => {
                     if(response.status)
                     {
-                        
                       this.$utils.showSuccess('success', response.message);
 
                       this.$router.push({
