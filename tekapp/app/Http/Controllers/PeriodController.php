@@ -10,19 +10,12 @@ class PeriodController extends Controller
 {
     public function savePeriod(Request $request)
     {
-        /*session = Session::find(1);
-        $period = new Period();
-        $period->name = $request->name;
-        $period->start_date = $request->start_date;
-        $period->end_date = $request->end_date;
-        $session->_periods()->save($period);*/
+
       $period = new Period();
       $period->name = $request->name;
       $period->start_date = $request->start_date;
       $period->end_date = $request->end_date;
       $period->session_id = $request->session_id;
-
-      
 
       if ($period -> save())
       {
@@ -36,24 +29,21 @@ class PeriodController extends Controller
 
     }
 
-public function getAllPeriods()
-{
-   /* $period = Period::find($id);
-    $session = $period->session;
-    dd($session->name);
-    return $period;*/
-    $sessions = Period::select('id','name','start_date','end_date','session_id')->with('session:id,name')->get();
-    return $sessions;
-}
+    public function getAllPeriods()
+    {
+        $period = Period::orderBy('end_date', 'desc')->with(['session',])->get();
+        return response()->json([
+          'periods' => $period
+        ]);
+    }
 
-public function updatePeriod(Request $request,$id)
-{
+ public function updatePeriod(Request $request,$id)
+ {
     $period = Period::where('id',$id)->first();
     $period->name = $request->name;
     $period->start_date = $request->start_date;
     $period->end_date = $request->end_date;
     $period->session_id = $request->session_id;
-
 
     if ($period -> save())
     {
@@ -64,7 +54,7 @@ public function updatePeriod(Request $request,$id)
     {
         return response()->json(['status => false', 'message'=> 'There is some problem']);
     }
-}
+ }
 public function getPeriod($id)
 {
     $period = Period::find($id);

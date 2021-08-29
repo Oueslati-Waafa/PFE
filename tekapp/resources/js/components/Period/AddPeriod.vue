@@ -106,6 +106,7 @@ export default {
     },
     // Return the data as an array for the select component
     fetchData()
+  
     {
       ajax.get('/session/get').then(response =>
       {

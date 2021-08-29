@@ -17,8 +17,10 @@ import AddPaiement from './components/Paiement/AddPaiement.vue';
 import AddHeureSupp from './components/HeureSupp/AddHeures.vue';
 import AddSession from './components/Session/AddSession.vue';
 import AddPriod from './components/Period/AddPeriod.vue';
+import AddWeek from './components/Week/AddWeek.vue';
 import EditSession from './components/Session/EditSession.vue';
 import EditPeriod from './components/Period/EditPeriod.vue';
+import EditWeek from './components/Week/EditWeek';
 
 import EditPaiement from './components/Paiement/EditPaiement.vue';
 import EditHeureSupp from './components/HeureSupp/EditHeuresSupp.vue';
@@ -157,6 +159,16 @@ const routes = [
         name:'/get_period',
         path: '/get_period/edit/:id?', 
         component: EditPeriod ,
+    },
+    { 
+        name:'/add_week',
+        path: '/add_week', 
+        component: AddWeek ,
+    },
+    { 
+        name:'/get_week',
+        path: '/get_week/edit/:id?', 
+        component: EditWeek ,
     },
   ];
 

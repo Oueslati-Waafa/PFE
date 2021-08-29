@@ -59,19 +59,15 @@ export default {
     {
         loadData()
         {
-         /* let url = this.url + '/api/period/get';
+
+          let url = this.url + '/api/period/get';
           axios.get(url).then(response => {
             this.periods = response.data.periods;
             console.log(this.periods);
           }).catch(error => {
             console.log(error)
-          });*/
-
-            let url = this.url + '/api/period/get';
-            this.axios.get(url).then(response => {
-                this.periods = response.data
-                console.log(this.periods);
-            });
+          });
+           
       },
 
         

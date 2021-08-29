@@ -1,0 +1,190 @@
+<template>
+  <div>
+<div class="container">
+      <h2 class="text-center p-2 text-white bg-primary mt-5">Saisie des semaines</h2>
+
+      <div class="card-body">
+          <div class="col-md-6 offset-md-3">
+              <form id="validateForm" enctype="multipart/form-data" novalidate> 
+              <div  class="alert alert-danger" v-if="errors.length">
+                  <ul class="mb-0">
+                      <li v-for="(error,index) in errors" :key="index">
+                          {{error}}
+                      </li>
+                  </ul>
+
+              </div>
+
+              <label for="" class="font-weight-regular">Date de début de semaine</label>
+                    <v-text-field id="start_date" v-model="week.date_debut" placeholder="Entrer la Date de début de semaine"></v-text-field>
+                
+                    <label for="" class="font-weight-regular">Date de fin de semaine</label>
+                    <v-text-field id="start_date" v-model="week.date_fin" placeholder="Entrer la Date de fin de semaine"></v-text-field>
+
+                   <label for="" class="font-weight-regular">La date de début de periode</label>
+                   <input type="hidden" v-model="period">
+                   <v-select v-model="period" class="font-weight-regular" :items="periods"  item-text="start_date" item-value="id" label="La Période" solo></v-select>
+<v-row align="center" justify="space-around">
+    <v-col>
+<v-btn 
+  rounded 
+  block 
+  color="blue darken-3" 
+  dark 
+  large 
+  @click="saveWeek()"
+>
+  ENREGISTER
+</v-btn>
+</v-col>
+<v-col>
+<v-btn 
+  rounded 
+  block 
+  color="error" 
+  dark 
+  large 
+  to="/period"
+>
+  ANNULER
+</v-btn>
+</v-col>
+</v-row>
+            
+              </form>
+          </div>
+      </div>
+</div>  
+</div>
+</template>
+<script>
+import axios from 'axios';
+
+const ajax = axios.create({
+  baseURL: 'http://127.0.0.1:8000/api',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
+export default {
+   data()
+  {
+    return {
+        
+       url: document.head.querySelector('meta[name="url"]').content,
+            week:[],
+            periods:[],
+            period:null,
+            date_debut : '',
+            date_fin : '',
+            errors: [],
+            currentPeriod: null,
+            
+    }
+  },
+
+  mounted()
+  {
+    this.fetchData();
+    console.log(this.fetchData());
+  },
+
+  methods:
+  {
+saveWeek()
+        {
+            this.errors = [];
+            if(!this.week.date_debut)
+            {
+                this.errors.push(' la date de debut de la semaine est requis');
+            }
+            if(!this.week.date_fin)
+            {
+                this.errors.push('la date de fin de la semaine est requis');
+            }
+             if(!this.period)
+            {
+                this.errors.push('la periode est requis');
+            }
+            
+            if (!this.errors.length)
+            {
+                let formData = new FormData();
+                formData.append('date_debut',this.week.date_debut);
+                formData.append('date_fin',this.week.date_fin.start_date);
+                formData.append('period_id',this.period);
+            
+                let url = this.url + '/api/weeks/save_week';
+                this.axios.post(url,formData).then((response) => {
+                    if(response.status)
+                    {
+                      this.$utils.showSuccess('success', response.message);
+
+                      this.$router.push({
+                          name:'/weeks'});
+                    }
+                    else {
+                    this.$utils.showError('Error', response.message);
+                    }
+                }).catch(error => {
+                    this.errors.push(error.response.data.error);
+                });  
+            }
+        },
+    directToSession() {
+      console.log("Value: ", this.period)        
+    },
+    // To make sure that the component is correctly mounted
+    mounted: function()
+    {
+        console.log('add period component loaded');
+        
+    },
+    // Return the data as an array for the select component
+    fetchData()
+  
+    {
+      ajax.get('/period/get').then(response =>
+      {
+        this.currentPeriod = null;
+        this.periods = response.data.periods;
+      });
+    },
+  }
+/*created()
+    {
+        this.loadData();
+    },
+    methods:
+    {
+        loadData()
+        {
+
+            let url = this.url + '/api/period/get';
+            this.axios.get(url).then(response => {
+                this.periods = response.data
+                console.log(this.periods);
+            });
+      },
+    },
+        mounted()
+        {
+            console.log('period component mounted ');
+        },
+        data() {
+            return {
+                url: document.head.querySelector('meta[name="url"]').content,
+                periods:[],
+                period:[],
+                week:[],
+                date_debut : '',
+                date_fin : '',
+                errors: [],
+            
+                
+            }
+        },*/
+
+
+}
+</script>

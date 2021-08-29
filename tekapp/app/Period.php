@@ -13,4 +13,10 @@ class Period extends Model
     return $this->belongsTo('App\Session');
   }
 
+  public function weeks()
+  {
+      return $this->hasMany(Week::class);
+  }
+
+  
 }
