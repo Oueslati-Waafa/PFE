@@ -10,4 +10,9 @@ class Week extends Model
     {
         return $this->belongsTo(Period::class);
     }
+
+    public function hours()
+    {
+        return $this->hasMany(Hour::class);
+    }
 }

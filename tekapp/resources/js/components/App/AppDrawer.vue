@@ -43,7 +43,6 @@ export default {
       {icon: 'fas fa-money-bill-alt',text: 'Prix des Heures', route:'/prix_heures'},
       {icon: 'fas fa-book-reader',text: 'Liste des Professeurs', route:'/professor'},
       {icon: 'fas fa-money-check-alt',text: 'Paiement', route:'/paiement'},
-      {icon: 'fas fa-clock',text: 'Heures Supplimentaires', route:'/heures_supp'},
       {icon: 'fas fa-address-card',text: 'Les contrats', route:'/contracts'},
       {icon: 'fas fa-file-invoice-dollar',text: 'Les bilans', route:'/bilans'},
     ]

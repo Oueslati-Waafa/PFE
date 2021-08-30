@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RenameHSupplemetaires extends Migration
+class AddWeekIdToHoursTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class RenameHSupplemetaires extends Migration
      */
     public function up()
     {
-        Schema::table('h_supplemetaires', function (Blueprint $table) {
-            //
-            $table->renameColumn('h_pfe','h_conseil');
-            
+        Schema::table('hours', function (Blueprint $table) {
+            $table->unsignedInteger('week_id');
+            $table->foreign('week_id')->references('id')->on('weeks')->onDelete('cascade');
         });
     }
 
@@ -27,10 +26,8 @@ class RenameHSupplemetaires extends Migration
      */
     public function down()
     {
-        Schema::table('h_supplemetaires', function (Blueprint $table) {
+        Schema::table('hours', function (Blueprint $table) {
             //
-            $table->renameColumn('h_pfe','h_conseil');
-            
         });
     }
 }

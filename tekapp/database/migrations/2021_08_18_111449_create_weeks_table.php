@@ -17,7 +17,10 @@ class CreateWeeksTable extends Migration
             $table->increments('id');
             $table->date('date_debut');
             $table->date('date_fin');
+            $table->unsignedInteger('period_id');
             $table->timestamps();
+
+            $table->foreign('period_id')->references('id')->on('periods')->onDelete('cascade');
         });
     }
 

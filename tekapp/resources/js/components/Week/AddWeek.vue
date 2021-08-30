@@ -91,49 +91,7 @@ export default {
 
   methods:
   {
-saveWeek()
-        {
-            this.errors = [];
-            if(!this.week.date_debut)
-            {
-                this.errors.push(' la date de debut de la semaine est requis');
-            }
-            if(!this.week.date_fin)
-            {
-                this.errors.push('la date de fin de la semaine est requis');
-            }
-             if(!this.period)
-            {
-                this.errors.push('la periode est requis');
-            }
-            
-            if (!this.errors.length)
-            {
-                let formData = new FormData();
-                formData.append('date_debut',this.week.date_debut);
-                formData.append('date_fin',this.week.date_fin.start_date);
-                formData.append('period_id',this.period);
-            
-                let url = this.url + '/api/weeks/save_week';
-                this.axios.post(url,formData).then((response) => {
-                    if(response.status)
-                    {
-                      this.$utils.showSuccess('success', response.message);
 
-                      this.$router.push({
-                          name:'/weeks'});
-                    }
-                    else {
-                    this.$utils.showError('Error', response.message);
-                    }
-                }).catch(error => {
-                    this.errors.push(error.response.data.error);
-                });  
-            }
-        },
-    directToSession() {
-      console.log("Value: ", this.period)        
-    },
     // To make sure that the component is correctly mounted
     mounted: function()
     {
@@ -150,41 +108,48 @@ saveWeek()
         this.periods = response.data.periods;
       });
     },
-  }
-/*created()
-    {
-        this.loadData();
-    },
-    methods:
-    {
-        loadData()
+  
+    // Save the data given to the database
+    saveWeek()
         {
-
-            let url = this.url + '/api/period/get';
-            this.axios.get(url).then(response => {
-                this.periods = response.data
-                console.log(this.periods);
-            });
-      },
-    },
-        mounted()
-        {
-            console.log('period component mounted ');
-        },
-        data() {
-            return {
-                url: document.head.querySelector('meta[name="url"]').content,
-                periods:[],
-                period:[],
-                week:[],
-                date_debut : '',
-                date_fin : '',
-                errors: [],
-            
-                
+            this.errors = [];
+            if(!this.week.date_debut)
+            {
+                this.errors.push('la date de début est requis');
             }
-        },*/
+            if(!this.week.date_fin)
+            {
+                this.errors.push('la date de fin est requis');
+            }
+             if(!this.period)
+            {
+                this.errors.push('la period est requis');
+            }
+            
+            if (!this.errors.length)
+            {
+                let formData = new FormData();
+                formData.append('date_debut',this.week.date_debut);
+                formData.append('date_fin',this.week.date_fin);
+                formData.append('period_id',this.period);
+            
+                let url = this.url + '/api/weeks/save_week';
+                this.axios.post(url,formData).then((response) => {
+                    if(response.status)
+                    {
+                      this.$utils.showSuccess('success', response.message);
 
-
+                      this.$router.push({
+                          name:'/week'});
+                    }
+                    else {
+                    this.$utils.showError('Error', response.message);
+                    }
+                }).catch(error => {
+                    this.errors.push(error.response.data.error);
+                });  
+            }
+        }
+  }
 }
 </script>

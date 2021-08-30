@@ -15,13 +15,10 @@ class CreateHoursTable extends Migration
     {
         Schema::create('hours', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('weeks_id');
             $table->float('heure_suivie');
             $table->string('type');
             $table->timestamps();
 
-             //constraints
-             $table->foreign("weeks_id")->references("id")->on("weeks")->onDelete("cascade");
 
         });
     }
