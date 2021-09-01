@@ -7,20 +7,30 @@
       <thead>
         <tr>
         <th class="text-left">#</th>
-        <th class="text-left">Date de bilan</th>
-        <th class="text-left">Nom de professeur</th>
-        <th class="text-left">Cours</th>
+        <th class="text-left">Nom et prenom</th>
+        <th class="text-left">CIN</th>
+        <th class="text-left">CNRPS</th>
+        <th class="text-left">Grade</th>
+        <th class="text-left">Matière</th>
+        <th class="text-left">Semaine</th>
+        <th class="text-left">Nbr. d'heure</th>
+        <th class="text-left">Nbr. d'heure supplimentaire</th>
         <th class="text-left">Actions</th>
         </tr>
       </thead>
-      <tbody v-for="bilan_module in bilan_modules" :key="bilan_module.id">
+      <tbody v-for="CourseHourProfessor in course_hour_professors" :key="CourseHourProfessor.id">
         <tr>
-         <td><p class="font-weight-medium">{{bilan_module.id}}</p></td>
-         <td><p class="font-weight-medium">{{bilan_module.dateBM}}</p></td>
-         <td><p class="font-weight-medium">{{bilan_module.professor_id }}</p></td>
-         <td><p class="font-weight-medium">{{bilan_module.course_id}}</p></td>
-         <td><v-btn color="success" fab x-small dark :to="{ name:'/get_bilan',params:{id:bilan_module.id}}"><v-icon>mdi-pencil</v-icon></v-btn>
-            <v-btn color="red" fab x-small dark @click.prevent="deleteBilan(bilan_module.id)"><v-icon>mdi-delete</v-icon></v-btn>
+         <td><p class="font-weight-medium">{{CourseHourProfessor.id}}</p></td>
+         <td><p class="font-weight-medium">{{CourseHourProfessor.professor.user.fullname}}</p></td>
+         <td><p class="font-weight-medium">{{CourseHourProfessor.professor.user.cin }}</p></td>
+         <td><p class="font-weight-medium">{{CourseHourProfessor.professor.cnrps}}</p></td>
+         <td><p class="font-weight-medium">{{CourseHourProfessor.professor.grade}}</p></td>
+         <td><p class="font-weight-medium">{{CourseHourProfessor.course.name}}</p></td>
+         <td><p class="font-weight-medium">{{CourseHourProfessor.week.name}}</p></td>
+         <td><p class="font-weight-medium">{{CourseHourProfessor.nbr_hour_course}}</p></td>
+         <td><p class="font-weight-medium">{{CourseHourProfessor.hour.heure_suivie}}</p></td>
+         <td><v-btn color="success" fab x-small dark :to="{ name:'/get_bilan',params:{id:CourseHourProfessor.id}}"><v-icon>mdi-pencil</v-icon></v-btn>
+            <v-btn color="red" fab x-small dark @click.prevent="deleteBilan(CourseHourProfessor.id)"><v-icon>mdi-delete</v-icon></v-btn>
          </td>
          
         </tr>
@@ -46,47 +56,36 @@
 
 <script>
 export default {
-    name:'bilan_modules',
+    name:'course_hour_professors',
     
     created()
     {
         this.loadData();
     },
+
     methods:
     {
-        loadData()
+      loadData()
         {
-            let url = this.url + '/api/bilans/get';
-            this.axios.get(url).then(response => {
-                this.bilan_modules = response.data
-                console.log(this.bilan_modules);
-            });
-        },
-        
-      deleteBilan(id)
+          let url = this.url + '/api/bilans/get';
+          axios.get(url).then(response => {
+            this.course_hour_professors = response.data.course_hour_professors;
+            console.log(this.course_hour_professors);
+          }).catch(error => {
+            console.log(error)
+          });
+      },
+      
+    },
+    mounted()
         {
-            let url = this.url + `/api/bilans/delete_bilan/${id}`;
-            this.axios.delete(url).then(response =>{
-                if (response.status)
-                {
-                    this.$utils.showSuccess('success',response.message);
-                    this.loadData();
-                }
-                else {
-                    this.$utils.showError('Error', response.message);
-                    }
-            });
-        }
-        },
-        mounted()
-        {
-            console.log('Bilan component mounted ');
+            console.log('bilans component mounted ');
         },
       
         data() {
             return {
                 url: document.head.querySelector('meta[name="url"]').content,
-                bilan_modules:[],
+                course_hour_professors:[],
                 
             }
         },

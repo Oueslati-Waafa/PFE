@@ -21,7 +21,7 @@ class CourseController extends Controller
  // it works
   public function getCourseByProfessor($id)
   {
-    return professor::with('courses')->where('id', $id)->get();
+    return course::with('professor')->where('id', $id)->get();
   }
 
 }

@@ -15,4 +15,9 @@ class Week extends Model
     {
         return $this->hasMany(Hour::class);
     }
+
+    public function courseHourProfessor()
+    {
+        return $this->hasMany('App\CourseHourProfessor', 'week_id','id');
+    }
 }

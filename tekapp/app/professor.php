@@ -19,7 +19,7 @@ class professor extends Model
 
     public function user()
     {
-        return $this->belongsTo("App\User");
+        return $this->belongsTo("App\User",'user_id','id');
     }
 
     public function courses()
@@ -27,4 +27,13 @@ class professor extends Model
         return $this->belongsToMany('App\course');
     }
 
+    public function hours()
+    {
+        return $this->belongsToMany('App\Hour');
+    }
+
+    public function courseHourProfessor()
+    {
+        return $this->hasMany('App\CourseHourProfessor', 'professor_id','id');
+    }
 }

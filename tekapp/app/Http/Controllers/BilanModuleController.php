@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\bilan_module;
+use App\CourseHourProfessor;
 use Illuminate\Http\Request;
 
 class BilanModuleController extends Controller
@@ -10,8 +11,12 @@ class BilanModuleController extends Controller
        //get all bilan
        public function getAll()
        {
-          $bilan= bilan_module::all(); 
-          return $bilan;
+        
+        $obj = CourseHourProfessor::orderBy('nbr_hour_course', 'desc')->with(['course','professor.user','hour','week'])->get();
+         return response()->json([
+            'course_hour_professors' => $obj
+          ]);
+        
        }
        //delete bilan
        public function deleteBilan($id)
@@ -69,7 +74,6 @@ class BilanModuleController extends Controller
      //get contract
      public function getBilan($id)
      {
-         $bilan = bilan_module::find($id);
-         return response()->json($bilan);
+        return CourseHourProfessor::with(['course','professor.user','hour','week'])->where('id', $id)->get();
      }
 }
