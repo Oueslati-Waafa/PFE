@@ -3,11 +3,18 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
-class course extends Model
+class Course extends Model
 {
-    public function weeks_hours()
+  public function professor()
     {
-        return $this->belongsToMany(weeks_hours::class);
+        return $this->belongsToMany('App\professor');
     }
+
+  public function hours()
+    {
+        return $this->belongsToMany('App\Hour');
+    }
+
 }

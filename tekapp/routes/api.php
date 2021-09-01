@@ -79,6 +79,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
   
     Route::get("get", "ProfessorController@all");//done
     Route::get('get_professor/{id}', 'ProfessorController@getProfessor');
+    Route::get('get_professorcourse/{id}', 'ProfessorController@getProfessorByCourse');
+    Route::get('get/{id}', 'ProfessorController@get');
+   
   });
    
    //user routes
@@ -86,7 +89,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
   
    Route::get("get", "UserController@getAll");//done
   });
-
+   //user routes
+   Route::group(['prefix' => 'branch'], function () {
+  
+    Route::get('get', 'BranchController@all');
+    Route::post('add', 'BranchController@add');
+    Route::delete('delete/{id}', 'BranchController@delete');
+    Route::get('get/{id}', 'BranchController@get');
+   });
    //session routes
    
   Route::group(['prefix' => 'session'], function () {
@@ -124,3 +134,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::post('save_hour/{id}', "HourController@updateHour");
     Route::post('save_hour', "HourController@saveHour");//done
   });
+
+  // added 30/08/2021
+    Route::group(['prefix' => 'course'], function () {
+    Route::get('/', 'ProfessorController@getCourses');
+    Route::get('/get', 'ProfessorCourseController@getProfessorCourse');
+    Route::get('/get_course/{id}', 'CourseController@getCourseByProfessor');
+    });

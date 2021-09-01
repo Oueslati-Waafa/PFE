@@ -11,4 +11,9 @@ class Hour extends Model
     {
         return $this->belongsTo(Week::class);
     }
+
+    public function courses()
+    {
+        return $this->belongsToMany('App\course');
+    }
 }

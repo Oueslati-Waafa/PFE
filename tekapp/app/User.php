@@ -50,8 +50,9 @@ class User extends Authenticatable
         return response()->json(["error" => "User is not found"], 404);
     }
 
-    public function name()
-    {
-      return $this->belongsTo("App\User", "name");
-    }
+
+    public function professor()
+{
+    return $this->hasOne(professor::class);
+}
 }

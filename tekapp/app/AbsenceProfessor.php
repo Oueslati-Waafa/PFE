@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Jury extends Model
+class AbsenceProfessor extends Model
 {
     //
 }
