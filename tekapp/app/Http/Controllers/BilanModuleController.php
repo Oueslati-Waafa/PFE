@@ -12,7 +12,7 @@ class BilanModuleController extends Controller
        public function getAll()
        {
         
-        $obj = CourseHourProfessor::orderBy('nbr_hour_course', 'desc')->with(['course','professor.user','hour','week'])->get();
+        $obj = CourseHourProfessor::orderBy('id', 'desc')->with(['course','professor.user','hour','week'])->get();
          return response()->json([
             'course_hour_professors' => $obj
           ]);
@@ -75,5 +75,13 @@ class BilanModuleController extends Controller
      public function getBilan($id)
      {
         return CourseHourProfessor::with(['course','professor.user','hour','week'])->where('id', $id)->get();
+     }
+
+     public function getBilanByProfessor($id)
+     {
+        $obj= CourseHourProfessor::orderBy('week_id', 'asc')->with(['course','professor.user','hour','week'])->where('professor_id', $id)->get();
+        return response()->json([
+            'course_hour_professors' => $obj
+          ]);
      }
 }

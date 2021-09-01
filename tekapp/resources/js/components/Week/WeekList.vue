@@ -15,7 +15,7 @@
         </tr>
       </thead>
       <tbody v-for="week in weeks" :key="week.id">
-        <tr>
+        <tr> 
          <td><p class="font-weight-medium">{{week.id}}</p></td>
          <td><p class="font-weight-medium">{{week.period.name}}</p></td>
          <td><p class="font-weight-medium">{{week.period.start_date}}</p></td>
@@ -67,12 +67,6 @@ export default {
           }).catch(error => {
             console.log(error)
           });
-
-            /*let url = this.url + '/api/weeks/get';
-            this.axios.get(url).then(response => {
-                this.weeks = response.data
-                console.log(this.weeks);
-            });*/
       },
 
         

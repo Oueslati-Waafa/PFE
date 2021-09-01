@@ -21,6 +21,7 @@ import AddWeek from './components/Week/AddWeek.vue';
 import EditSession from './components/Session/EditSession.vue';
 import EditPeriod from './components/Period/EditPeriod.vue';
 import EditWeek from './components/Week/EditWeek';
+import BilanProfessor from './components/Bilan/ProfessorBilan.vue';
 
 import EditPaiement from './components/Paiement/EditPaiement.vue';
 import EditHeureSupp from './components/HeureSupp/EditHeuresSupp.vue';
@@ -169,6 +170,11 @@ const routes = [
         name:'/get_week',
         path: '/get_week/edit/:id?', 
         component: EditWeek ,
+    },
+    { 
+        name:'/get_bilan_professor',
+        path: '/get_bilan_professor/edit/:id?', 
+        component: BilanProfessor ,
     },
   ];
 

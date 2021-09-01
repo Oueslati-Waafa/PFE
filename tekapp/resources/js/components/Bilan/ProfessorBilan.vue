@@ -1,15 +1,30 @@
 <template>
 
     <div class="container">
-        <h2 class="text-center p-2 text-white bg-primary mt-5">La liste des Bilans</h2>
+        <h2 class="text-center p-2 text-white bg-primary mt-5">Bilan</h2>
+        
+        <form v-for="CourseHourProfessor in course_hour_professors.slice(1)" :key="CourseHourProfessor.id">
+          <v-row>
+            <v-col>
+                <v-text-field class="font-weight-medium" v-model="course_hour_professors[0].professor.user.fullname"  label="Nom & prenom" filled disabled></v-text-field>
+            </v-col>
+            <v-col>
+                <v-text-field class="font-weight-medium" v-model="course_hour_professors[0].professor.user.cin"  label="CIN" filled disabled></v-text-field>
+            </v-col>
+        </v-row>
+         <v-row>
+            <v-col >
+                <v-text-field class="font-weight-medium" v-model="course_hour_professors[0].professor.cnrps"  label="CNRPS" filled disabled></v-text-field>
+            </v-col>
+            <v-col >
+                <v-text-field class="font-weight-medium" v-model="course_hour_professors[0].professor.grade" label="Grade" filled disabled></v-text-field>
+            </v-col>
+        </v-row>
+        </form>
   <v-simple-table>
     <template v-slot:default>
       <thead>
         <tr>
-        <th class="text-left">Nom et prenom</th>
-        <th class="text-left">CIN</th>
-        <th class="text-left">CNRPS</th>
-        <th class="text-left">Grade</th>
         <th class="text-left">Matière</th>
         <th class="text-left">Semaine</th>
         <th class="text-left">Nbr. d'heure</th>
@@ -19,11 +34,6 @@
       </thead>
       <tbody v-for="CourseHourProfessor in course_hour_professors" :key="CourseHourProfessor.id">
         <tr>
-
-         <td><p class="font-weight-medium">{{CourseHourProfessor.professor.user.fullname}}</p></td>
-         <td><p class="font-weight-medium">{{CourseHourProfessor.professor.user.cin }}</p></td>
-         <td><p class="font-weight-medium">{{CourseHourProfessor.professor.cnrps}}</p></td>
-         <td><p class="font-weight-medium">{{CourseHourProfessor.professor.grade}}</p></td>
          <td><p class="font-weight-medium">{{CourseHourProfessor.course.name}}</p></td>
          <td><p class="font-weight-medium">{{CourseHourProfessor.week.name}}</p></td>
          <td><p class="font-weight-medium">{{CourseHourProfessor.nbr_hour_course}}</p></td>
@@ -55,8 +65,13 @@
 
 <script>
 export default {
-    name:'course_hour_professors',
-    
+name:'course_hour_professors',
+    data() {
+            return {
+                url: document.head.querySelector('meta[name="url"]').content,
+                course_hour_professors:[],
+            }
+        },
     created()
     {
         this.loadData();
@@ -66,7 +81,7 @@ export default {
     {
       loadData()
         {
-          let url = this.url + '/api/bilans/get';
+          let url = this.url+`/api/bilans/get_bilan_professor/${this.$route.params.id}`
           axios.get(url).then(response => {
             this.course_hour_professors = response.data.course_hour_professors;
             console.log(this.course_hour_professors);
@@ -74,20 +89,17 @@ export default {
             console.log(error)
           });
       },
+
+     
       
     },
     mounted()
         {
             console.log('bilans component mounted ');
+            
         },
       
-        data() {
-            return {
-                url: document.head.querySelector('meta[name="url"]').content,
-                course_hour_professors:[],
-                
-            }
-        },
+        
 }
 
 

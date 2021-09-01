@@ -11,7 +11,7 @@
         <th class="text-left">Date de delivrance CIN </th>
         <th class="text-left">Code CNRPS</th>
         <th class="text-left">Code CNSS</th>
-        <th class="text-left">Saisir les heures de travails</th>
+        <th class="text-left">Bilan</th>
         </tr>
       </thead>
       <tbody v-for="professor in professors" :key="professor.id">
@@ -22,7 +22,7 @@
          <td><p class="font-weight-medium">{{professor.cin_delivered_at }}</p></td>
          <td><p class="font-weight-medium">{{professor.cnrps}}</p></td>
          <td><p class="font-weight-medium">{{professor.cnss}}</p></td>
-         <td><v-btn depressed color="primary">Aller à</v-btn></td>
+         <v-btn color="primary" fab x-small dark :to="{ name:'/get_bilan_professor',params:{id:professor.id}}"><v-icon>mdi-eye</v-icon></v-btn>
          
         </tr>
       </tbody>

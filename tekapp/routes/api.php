@@ -58,6 +58,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::delete("delete_bilan/{id}", "BilanModuleController@deleteBilan");;//done
     Route::get("get", "BilanModuleController@getAll");//done
     Route::get('get_bilan/{id}', 'BilanModuleController@getBilan');
+    Route::get('get_bilan_professor/{id}', 'BilanModuleController@getBilanByProfessor');
     Route::post('save_bilan/{id}', "BilanModuleController@updateBilan");
     Route::post('save_bilan', "BilanModuleController@saveBilan");//done
   });
