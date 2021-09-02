@@ -3,7 +3,7 @@
     <div class="container">
         <h2 class="text-center p-2 text-white bg-primary mt-5">Bilan</h2>
         
-        <form v-for="CourseHourProfessor in course_hour_professors.slice(1)" :key="CourseHourProfessor.id">
+        <form v-for="CourseHourProfessor in course_hour_professors.slice(0,1)" :key="CourseHourProfessor.id">
           <v-row>
             <v-col>
                 <v-text-field class="font-weight-medium" v-model="course_hour_professors[0].professor.user.fullname"  label="Nom & prenom" filled disabled></v-text-field>
