@@ -135,9 +135,9 @@
     <v-list-item three-line>
       <v-list-item-content>
         <v-list-item-title class="text-h5 mb-1">
-          Les Utilisateurs
+          Les Heures Supplémentaire
         </v-list-item-title>
-        <v-list-item-subtitle class="font-weight-regular">Vous pouvez afficher, modifier, supprimer des Utilisateurs</v-list-item-subtitle>
+        <v-list-item-subtitle class="font-weight-regular">Vous pouvez afficher, modifier, supprimer des heures supplimentaires pour les professeurs</v-list-item-subtitle>
       </v-list-item-content>
 
     </v-list-item>

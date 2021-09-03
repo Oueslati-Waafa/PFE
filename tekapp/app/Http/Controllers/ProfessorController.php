@@ -26,7 +26,10 @@ class ProfessorController extends Controller
 
   public function getProfessor($id)
   {
-    return professor::with("user")->where('id', $id)->get();
+    $professors = professor::with("user")->where('id', $id)->get();
+    return response()->json([
+      'professors' => $professors
+    ]);
   }
 
   public function all()

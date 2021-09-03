@@ -22,8 +22,4 @@ class Hour extends Model
         return $this->belongsToMany('App\professor');
     }
 
-    public function courseHourProfessor()
-    {
-        return $this->hasMany('App\CourseHourProfessor', 'hour_id','id');
-    }
 }

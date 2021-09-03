@@ -11,7 +11,7 @@ import PrixHeures from './components/PrixHeures/PrixHeuresList.vue';
 import ProfessorList from './components/ProfessorsList.vue';
 import Home from './components/Home.vue';
 
-import AddBilan from './components/Bilan/AddBilan.vue';
+import AddProfessorBilan from './components/Bilan/AddBilan.vue';
 import AddContract from './components/Contracts/AddContracts.vue';
 import AddPaiement from './components/Paiement/AddPaiement.vue';
 import AddHeureSupp from './components/HeureSupp/AddHeures.vue';
@@ -91,11 +91,7 @@ const routes = [
         path: '/week', 
         component: WeekList ,
     },
-    { 
-        name:'/add_bilan',
-        path: '/add_bilan', 
-        component: AddBilan ,
-    },
+
     { 
         name:'/add_contract',
         path: '/add_contract', 
@@ -175,6 +171,11 @@ const routes = [
         name:'/get_bilan_professor',
         path: '/get_bilan_professor/edit/:id?', 
         component: BilanProfessor ,
+    },
+    { 
+        name:'/add_professor_bilan',
+        path: '/add_professor_bilan/:id?', 
+        component: AddProfessorBilan ,
     },
   ];
 

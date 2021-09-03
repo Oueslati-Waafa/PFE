@@ -33,7 +33,39 @@
     </template>
   </v-simple-table>
 
- <v-btn depressed color="success" to="/add_contract"> <v-icon left>mdi-plus</v-icon>Ajouter</v-btn>
+ <br>
+<br>
+
+<v-row align="center" justify="space-around">
+  <v-col></v-col>
+    <v-col>
+<v-btn 
+  rounded 
+  block 
+  color="blue darken-3" 
+  dark 
+  large 
+  to="/add_contract"
+  
+>
+  AJOUTER CONTRAT
+</v-btn>
+</v-col>
+
+<v-col>
+<v-btn 
+  rounded 
+  block 
+  color="error" 
+  dark 
+  large 
+  to="/home"
+>
+  ANNULER
+</v-btn>
+</v-col>
+<v-col></v-col>
+</v-row>
 
     </div>
 

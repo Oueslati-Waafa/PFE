@@ -8,10 +8,7 @@
         <th class="text-left">#</th>
         <th class="text-left">Nom de professeur</th>
         <th class="text-left">Grade</th>
-        <th class="text-left">Date de delivrance CIN </th>
-        <th class="text-left">Code CNRPS</th>
-        <th class="text-left">Code CNSS</th>
-        <th class="text-left">Bilan</th>
+        <th class="text-left">Actions Pour Bilan</th>
         </tr>
       </thead>
       <tbody v-for="professor in professors" :key="professor.id">
@@ -19,11 +16,9 @@
          <td><p class="font-weight-medium">{{professor.id}}</p></td>
          <td><p class="font-weight-medium">{{professor.user.fullname}}</p></td>
          <td><p class="font-weight-medium">{{professor.grade}}</p></td>
-         <td><p class="font-weight-medium">{{professor.cin_delivered_at }}</p></td>
-         <td><p class="font-weight-medium">{{professor.cnrps}}</p></td>
-         <td><p class="font-weight-medium">{{professor.cnss}}</p></td>
-         <v-btn color="primary" fab x-small dark :to="{ name:'/get_bilan_professor',params:{id:professor.id}}"><v-icon>mdi-eye</v-icon></v-btn>
-         
+        <td><v-btn color="primary" fab x-small dark :to="{ name:'/get_bilan_professor',params:{id:professor.id}}"><v-icon>mdi-eye</v-icon></v-btn>
+         <v-btn color="success" fab x-small dark :to="{ name:'/add_professor_bilan',params:{id:professor.id}}"><v-icon>mdi-plus</v-icon></v-btn>
+        </td>
         </tr>
       </tbody>
     </template>

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class CourseHourProfessor extends Model
 {
+    public $timestamps = false;
+    
     public function professor()
     {
         return $this->belongsTo('App\professor', 'professor_id');
@@ -16,10 +18,6 @@ class CourseHourProfessor extends Model
         return $this->belongsTo('App\course', 'course_id');
     }
 
-    public function hour()
-    {
-        return $this->belongsTo('App\Hour', 'hour_id');
-    }
 
     public function week()
     {

@@ -44,7 +44,7 @@
   color="error" 
   dark 
   large 
-  to="/period"
+  to="/week"
 >
   ANNULER
 </v-btn>

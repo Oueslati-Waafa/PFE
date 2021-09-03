@@ -12,7 +12,7 @@ class BilanModuleController extends Controller
        public function getAll()
        {
         
-        $obj = CourseHourProfessor::orderBy('id', 'desc')->with(['course','professor.user','hour','week'])->get();
+        $obj = CourseHourProfessor::orderBy('id', 'desc')->with(['course','professor.user','week'])->get();
          return response()->json([
             'course_hour_professors' => $obj
           ]);
@@ -35,10 +35,11 @@ class BilanModuleController extends Controller
         //add contracts
      public function saveBilan(Request $request)
      {
-         $bilan = new bilan_module;
-         $bilan->dateBM = $request->dateBM;
-         $bilan->professor_id  = $request->professor_id ;
-         $bilan->course_id = $request->course_id;
+         $bilan = new CourseHourProfessor();
+         $bilan->professor_id = $request->professor_id;
+         $bilan->course_id  = $request->course_id ;
+         $bilan->week_id = $request->week_id;
+         $bilan->nbr_hour_course = $request->nbr_hour_course;
          
  
          if ($bilan -> save())
@@ -54,10 +55,11 @@ class BilanModuleController extends Controller
 
      public function updateBilan(Request $request,$id)
      {
-         $bilan = bilan_module::where('id',$id)->first();
-         $bilan->dateBM  = $request->dateBM ;
-         $bilan->course_id = $request->course_id;
+         $bilan = CourseHourProfessor::where('id',$id)->first();
          $bilan->professor_id = $request->professor_id;
+         $bilan->course_id  = $request->course_id ;
+         $bilan->week_id = $request->week_id;
+         $bilan->nbr_hour_course = $request->nbr_hour_course;
 
  
          if ($bilan -> save())
@@ -74,12 +76,12 @@ class BilanModuleController extends Controller
      //get contract
      public function getBilan($id)
      {
-        return CourseHourProfessor::with(['course','professor.user','hour','week'])->where('id', $id)->get();
+        return CourseHourProfessor::with(['course','professor.user','week'])->where('id', $id)->get();
      }
 
      public function getBilanByProfessor($id)
      {
-        $obj= CourseHourProfessor::orderBy('week_id', 'asc')->with(['course','professor.user','hour','week'])->where('professor_id', $id)->get();
+        $obj= CourseHourProfessor::orderBy('week_id', 'asc')->with(['course','professor.user','week'])->where('professor_id', $id)->get();
         return response()->json([
             'course_hour_professors' => $obj
           ]);

@@ -21,7 +21,7 @@
          <td><p class="font-weight-medium">{{period.start_date}}</p></td>
          <td><p class="font-weight-medium">{{period.end_date}}</p></td>
          <td><p class="font-weight-medium">{{period.session.name}}</p></td>
-         <td><v-btn color="success" fab x-small dark :to="{ name:'/get_period',params:{id:period.id}}"><v-icon>mdi-pencil</v-icon></v-btn>
+         <td><v-btn color="success" fab x-small dark :to="{ name:'/get_period',params:{id:period.id}}"><v-icon>mdi-pencil</v-icon></v-btn>   
             <v-btn color="red" fab x-small dark @click.prevent="deletePeriod(period.id)"><v-icon>mdi-delete</v-icon></v-btn>
          </td>
          
@@ -33,17 +33,38 @@
   
 
 
-     <v-btn
-      depressed
-      color="success"
-      to="/add_period"
-    >
-      <v-icon left>
-        mdi-plus
-      </v-icon>
-      Ajouter
-    </v-btn>
+    <br>
+<br>
 
+<v-row align="center" justify="space-around">
+  <v-col></v-col>
+    <v-col>
+<v-btn 
+  rounded 
+  block 
+  color="blue darken-3" 
+  dark 
+  large 
+  to="add_period"
+>
+  AJOUTER PERIODE
+</v-btn>
+</v-col>
+
+<v-col>
+<v-btn 
+  rounded 
+  block 
+  color="error" 
+  dark 
+  large 
+  to="/"
+>
+  ANNULER
+</v-btn>
+</v-col>
+<v-col></v-col>
+</v-row>
     </div>
 </template>
 

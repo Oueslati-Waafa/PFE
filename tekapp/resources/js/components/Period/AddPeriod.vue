@@ -1,7 +1,7 @@
 <template>
   <div>
 <div class="container">
-      <h2 class="text-center p-2 text-white bg-primary mt-5">Saisie des prix des heures</h2>
+      <h2 class="text-center p-2 text-white bg-primary mt-5">Saisie des périodes</h2>
 
       <div class="card-body">
           <div class="col-md-6 offset-md-3">

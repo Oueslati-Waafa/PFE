@@ -14,7 +14,10 @@ class CourseController extends Controller
   //
   public function all()
   {
-    return Course::all();
+    $courses = Course::orderBy('name', 'asc')->get();
+        return response()->json([
+          'courses' => $courses
+        ]);
   }
 
 

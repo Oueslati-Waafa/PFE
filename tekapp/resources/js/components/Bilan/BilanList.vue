@@ -12,8 +12,7 @@
         <th class="text-left">Grade</th>
         <th class="text-left">Matière</th>
         <th class="text-left">Semaine</th>
-        <th class="text-left">Nbr. d'heure</th>
-        <th class="text-left">Heures supplimentaires</th>
+        <th class="text-left">Nbr. d'heure d'enseignement</th>
         <th class="text-left">Actions</th>
         </tr>
       </thead>
@@ -27,7 +26,6 @@
          <td><p class="font-weight-medium">{{CourseHourProfessor.course.name}}</p></td>
          <td><p class="font-weight-medium">{{CourseHourProfessor.week.name}}</p></td>
          <td><p class="font-weight-medium">{{CourseHourProfessor.nbr_hour_course}}</p></td>
-         <td><p class="font-weight-medium">{{CourseHourProfessor.hour.heure_suivie}}</p></td>
          <td><v-btn color="success" fab x-small dark :to="{ name:'/get_bilan',params:{id:CourseHourProfessor.id}}"><v-icon>mdi-pencil</v-icon></v-btn>
             <v-btn color="red" fab x-small dark @click.prevent="deleteBilan(CourseHourProfessor.id)"><v-icon>mdi-delete</v-icon></v-btn>
          </td>
@@ -38,16 +36,39 @@
   </v-simple-table>
 
 
-     <v-btn
-      depressed
-      color="success"
-      to="/add_bilan"
-    >
-      <v-icon left>
-        mdi-plus
-      </v-icon>
-      Ajouter
-    </v-btn>
+    <br>
+<br>
+
+<v-row align="center" justify="space-around">
+  <v-col></v-col>
+    <v-col>
+<v-btn 
+  rounded 
+  block 
+  color="blue darken-3" 
+  dark 
+  large 
+  to="/professor"
+  
+>
+  AJOUTER BILAN
+</v-btn>
+</v-col>
+
+<v-col>
+<v-btn 
+  rounded 
+  block 
+  color="error" 
+  dark 
+  large 
+  to="/"
+>
+  ANNULER
+</v-btn>
+</v-col>
+<v-col></v-col>
+</v-row>
 
     </div>
 

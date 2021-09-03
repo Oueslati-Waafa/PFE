@@ -138,7 +138,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
   // added 30/08/2021
     Route::group(['prefix' => 'course'], function () {
-    Route::get('/', 'ProfessorController@getCourses');
+    Route::get('/getall', 'ProfessorController@all');
+    Route::get('/all', 'CourseController@all');
     Route::get('/get', 'ProfessorCourseController@getProfessorCourse');
     Route::get('/get_course/{id}', 'CourseController@getCourseByProfessor');
     });
