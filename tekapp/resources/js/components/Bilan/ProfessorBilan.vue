@@ -38,7 +38,7 @@
          <td><p class="font-weight-medium">{{CourseHourProfessor.course.name}}</p></td>
          <td><p class="font-weight-medium">{{CourseHourProfessor.week.name}}</p></td>
          <td><p class="font-weight-medium">{{CourseHourProfessor.nbr_hour_course}}</p></td>
-         <td><v-btn color="success" fab x-small dark :to="{ name:'/get_bilan',params:{id:CourseHourProfessor.professor_id}}"><v-icon>mdi-pencil</v-icon></v-btn>
+         <td><v-btn color="success" fab x-small dark :to="{ name:'/get_bilan',params:{id:CourseHourProfessor.id}}"><v-icon>mdi-pencil</v-icon></v-btn>
             <v-btn color="red" fab x-small dark @click.prevent="deleteBilan(CourseHourProfessor.id)"><v-icon>mdi-delete</v-icon></v-btn>
          </td>
          

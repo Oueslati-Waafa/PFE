@@ -23,7 +23,7 @@
                     <v-text-field id="start_date" v-model="period.start_date" placeholder="Entrer la Date de la début de period"></v-text-field>
                 
                     <label for="" class="font-weight-regular">Date de la fin de period</label>
-                    <v-text-field id="start_date" v-model="period.end_date" placeholder="Entrer la Date de la fin de period"></v-text-field>
+                    <v-text-field id="end_date" v-model="period.end_date" placeholder="Entrer la Date de la fin de period"></v-text-field>
 
                    <label for="" class="font-weight-regular">Les sessions</label>
                    <input type="hidden" v-model="session">

@@ -29,6 +29,7 @@ class PeriodController extends Controller
 
     }
 
+    
     public function getAllPeriods()
     {
         $period = Period::orderBy('end_date', 'desc')->with(['session',])->get();
