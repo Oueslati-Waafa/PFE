@@ -23,7 +23,7 @@
 
                    <label for="" class="font-weight-regular">La date de début de periode</label>
                    <input type="hidden" v-model="period">
-                   <v-select v-model="period" class="font-weight-regular" :items="periods"  item-text="start_date" item-value="id" label="La Période" solo></v-select>
+                   <v-select v-model="week.period_id" class="font-weight-regular" :items="periods"  item-text="start_date" item-value="id" label="La Période" solo></v-select>
 <v-row align="center" justify="space-around">
     <v-col>
 <v-btn 

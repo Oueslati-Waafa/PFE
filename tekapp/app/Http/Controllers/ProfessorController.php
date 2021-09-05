@@ -34,7 +34,10 @@ class ProfessorController extends Controller
 
   public function all()
   {
-    return professor::with("user")->get();
+    $professor = professor::with(['user'])->get();
+    return response()->json([
+      'professors' => $professor
+    ]);
   }
  // it works
  public function getProfessorByCourse($id)

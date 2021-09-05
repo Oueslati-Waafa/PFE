@@ -148,7 +148,7 @@
         rounded
         text
         color="primary"
-        to="/users"
+        to="/heures_supp"
       >
         Visiter
       </v-btn>

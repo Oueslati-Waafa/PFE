@@ -10,24 +10,27 @@ class HourController extends Controller
    //get all Hours
    public function getAllHours()
    {
-       $hour = Hour::orderBy('type', 'desc')->with(['week',])->get();
+       $hour = Hour::orderBy('type', 'desc')->with(['week','professor.user'])->get();
        return response()->json([
          'hours' => $hour
        ]);
    }
 
+   //get Hour
    public function getHour($id)
    {
-       $hour = Hour::find($id);
-       return response()->json($hour);
+    $hour = Hour::with(['week','professor.user'])->find($id);
+    return response()->json($hour);
    }
 
    public function updateHour(Request $request,$id)
    {
       $hour = Hour::where('id',$id)->first();
-      $hour->heure_suive = $request->heure_suive;
+      $hour->heure_suivie = $request->heure_suivie;
+      $hour->conseil_pfe = $request->conseil_pfe;
       $hour->type = $request->type;
       $hour->week_id = $request->week_id;
+      $hour->professor_id = $request->professor_id;
   
   
       if ($hour -> save())
@@ -57,10 +60,12 @@ class HourController extends Controller
    public function saveHour(Request $request)
    {
 
-     $hour = new Hour();
-     $hour->heure_suive = $request->heure_suive;
-     $hour->type = $request->type;
-     $hour->week_id = $request->week_id;
+      $hour = new Hour();
+      $hour->heure_suivie = $request->heure_suivie;
+      $hour->conseil_pfe = $request->conseil_pfe;
+      $hour->type = $request->type;
+      $hour->week_id = $request->week_id;
+      $hour->professor_id = $request->professor_id;
 
      if ($hour -> save())
      {

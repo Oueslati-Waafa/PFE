@@ -6,51 +6,73 @@
     <template v-slot:default>
             <thead>
                 <tr>
-                <th class="text-left">#</th>
-                <th class="text-left">Nbr. heures Jury</th>
-                <th class="text-left">Nbr. heures d'encadrement</th>
-                <th class="text-left">Nbr. heures Conseil de classe</th>
-                <th class="text-left">Numéro de semestre </th>
-                <th class="text-left">ID Professeur</th>
+                
+                <th class="text-left">Nom & Prénom</th>
                 <th class="text-left">Nbr. heures de surveillance</th>
+                <th class="text-left">Nbr. heures Conseil de classe</th>
+                <th class="text-left">Type</th>
+                <th class="text-left">Semaine</th>
+                
+                
                 <th class="text-left">Action</th>
                 </tr>
             </thead>
-            <tbody v-for="h_supplemetaire in h_supplemetaires" :key="h_supplemetaire.id">
+            <tbody v-for="hour in hours" :key="hour.id">
                 <tr>
-                     <td><p class="font-weight-medium">{{h_supplemetaire.id}}</p></td>
-                     <td><p class="font-weight-medium">{{h_supplemetaire.h_jury}}</p></td>
-                     <td><p class="font-weight-medium">{{h_supplemetaire.h_encadrement}}</p></td>
-                     <td><p class="font-weight-medium">{{h_supplemetaire.h_conseil}}</p></td>
-                     <td><p class="font-weight-medium">{{h_supplemetaire.semester}}</p></td>
-                     <td><p class="font-weight-medium">{{h_supplemetaire.professor_id}}</p></td>
-                     <td><p class="font-weight-medium">{{h_supplemetaire.h_surveillance}}</p></td>
+                     
+                     <td><p class="font-weight-medium">{{hour.professor.user.fullname}}</p></td>
+                     <td><p class="font-weight-medium">{{hour.heure_suivie}}</p></td>
+                     <td><p class="font-weight-medium">{{hour.conseil_pfe}}</p></td>
+                     <td><p class="font-weight-medium">{{hour.type}}</p></td>
+                     <td><p class="font-weight-medium">{{hour.week.name}}</p></td>
                     
-                <td><v-btn color="success" fab x-small dark :to="{ name:'/get_heures_supp',params:{id:h_supplemetaire.id}}"><v-icon>mdi-pencil</v-icon></v-btn>
-            <v-btn color="red" fab x-small dark @click.prevent="deleteHeures(h_supplemetaire.id)"><v-icon>mdi-delete</v-icon></v-btn>
+                <td><v-btn color="success" fab x-small dark :to="{ name:'/get_heures_supp',params:{id:hour.id}}"><v-icon>mdi-pencil</v-icon></v-btn>
+            <v-btn color="red" fab x-small dark @click.prevent="deleteHeures(hour.id)"><v-icon>mdi-delete</v-icon></v-btn>
          </td>
                 </tr>
             </tbody>
     </template>
   </v-simple-table>
 
-          <v-btn
-      depressed
-      
-      color="success"
-      to="/add_heures_supp"
-    >
-      <v-icon left>
-        mdi-plus
-      </v-icon>
-      Ajouter
-    </v-btn>
+   <br>
+<br>
+
+<v-row align="center" justify="space-around">
+  <v-col></v-col>
+    <v-col>
+<v-btn 
+  rounded 
+  block 
+  color="blue darken-3" 
+  dark 
+  large 
+  to="/add_heures_supp"
+  
+>
+  AJOUTER BILAN
+</v-btn>
+</v-col>
+
+<v-col>
+<v-btn 
+  rounded 
+  block 
+  color="error" 
+  dark 
+  large 
+  to="/"
+>
+  ANNULER
+</v-btn>
+</v-col>
+<v-col></v-col>
+</v-row>
     </div>
 </template>
 
 <script>
 export default {
-    name:'h_supplemetaires',
+    name:'hours',
     created()
     {
         this.loadData();
@@ -59,16 +81,16 @@ export default {
     {
         loadData()
         {
-            let url = this.url + '/api/heures_supp/get';
+            let url = this.url + '/api/hours/get';
             this.axios.get(url).then(response => {
-                this.h_supplemetaires = response.data
-                console.log(this.h_supplemetaires);
+                this.hours = response.data.hours
+                console.log(this.hours);
             });
         },
         
       deleteHeures(id)
         {
-            let url = this.url + `/api/heures_supp/delete_heure_sup/${id}`;
+            let url = this.url + `/api/hours/delete_hour/${id}`;
             this.axios.delete(url).then(response =>{
                 if (response.status)
                 {
@@ -88,7 +110,7 @@ export default {
         data() {
             return {
                 url: document.head.querySelector('meta[name="url"]').content,
-                h_supplemetaires:[]
+                hours:[]
             }
         },
 }

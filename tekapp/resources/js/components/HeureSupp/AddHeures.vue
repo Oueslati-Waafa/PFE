@@ -15,25 +15,24 @@
 
               </div>
                 
-                    <label for="" class="font-weight-regular">Nbr. d'heures jury </label>
-                    <v-text-field type="text" id="h_jury" v-model="heure_supp.h_jury"  placeholder="Entrer les heures jury"></v-text-field>
+                   <label for="" class="font-weight-regular">Nom & prénom</label>
+                   <input type="hidden" v-model="professor">
+                   <v-select v-model="professor" class="font-weight-regular" :items="professors"  item-text="user.fullname" item-value="id" label="Selectionner un enseignant" solo></v-select>
+
+                    <label for="" class="font-weight-regular">Nbr. d'heures de surveillance </label>
+                    <v-text-field type="text" id="h_jury" v-model="hours.heure_suivie"  placeholder="Entrer les heures jury"></v-text-field>
                 
-                    <label for="" class="font-weight-regular">Nbr. d'heure d'encadrement</label>
-                    <v-text-field type="text" id="h_encadrement" v-model="heure_supp.h_encadrement"  placeholder="Entrer la h_encadrement"></v-text-field>
+                    <label for="" class="font-weight-regular">Nbr. d'heure de participation au conseil/PFE</label>
+                    <v-text-field type="text" id="h_encadrement" v-model="hours.conseil_pfe"  placeholder="Entrer la h_encadrement"></v-text-field>
                
-                    <label for="" class="font-weight-regular">Nbr. d'heures conseil</label>
-                    <v-text-field type="text" id="h_conseil" v-model="heure_supp.h_conseil"  placeholder="Entrer l'h_conseil"></v-text-field>
+                    <label for="" class="font-weight-regular">Jour/Soir</label>
+                    <v-text-field type="text" id="h_conseil" v-model="hours.type"  placeholder="Entrer l'h_conseil"></v-text-field>
                
-                    <label for="" class="font-weight-regular">Numéro de semstre</label>
-                    <v-text-field type="text" id="semester" v-model="heure_supp.semester"  placeholder="Entrer le numéro de semstre"></v-text-field>
-               
-                    <label for="" class="font-weight-regular">ID professeur</label>
-                    <v-text-field type="text" id="professor_id" v-model="heure_supp.professor_id"  placeholder="Entrer lID professeur"></v-text-field>
-               
-                
-                    <label for="" class="font-weight-regular">Nbr. d'heures de surveillance</label>
-                    <v-text-field type="text" id="h_surveillance"  v-model="heure_supp.h_surveillance"  placeholder="Entrer le heurs de surveillances"></v-text-field>
-                
+                   <label for="" class="font-weight-regular">Les Semaines</label>
+                   <input type="hidden" v-model="week">
+                   <v-select v-model="week" class="font-weight-regular" :items="weeks"  item-text="name" item-value="id" label="Selectionner une Semaine" solo></v-select>
+
+                       
 <v-row align="center" justify="space-around">
     <v-col>
 <v-btn 
@@ -69,21 +68,37 @@
 
 
 <script>
+import axios from 'axios';
+const ajax = axios.create({
+  baseURL: 'http://127.0.0.1:8000/api',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
 export default {
 data()
     {
         return{
             url: document.head.querySelector('meta[name="url"]').content,
-            heure_supp:{},
-            h_jury : '',
-            h_encadrement : '',
-            h_conseil : '',
-            semester : '',
-            professor_id : '',
-            h_surveillance : '',
+            hours:[],
+            heure_suivie : '',
+            conseil_pfe : '',
+            type : '',
+            professors : [],
+            professor : null,
+            currentProfessor : null,
+            weeks : [],
+            week : null,
+            currentWeek : null,
             errors: []
         }
         
+    },
+
+    created()
+    {
+        this.fetchProfessorData();
+        this.fetchWeekData();
     },
 
         methods : 
@@ -91,43 +106,39 @@ data()
         saveHeures()
         {
             this.errors = [];
-            if(!this.heure_supp.h_jury)
+            if(!this.professor)
             {
-                this.errors.push('Somme brut est requis');
+                this.errors.push('le professeur est requis');
             }
-            if(!this.heure_supp.h_encadrement)
+            if(!this.hours.heure_suivie)
             {
-                this.errors.push('h_encadrement est requis');
+                this.errors.push('le nombre dheures de surveillance est requis');
             }
-            if(!this.heure_supp.h_conseil)
+            if(!this.hours.conseil_pfe)
             {
-                this.errors.push('h_conseil est requis');
+                this.errors.push('le nombre dheures de participation au conseil/pfe  est requis');
             }
-            if(!this.heure_supp.semester)
+            if(!this.hours.type)
             {
-                this.errors.push('net à payer est requis');
+                this.errors.push('le type est requis');
             }
-            if(!this.heure_supp.professor_id)
+            if(!this.week)
             {
-                this.errors.push('Contract ID est requis');
-            }
-            if(!this.heure_supp.h_surveillance)
-            {
-                this.errors.push('h_surveillance   est requis');
+                this.errors.push('la semaine est requis');
             }
         
 
             if (!this.errors.length)
             {
                 let formData = new FormData();
-                formData.append('h_jury',this.heure_supp.h_jury);
-                formData.append('h_encadrement',this.heure_supp.h_encadrement);
-                formData.append('h_conseil',this.heure_supp.h_conseil);
-                formData.append('semester',this.heure_supp.semester);
-                formData.append('professor_id',this.heure_supp.professor_id);
-                formData.append('h_surveillance',this.heure_supp.h_surveillance);
-              
-                let url = this.url + '/api/heures_supp/save_heure_supp';
+                formData.append('professor_id',this.professor);
+                formData.append('heure_suivie',this.hours.heure_suivie);
+                formData.append('conseil_pfe',this.hours.conseil_pfe);
+                formData.append('type',this.hours.type);
+                formData.append('week_id',this.week);
+                
+
+                let url = this.url + '/api/hours/save_hour';
                 this.axios.post(url,formData).then((response) => {
                     if(response.status)
                     {
@@ -142,11 +153,30 @@ data()
                     this.errors.push(error.response.data.error);
                 });  
             }
+        },
+
+        fetchProfessorData()
+        {
+            ajax.get('/professor/get').then(response =>
+            {
+                this.currentProfessor = null;
+                this.professors = response.data.professors;
+                console.log(this.professors);
+            });
+        },
+
+        fetchWeekData()
+        {
+            ajax.get('/weeks/get').then(response =>
+            {
+                this.currentWeek = null;
+                this.weeks = response.data.weeks;
+            });
         }
     },
     mounted: function()
     {
-        console.log('add heure_supp component loaded');
+        console.log('add hours component loaded');
     }
 }
 </script>

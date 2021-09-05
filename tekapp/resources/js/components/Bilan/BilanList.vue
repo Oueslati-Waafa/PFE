@@ -33,7 +33,7 @@
   </v-simple-table>
 
 
-    <br>
+<br>
 <br>
 
 <v-row align="center" justify="space-around">

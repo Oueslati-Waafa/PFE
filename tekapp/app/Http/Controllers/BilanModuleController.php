@@ -77,10 +77,7 @@ class BilanModuleController extends Controller
      public function getBilan($id)
      {
          
-       /* $bilan = CourseHourProfessor::with(['course','professor.user','week'])->where('id', $id)->get();
-        return response()->json([
-            'course_hour_professors' => $bilan
-          ]);*/
+     
           $bilan = CourseHourProfessor::with(['course','professor.user','week'])->find($id);
           return response()->json([
             'course_hour_professors' => $bilan

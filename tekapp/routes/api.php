@@ -127,6 +127,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::post('save_week/{id}', "WeekController@updateWeek");
     Route::post('save_week', "WeekController@saveWeek");//done
   });
+
+  
   Route::group(['prefix' => 'hours'], function () {
   
     Route::delete("delete_hour/{id}", "HourController@deleteHour");;//done
@@ -136,6 +138,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::post('save_hour', "HourController@saveHour");//done
   });
 
+  
   // added 30/08/2021
     Route::group(['prefix' => 'course'], function () {
     Route::get('/getall', 'ProfessorController@all');

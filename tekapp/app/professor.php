@@ -29,8 +29,9 @@ class professor extends Model
 
     public function hours()
     {
-        return $this->belongsToMany('App\Hour');
+      return $this->hasMany(Hour::class);
     }
+
 
     public function courseHourProfessor()
     {
