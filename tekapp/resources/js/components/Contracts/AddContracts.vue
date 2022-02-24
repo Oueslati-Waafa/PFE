@@ -14,9 +14,11 @@
                   </ul>
 
               </div>
+
               
-                    <label for="" class="font-weight-regular">Nom de professeur </label>
-                    <v-text-field type="text" id="professor_id " v-model="contract.professor_id "  placeholder="Entrer l'ID de professeur"></v-text-field>
+                   <label for="" class="font-weight-regular">Nom & prénom</label>
+                   <input type="hidden" v-model="professor">
+                   <v-select v-model="professor" class="font-weight-regular" :items="professors"  item-text="user.fullname" item-value="id" label="Selectionner un enseignant" solo></v-select>
                 
                 
                     <label for="" class="font-weight-regular">Date de début</label>
@@ -72,6 +74,14 @@
 </template>
 
 <script>
+import axios from 'axios';
+
+const ajax = axios.create({
+  baseURL: 'http://127.0.0.1:8000/api',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
 export default {
 data()
     {
@@ -84,17 +94,34 @@ data()
             type : '',
             MF : '',
             RC : '',
-            errors: []
+            errors: [],
+            professors : [],
+            professor : null,
+            currentProfessor : null,
         }
         
+    },
+    created()
+    {
+        this.fetchProfessorData();
     },
 
         methods : 
     {
+       fetchProfessorData()
+        {
+            ajax.get('/professor/get').then(response =>
+            {
+                this.currentProfessor = null;
+                this.professors = response.data.professors;
+                console.log(this.professors);
+            });
+        },
+        
         saveContract()
         {
             this.errors = [];
-            if(!this.contract.professor_id)
+            if(!this.professor)
             {
                 this.errors.push('Somme brut est requis');
             }
@@ -123,7 +150,7 @@ data()
             if (!this.errors.length)
             {
                 let formData = new FormData();
-                formData.append('professor_id',this.contract.professor_id);
+                formData.append('professor_id',this.professor);
                 formData.append('date_debut',this.contract.date_debut);
                 formData.append('date_fin',this.contract.date_fin);
                 formData.append('type',this.contract.type);

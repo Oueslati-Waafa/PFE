@@ -15,8 +15,10 @@
 
               </div>
                
-                    <label for="" class="font-weight-regular">Nom de professeur </label>
-                    <v-text-field type="text" id="professor_id " v-model="contract.professor_id "  placeholder="Entrer l'ID de professeur"></v-text-field>
+                   
+                  <label for="" class="font-weight-regular">Nom & prénom</label>
+                   <input type="hidden" v-model="professor">
+                   <v-select v-model="contract.professor_id" class="font-weight-regular" :items="professors"  item-text="user.fullname" item-value="id" label="Selectionner un enseignant" solo></v-select>
               
                     <label for="" class="font-weight-regular">Date de début</label>
                     <v-text-field type="text" id="date_debut" v-model="contract.date_debut"  placeholder="Entrer la date debut"></v-text-field>
@@ -69,7 +71,14 @@
 </div>
 </template>
 <script>
+import axios from 'axios';
 
+const ajax = axios.create({
+  baseURL: 'http://127.0.0.1:8000/api',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
 export default {
 
 data()
@@ -83,13 +92,31 @@ data()
             type : '',
             MF : '',
             RC : '',
-            errors: []
+            errors: [],
+            professors : [],
+            professor : null,
+            currentProfessor : null,
         }
         
     },
 
+        created()
+    {
+        this.fetchProfessorData();
+        this.loadData();
+    },
+
     methods : 
     {
+        fetchProfessorData()
+        {
+            ajax.get('/professor/get').then(response =>
+            {
+                this.currentProfessor = null;
+                this.professors = response.data.professors;
+                console.log(this.professors);
+            });
+        },
     loadData()
         {
             let url = this.url+`/api/contracts/get_contracts/${this.$route.params.id}`;
@@ -158,10 +185,7 @@ updateContracts()
         },
        
     },
-    created()
-    {
-        this.loadData();
-    },
+
     mounted: function()
     {
         console.log('Edit Contracts component loaded');

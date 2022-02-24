@@ -39,12 +39,12 @@ export default {
     selectedItem: 0,
     drawer : null ,
     items: [
-      {icon: 'fas fa-home',text: 'Dashboard', route:'/'},
-      {icon: 'fas fa-money-bill-alt',text: 'Prix des Heures', route:'/prix_heures'},
-      {icon: 'fas fa-book-reader',text: 'Liste des Professeurs', route:'/professor'},
-      {icon: 'fas fa-money-check-alt',text: 'Paiement', route:'/paiement'},
-      {icon: 'fas fa-address-card',text: 'Les contrats', route:'/contracts'},
-      {icon: 'fas fa-file-invoice-dollar',text: 'Les bilans', route:'/bilans'},
+      {icon: 'mdi-view-dashboard',text: 'Dashboard', route:'/'},
+      {icon: 'mdi-clock-start',text: 'Prix des Heures', route:'/prix_heures'},
+      {icon: 'mdi-account-multiple',text: 'Liste des Professeurs', route:'/professor'},
+      {icon: 'mdi-credit-card',text: 'Paiement', route:'/paiement'},
+      {icon: 'mdi-account-box',text: 'Les contrats', route:'/contracts'},
+      {icon: 'mdi-folder',text: 'Les bilans', route:'/bilans'},
     ]
   })
 }

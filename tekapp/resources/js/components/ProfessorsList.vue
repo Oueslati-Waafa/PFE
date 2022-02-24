@@ -41,7 +41,7 @@ export default {
         {
             let url = this.url + '/api/professor/get';
             this.axios.get(url).then(response => {
-                this.professors = response.data
+                this.professors = response.data.professors
                 console.log(this.professors);
             });
         },

@@ -10,6 +10,7 @@
                       <li v-for="(error,index) in errors" :key="index">
                           {{error}}
                       </li>
+
                   </ul>
 
               </div>
@@ -29,8 +30,10 @@
                     <label for="" class="font-weight-regular">ID contrat</label>
                     <v-text-field type="text" id="contrat" v-model="paiement.contract_id"  placeholder="Entrer lID du contrat"></v-text-field>
                 
-                    <label for="" class="font-weight-regular">ID professeur</label>
-                    <v-text-field type="text" id="professeur"  v-model="paiement.professor_id"  placeholder="Entrer le nom du professeur"></v-text-field>
+                   <label for="" class="font-weight-regular">Nom & prénom</label>
+                   <input type="hidden" v-model="professor">
+                   <v-select v-model="professor" class="font-weight-regular" :items="professors"  item-text="user.fullname" item-value="id" label="Selectionner un enseignant" solo></v-select>
+                
                
                     <label for="" class="font-weight-regular">Date de paiement</label>
                     <v-text-field type="text" id="datepaiement" v-model="paiement.datepaiement"  placeholder="Entrer la date de paiement"></v-text-field>
@@ -69,8 +72,20 @@
 </template>
 
 <script>
+import axios from 'axios';
 
+const ajax = axios.create({
+  baseURL: 'http://127.0.0.1:8000/api',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
 export default {
+
+  created()
+    {
+        this.fetchProfessorData();
+    },
     data()
     {
         return{
@@ -83,12 +98,25 @@ export default {
             contract_id : '',
             professor_id : '',
             datepaiement : '',
-            errors: []
+            errors: [],
+            professors : [],
+            professor : null,
+            currentProfessor : null,
         }
         
     },
     methods : 
     {
+       fetchProfessorData()
+        {
+            ajax.get('/professor/get').then(response =>
+            {
+                this.currentProfessor = null;
+                this.professors = response.data.professors;
+                console.log(this.professors);
+            });
+        },
+
         savePaiement()
         {
             this.errors = [];
@@ -112,7 +140,7 @@ export default {
             {
                 this.errors.push('Contract ID est requis');
             }
-            if(!this.paiement.professor_id)
+            if(!this.professor)
             {
                 this.errors.push('Professor ID  est requis');
             }
@@ -129,7 +157,7 @@ export default {
                 formData.append('avance',this.paiement.avance);
                 formData.append('net_a_payer',this.paiement.net_a_payer);
                 formData.append('contract_id',this.paiement.contract_id);
-                formData.append('professor_id',this.paiement.professor_id);
+                formData.append('professor_id',this.professor);
                 formData.append('datepaiement',this.paiement.datepaiement);
                 let url = this.url + '/api/paiement/save_paiement';
                 this.axios.post(url,formData).then((response) => {
